@@ -1,0 +1,27 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+.claude/
+
+# Evidencia de ejecucion (generada localmente)
+entregable_a_orquestador/evidencia_ejecucion.log
+
+# Cache de extraccion de graphify (regenerable, no es fuente de verdad)
+graphify-out/cache/
+graphify-out/.graphify_python
+graphify-out/.graphify_root

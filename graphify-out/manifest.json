@@ -1,0 +1,77 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1786380901.6294005,
+    "ast_hash": "e569aeddf65eb5df8d7610483e3e7851",
+    "semantic_hash": "e569aeddf65eb5df8d7610483e3e7851"
+  },
+  "entregable_a_orquestador/orquestador_concurrente.py": {
+    "mtime": 1786380946.9767675,
+    "ast_hash": "094e2ba5b63c024ceb4b9953f22c5ba9",
+    "semantic_hash": "094e2ba5b63c024ceb4b9953f22c5ba9"
+  },
+  "entregable_b_llm_client/__init__.py": {
+    "mtime": 1786380951.7818196,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "entregable_b_llm_client/base_client.py": {
+    "mtime": 1786380964.6912248,
+    "ast_hash": "70f4b82595d99c11913f1a902d329e26",
+    "semantic_hash": "70f4b82595d99c11913f1a902d329e26"
+  },
+  "entregable_b_llm_client/gemini_client.py": {
+    "mtime": 1786380983.7854617,
+    "ast_hash": "5f6e47e525dbb8bfce083cc26f78a4d4",
+    "semantic_hash": "5f6e47e525dbb8bfce083cc26f78a4d4"
+  },
+  "entregable_b_llm_client/groq_client.py": {
+    "mtime": 1786380995.8263195,
+    "ast_hash": "c96008e2f2b076f77c9f326787ecec1b",
+    "semantic_hash": "c96008e2f2b076f77c9f326787ecec1b"
+  },
+  "entregable_b_llm_client/llm_manager.py": {
+    "mtime": 1786381004.3818116,
+    "ast_hash": "70d3eb5d3f20e79259dc919c0d11bab8",
+    "semantic_hash": "70d3eb5d3f20e79259dc919c0d11bab8"
+  },
+  "entregable_b_llm_client/main.py": {
+    "mtime": 1786381028.8289256,
+    "ast_hash": "1b6a4bd4251c0b868f84bf645d4caa12",
+    "semantic_hash": "1b6a4bd4251c0b868f84bf645d4caa12"
+  },
+  "entregable_b_llm_client/openai_client.py": {
+    "mtime": 1786380974.8720613,
+    "ast_hash": "f0d19856249eb038e59f277df9bb75fb",
+    "semantic_hash": "f0d19856249eb038e59f277df9bb75fb"
+  },
+  "entregable_b_llm_client/schemas.py": {
+    "mtime": 1786380958.3632796,
+    "ast_hash": "fab6d80ba8b6ae26b95a59065a032149",
+    "semantic_hash": "fab6d80ba8b6ae26b95a59065a032149"
+  },
+  "README.md": {
+    "mtime": 1786381418.2174609,
+    "ast_hash": "23940ec975cbde2432c1d95fe43a2cb9",
+    "semantic_hash": "23940ec975cbde2432c1d95fe43a2cb9"
+  },
+  "contexto_fase1.md": {
+    "mtime": 1786320228.9377115,
+    "ast_hash": "c3ea4a9c2586957df8ba80287728facb",
+    "semantic_hash": "c3ea4a9c2586957df8ba80287728facb"
+  },
+  "requirements.txt": {
+    "mtime": 1786381032.9458337,
+    "ast_hash": "1619a66afbfe119896929a883492af73",
+    "semantic_hash": "1619a66afbfe119896929a883492af73"
+  },
+  "entregable_a_orquestador/entregable_a_evidencia.pdf": {
+    "mtime": 1786381397.2776666,
+    "ast_hash": "8d70edcde087e045ad6d07907ac33a3f",
+    "semantic_hash": "8d70edcde087e045ad6d07907ac33a3f"
+  },
+  "program-summary.pdf": {
+    "mtime": 1786319451.4865618,
+    "ast_hash": "d0a7a20c90bf4723703fcbdcda2ebbd6",
+    "semantic_hash": "d0a7a20c90bf4723703fcbdcda2ebbd6"
+  }
+}
