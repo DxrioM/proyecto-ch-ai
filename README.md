@@ -1,7 +1,14 @@
-# Fase 1 — La interfaz base: conexion y abstraccion de LLMs
+# Proyecto AI Engineering
 
-Proyecto de la Fase 1 del curso "AI Engineering". Contiene los dos entregables
-independientes descritos en [contexto_fase1.md](contexto_fase1.md).
+Proyecto de 8 fases del curso "AI Engineering". Cada fase se documenta en su
+propio `contexto_faseN.md` y se implementa en su propia carpeta. Este README
+cubre la Fase 1 y la Fase 2; a medida que se aprueben las siguientes fases se
+van agregando sus secciones.
+
+- Fase 1: [contexto_fase1.md](contexto_fase1.md) — interfaz base, conexion y
+  abstraccion de LLMs.
+- Fase 2: [contexto_fase2.md](contexto_fase2.md) — encadenamiento logico,
+  orquestacion con LangChain.
 
 ## Estructura
 
@@ -11,18 +18,27 @@ proyecto_ch_ai/
 ├── .env.example                  # mismas claves, sin valores
 ├── .gitignore
 ├── requirements.txt
-├── entregable_a_orquestador/
+├── entregable_a_orquestador/            # Fase 1 - Entregable A
 │   ├── orquestador_concurrente.py
 │   ├── evidencia_ejecucion.log   # salida de consola capturada
 │   └── entregable_a_evidencia.pdf
-└── entregable_b_llm_client/
-    ├── schemas.py                # ChatMessage, LLMConfig, ModelResponse (Pydantic)
-    ├── base_client.py            # BaseLLMClient (ABC)
-    ├── gemini_client.py
-    ├── groq_client.py
-    ├── openai_client.py
-    ├── llm_manager.py            # AsyncLLMManager (Factory)
-    └── main.py                   # script de validacion (modo normal + streaming)
+├── entregable_b_llm_client/             # Fase 1 - Entregable B
+│   ├── schemas.py                # ChatMessage, LLMConfig, ModelResponse (Pydantic)
+│   ├── base_client.py            # BaseLLMClient (ABC)
+│   ├── gemini_client.py
+│   ├── groq_client.py
+│   ├── openai_client.py
+│   ├── llm_manager.py            # AsyncLLMManager (Factory)
+│   └── main.py                   # script de validacion (modo normal + streaming)
+├── fase2_lcel_refactor/                 # Fase 2 - Componente A
+│   └── main.py                   # prompt | model | StrOutputParser, con ainvoke
+├── fase2_ejercicio_validacion/          # Fase 2 - Componente B
+│   └── entity_extraction.py      # with_structured_output + with_retry
+└── fase2_pipeline_validado/             # Fase 2 - Componente C (Pre-entrega 2)
+    ├── schemas.py                # TechExtraction (Pydantic)
+    ├── chain.py                  # cadena LCEL + process_text()
+    ├── main.py                   # mini-script de prueba
+    └── README.md                 # detalle del pipeline + ejemplo de salida
 ```
 
 ## Requisitos
@@ -122,3 +138,65 @@ El script:
 - **Fuga de excepciones**: ninguna excepcion de proveedor (rate limit, error
   de conexion, key invalida) rompe el programa; siempre vuelve como
   `ModelResponse.error` o como chunk de error en streaming.
+
+---
+
+# Fase 2 — Encadenamiento logico: orquestacion con LangChain
+
+Reemplaza el `AsyncLLMManager` propio de la Fase 1 por cadenas declarativas
+de LangChain (LCEL). Ver [contexto_fase2.md](contexto_fase2.md) para el
+detalle completo de la consigna. Proveedor usado en los tres componentes:
+**Groq** (`ChatGroq`, gratis, sin tarjeta), modelo `openai/gpt-oss-120b`.
+
+## Componente A — Refactorizacion a LCEL Asincrono
+
+`fase2_lcel_refactor/main.py`: reemplaza la llamada manual al SDK del
+Modulo 1 por una cadena `prompt | model | StrOutputParser()`, con
+`ChatPromptTemplate` (roles System/Human) y ejecucion asincrona
+(`await chain.ainvoke({"pregunta": "..."})`). El resultado es texto plano,
+no un `AIMessage`.
+
+```bash
+python fase2_lcel_refactor/main.py
+```
+
+## Componente B — Validacion estructurada y resiliencia
+
+`fase2_ejercicio_validacion/entity_extraction.py`: resuelve el ejercicio de
+la catedra (`with_structured_output` + `with_retry`), adaptado de
+`ChatOpenAI` a `ChatGroq`. Define `EntityExtraction` (Pydantic: `topic`,
+`entities`, `sentiment_score` entre 0 y 1, `complexity_level` opcional),
+arma `structured_llm = llm.with_structured_output(EntityExtraction)` y
+`resilient_llm = structured_llm.with_retry(stop_after_attempt=3,
+wait_exponential_jitter=True)`, y ejecuta la cadena dentro de un
+`try/except` que nunca deja escapar la excepcion.
+
+```bash
+python fase2_ejercicio_validacion/entity_extraction.py
+```
+
+## Componente C — Pipeline de Extraccion de Entidades Tecnicas (Pre-entrega 2)
+
+El entregable principal de la Fase 2. Ver el detalle, el ejemplo de salida
+JSON y el resultado de la prueba de estres en
+[fase2_pipeline_validado/README.md](fase2_pipeline_validado/README.md).
+
+```bash
+python -m fase2_pipeline_validado.main
+```
+
+## Variables de entorno (Fase 2)
+
+Reutiliza las mismas variables de la Fase 1 (`.env` en la raiz). Los tres
+componentes de la Fase 2 solo necesitan `GROQ_API_KEY`.
+
+## Errores comunes evitados (especificos de LangChain)
+
+- **Olvidar el `await`**: `chain.ainvoke(...)` devuelve una corrutina; sin
+  `await` no se ejecuta la llamada.
+- **Prompts hardcodeados**: nada de f-strings sueltas dentro de una cadena;
+  siempre `ChatPromptTemplate`, para que LangChain gestione las variables de
+  entrada y estas coincidan con las claves pasadas a `ainvoke`.
+- **JSON invalido o incompleto del LLM**: `with_structured_output()` valida
+  contra el esquema Pydantic; `with_retry()` reintenta ante ese fallo o ante
+  errores transitorios de red/rate limit, en vez de romper el programa.

@@ -69,7 +69,9 @@ async def main() -> None:
             "Groq",
             LLMConfig(
                 provider=Provider.GROQ,
-                model="llama-3.3-70b-versatile",
+                # llama-3.3-70b-versatile fue dado de baja del catalogo de Groq;
+                # openai/gpt-oss-120b es el modelo vigente equivalente (set 2026).
+                model="openai/gpt-oss-120b",
                 groq_api_key=SecretStr(groq_api_key),
                 temperature=0.7,
                 max_tokens=200,

@@ -4,6 +4,31 @@
   "graph": {
     "hyperedges": [
       {
+        "id": "fase2_components_deliverable",
+        "label": "Fase 2 \u2014 Tres componentes evaluables del curso AI Engineering",
+        "nodes": [
+          "contexto_fase2_componente_a",
+          "contexto_fase2_componente_b",
+          "contexto_fase2_componente_c"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "contexto_fase2.md"
+      },
+      {
+        "id": "pydantic_validated_schemas_fase1_fase2",
+        "label": "Modelos Pydantic de validacion (Fase 1 y Fase 2)",
+        "nodes": [
+          "contexto_fase2_entityextraction",
+          "fase2_pipeline_validado_readme_techextraction"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "README.md"
+      },
+      {
         "id": "demo1_concurrent_model_calls",
         "label": "Demo 1: gather + timeout sobre tres llamadas simuladas a modelos",
         "nodes": [
@@ -16,24 +41,6 @@
         "confidence": "INFERRED",
         "confidence_score": 0.85,
         "source_file": "entregable_a_orquestador/entregable_a_evidencia.pdf"
-      },
-      {
-        "id": "unified_async_llm_client_architecture",
-        "label": "Componentes de la arquitectura Unified Async LLM Client",
-        "nodes": [
-          "readme_chatmessage",
-          "readme_llmconfig",
-          "readme_modelresponse",
-          "readme_basellmclient",
-          "readme_asyncllmmanager",
-          "readme_openaiclient",
-          "readme_geminiclient",
-          "readme_groqclient"
-        ],
-        "relation": "form",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
-        "source_file": "README.md"
       },
       {
         "id": "free_ai_providers_recommendation",
@@ -57,9 +64,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente",
       "community": 2,
-      "norm_label": "orquestador_concurrente.py"
+      "norm_label": "orquestador_concurrente.py",
+      "id": "entregable_a_orquestador_orquestador_concurrente"
     },
     {
       "label": "transcurrido()",
@@ -67,9 +74,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L27",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_transcurrido",
       "community": 2,
-      "norm_label": "transcurrido()"
+      "norm_label": "transcurrido()",
+      "id": "entregable_a_orquestador_orquestador_concurrente_transcurrido"
     },
     {
       "label": "gpt_4_call()",
@@ -77,9 +84,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L36",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_gpt_4_call",
       "community": 2,
-      "norm_label": "gpt_4_call()"
+      "norm_label": "gpt_4_call()",
+      "id": "entregable_a_orquestador_orquestador_concurrente_gpt_4_call"
     },
     {
       "label": "claude_3_call()",
@@ -87,9 +94,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L44",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_claude_3_call",
       "community": 2,
-      "norm_label": "claude_3_call()"
+      "norm_label": "claude_3_call()",
+      "id": "entregable_a_orquestador_orquestador_concurrente_claude_3_call"
     },
     {
       "label": "local_llama_call()",
@@ -97,9 +104,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L52",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_local_llama_call",
       "community": 2,
-      "norm_label": "local_llama_call()"
+      "norm_label": "local_llama_call()",
+      "id": "entregable_a_orquestador_orquestador_concurrente_local_llama_call"
     },
     {
       "label": "orquestar_tres_modelos()",
@@ -107,9 +114,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L60",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_orquestar_tres_modelos",
       "community": 2,
-      "norm_label": "orquestar_tres_modelos()"
+      "norm_label": "orquestar_tres_modelos()",
+      "id": "entregable_a_orquestador_orquestador_concurrente_orquestar_tres_modelos"
     },
     {
       "label": "llamada_simulada()",
@@ -117,9 +124,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L84",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_llamada_simulada",
       "community": 2,
-      "norm_label": "llamada_simulada()"
+      "norm_label": "llamada_simulada()",
+      "id": "entregable_a_orquestador_orquestador_concurrente_llamada_simulada"
     },
     {
       "label": "Semaphore",
@@ -127,9 +134,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "semaphore",
       "community": 2,
-      "norm_label": "semaphore"
+      "norm_label": "semaphore",
+      "id": "semaphore"
     },
     {
       "label": "orquestar_con_semaforo()",
@@ -137,9 +144,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L94",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_orquestar_con_semaforo",
       "community": 2,
-      "norm_label": "orquestar_con_semaforo()"
+      "norm_label": "orquestar_con_semaforo()",
+      "id": "entregable_a_orquestador_orquestador_concurrente_orquestar_con_semaforo"
     },
     {
       "label": "main()",
@@ -147,9 +154,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L103",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_main",
       "community": 2,
-      "norm_label": "main()"
+      "norm_label": "main()",
+      "id": "entregable_a_orquestador_orquestador_concurrente_main"
     },
     {
       "label": "Entregable A: Orquestador Concurrente de Modelos. Simula la logica de un\u2026",
@@ -157,9 +164,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_1",
       "community": 2,
-      "norm_label": "entregable a: orquestador concurrente de modelos. simula la logica de un..."
+      "norm_label": "entregable a: orquestador concurrente de modelos. simula la logica de un...",
+      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_1"
     },
     {
       "label": "Segundos transcurridos desde el arranque del programa, para logs legibles.",
@@ -167,9 +174,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_28",
       "community": 2,
-      "norm_label": "segundos transcurridos desde el arranque del programa, para logs legibles."
+      "norm_label": "segundos transcurridos desde el arranque del programa, para logs legibles.",
+      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_28"
     },
     {
       "label": "Simula una llamada al modelo GPT-4 (latencia rapida).",
@@ -177,9 +184,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L37",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_37",
       "community": 2,
-      "norm_label": "simula una llamada al modelo gpt-4 (latencia rapida)."
+      "norm_label": "simula una llamada al modelo gpt-4 (latencia rapida).",
+      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_37"
     },
     {
       "label": "Simula una llamada al modelo Claude 3 (latencia media).",
@@ -187,9 +194,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L45",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_45",
       "community": 2,
-      "norm_label": "simula una llamada al modelo claude 3 (latencia media)."
+      "norm_label": "simula una llamada al modelo claude 3 (latencia media).",
+      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_45"
     },
     {
       "label": "Simula una llamada a un Llama local (latencia lenta, dispara el timeout).",
@@ -197,9 +204,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L53",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_53",
       "community": 2,
-      "norm_label": "simula una llamada a un llama local (latencia lenta, dispara el timeout)."
+      "norm_label": "simula una llamada a un llama local (latencia lenta, dispara el timeout).",
+      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_53"
     },
     {
       "label": "Dispara los tres modelos en simultaneo, acotado por un timeout global de 2s.",
@@ -207,9 +214,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L61",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_61",
       "community": 2,
-      "norm_label": "dispara los tres modelos en simultaneo, acotado por un timeout global de 2s."
+      "norm_label": "dispara los tres modelos en simultaneo, acotado por un timeout global de 2s.",
+      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_61"
     },
     {
       "label": "Simula una llamada generica a un modelo, respetando el limite del semaforo.",
@@ -217,9 +224,9 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L85",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_85",
       "community": 2,
-      "norm_label": "simula una llamada generica a un modelo, respetando el limite del semaforo."
+      "norm_label": "simula una llamada generica a un modelo, respetando el limite del semaforo.",
+      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_85"
     },
     {
       "label": "Lanza N llamadas simuladas a la vez, pero solo `limite_concurrente` corren en\u2026",
@@ -227,19 +234,19 @@
       "source_file": "entregable_a_orquestador/orquestador_concurrente.py",
       "source_location": "L95",
       "_origin": "ast",
-      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_95",
       "community": 2,
-      "norm_label": "lanza n llamadas simuladas a la vez, pero solo `limite_concurrente` corren en..."
+      "norm_label": "lanza n llamadas simuladas a la vez, pero solo `limite_concurrente` corren en...",
+      "id": "entregable_a_orquestador_orquestador_concurrente_rationale_95"
     },
     {
-      "label": "__init__.py",
+      "label": "entregable_b_llm_client/__init__.py",
       "file_type": "code",
       "source_file": "entregable_b_llm_client/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_init",
-      "community": 6,
-      "norm_label": "__init__.py"
+      "community": 11,
+      "norm_label": "entregable_b_llm_client/__init__.py",
+      "id": "entregable_b_llm_client_init"
     },
     {
       "label": "base_client.py",
@@ -247,9 +254,9 @@
       "source_file": "entregable_b_llm_client/base_client.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_base_client",
-      "community": 0,
-      "norm_label": "base_client.py"
+      "community": 4,
+      "norm_label": "base_client.py",
+      "id": "entregable_b_llm_client_base_client"
     },
     {
       "label": "BaseLLMClient",
@@ -257,9 +264,9 @@
       "source_file": "entregable_b_llm_client/base_client.py",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_base_client_basellmclient",
-      "community": 0,
-      "norm_label": "basellmclient"
+      "community": 4,
+      "norm_label": "basellmclient",
+      "id": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "label": "ABC",
@@ -267,9 +274,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "abc",
-      "community": 0,
-      "norm_label": "abc"
+      "community": 4,
+      "norm_label": "abc",
+      "id": "abc"
     },
     {
       "label": ".generate()",
@@ -277,9 +284,9 @@
       "source_file": "entregable_b_llm_client/base_client.py",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_base_client_basellmclient_generate",
-      "community": 0,
-      "norm_label": ".generate()"
+      "community": 7,
+      "norm_label": ".generate()",
+      "id": "entregable_b_llm_client_base_client_basellmclient_generate"
     },
     {
       "label": ".generate_stream()",
@@ -287,9 +294,9 @@
       "source_file": "entregable_b_llm_client/base_client.py",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_base_client_basellmclient_generate_stream",
-      "community": 3,
-      "norm_label": ".generate_stream()"
+      "community": 6,
+      "norm_label": ".generate_stream()",
+      "id": "entregable_b_llm_client_base_client_basellmclient_generate_stream"
     },
     {
       "label": "Abstract contract that every provider-specific LLM client must implement.",
@@ -297,9 +304,9 @@
       "source_file": "entregable_b_llm_client/base_client.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_base_client_rationale_1",
-      "community": 0,
-      "norm_label": "abstract contract that every provider-specific llm client must implement."
+      "community": 4,
+      "norm_label": "abstract contract that every provider-specific llm client must implement.",
+      "id": "entregable_b_llm_client_base_client_rationale_1"
     },
     {
       "label": "Contrato que todo cliente de LLM debe cumplir, sin importar el proveedor real\u2026",
@@ -307,9 +314,9 @@
       "source_file": "entregable_b_llm_client/base_client.py",
       "source_location": "L10",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_base_client_rationale_10",
-      "community": 0,
-      "norm_label": "contrato que todo cliente de llm debe cumplir, sin importar el proveedor real..."
+      "community": 4,
+      "norm_label": "contrato que todo cliente de llm debe cumplir, sin importar el proveedor real...",
+      "id": "entregable_b_llm_client_base_client_rationale_10"
     },
     {
       "label": "Genera una respuesta completa (modo normal, no streaming).",
@@ -317,9 +324,9 @@
       "source_file": "entregable_b_llm_client/base_client.py",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_base_client_rationale_14",
-      "community": 0,
-      "norm_label": "genera una respuesta completa (modo normal, no streaming)."
+      "community": 7,
+      "norm_label": "genera una respuesta completa (modo normal, no streaming).",
+      "id": "entregable_b_llm_client_base_client_rationale_14"
     },
     {
       "label": "Genera la respuesta token a token (modo streaming).",
@@ -327,9 +334,9 @@
       "source_file": "entregable_b_llm_client/base_client.py",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_base_client_rationale_19",
-      "community": 3,
-      "norm_label": "genera la respuesta token a token (modo streaming)."
+      "community": 6,
+      "norm_label": "genera la respuesta token a token (modo streaming).",
+      "id": "entregable_b_llm_client_base_client_rationale_19"
     },
     {
       "label": "gemini_client.py",
@@ -337,9 +344,9 @@
       "source_file": "entregable_b_llm_client/gemini_client.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_gemini_client",
-      "community": 0,
-      "norm_label": "gemini_client.py"
+      "community": 4,
+      "norm_label": "gemini_client.py",
+      "id": "entregable_b_llm_client_gemini_client"
     },
     {
       "label": "GeminiClient",
@@ -347,9 +354,9 @@
       "source_file": "entregable_b_llm_client/gemini_client.py",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_gemini_client_geminiclient",
-      "community": 3,
-      "norm_label": "geminiclient"
+      "community": 6,
+      "norm_label": "geminiclient",
+      "id": "entregable_b_llm_client_gemini_client_geminiclient"
     },
     {
       "label": ".__init__()",
@@ -357,9 +364,9 @@
       "source_file": "entregable_b_llm_client/gemini_client.py",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_gemini_client_geminiclient_init",
-      "community": 3,
-      "norm_label": ".__init__()"
+      "community": 6,
+      "norm_label": ".__init__()",
+      "id": "entregable_b_llm_client_gemini_client_geminiclient_init"
     },
     {
       "label": "._convert_messages()",
@@ -367,9 +374,9 @@
       "source_file": "entregable_b_llm_client/gemini_client.py",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages",
-      "community": 3,
-      "norm_label": "._convert_messages()"
+      "community": 6,
+      "norm_label": "._convert_messages()",
+      "id": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages"
     },
     {
       "label": "Content",
@@ -377,9 +384,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "content",
-      "community": 3,
-      "norm_label": "content"
+      "community": 6,
+      "norm_label": "content",
+      "id": "content"
     },
     {
       "label": ".generate()",
@@ -387,9 +394,9 @@
       "source_file": "entregable_b_llm_client/gemini_client.py",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_gemini_client_geminiclient_generate",
-      "community": 3,
-      "norm_label": ".generate()"
+      "community": 6,
+      "norm_label": ".generate()",
+      "id": "entregable_b_llm_client_gemini_client_geminiclient_generate"
     },
     {
       "label": ".generate_stream()",
@@ -397,9 +404,9 @@
       "source_file": "entregable_b_llm_client/gemini_client.py",
       "source_location": "L52",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_gemini_client_geminiclient_generate_stream",
-      "community": 3,
-      "norm_label": ".generate_stream()"
+      "community": 6,
+      "norm_label": ".generate_stream()",
+      "id": "entregable_b_llm_client_gemini_client_geminiclient_generate_stream"
     },
     {
       "label": "Google Gemini provider client (free tier, no credit card required).",
@@ -407,9 +414,9 @@
       "source_file": "entregable_b_llm_client/gemini_client.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_gemini_client_rationale_1",
-      "community": 0,
-      "norm_label": "google gemini provider client (free tier, no credit card required)."
+      "community": 4,
+      "norm_label": "google gemini provider client (free tier, no credit card required).",
+      "id": "entregable_b_llm_client_gemini_client_rationale_1"
     },
     {
       "label": "Gemini separa el system prompt del resto y llama 'model' al rol del asistente.",
@@ -417,9 +424,9 @@
       "source_file": "entregable_b_llm_client/gemini_client.py",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_gemini_client_rationale_22",
-      "community": 3,
-      "norm_label": "gemini separa el system prompt del resto y llama 'model' al rol del asistente."
+      "community": 6,
+      "norm_label": "gemini separa el system prompt del resto y llama 'model' al rol del asistente.",
+      "id": "entregable_b_llm_client_gemini_client_rationale_22"
     },
     {
       "label": "groq_client.py",
@@ -427,9 +434,9 @@
       "source_file": "entregable_b_llm_client/groq_client.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_groq_client",
-      "community": 0,
-      "norm_label": "groq_client.py"
+      "community": 4,
+      "norm_label": "groq_client.py",
+      "id": "entregable_b_llm_client_groq_client"
     },
     {
       "label": "GroqClient",
@@ -437,9 +444,9 @@
       "source_file": "entregable_b_llm_client/groq_client.py",
       "source_location": "L16",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_groq_client_groqclient",
-      "community": 0,
-      "norm_label": "groqclient"
+      "community": 7,
+      "norm_label": "groqclient",
+      "id": "entregable_b_llm_client_groq_client_groqclient"
     },
     {
       "label": ".__init__()",
@@ -447,9 +454,9 @@
       "source_file": "entregable_b_llm_client/groq_client.py",
       "source_location": "L17",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_groq_client_groqclient_init",
-      "community": 0,
-      "norm_label": ".__init__()"
+      "community": 7,
+      "norm_label": ".__init__()",
+      "id": "entregable_b_llm_client_groq_client_groqclient_init"
     },
     {
       "label": ".generate()",
@@ -457,9 +464,9 @@
       "source_file": "entregable_b_llm_client/groq_client.py",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_groq_client_groqclient_generate",
-      "community": 0,
-      "norm_label": ".generate()"
+      "community": 7,
+      "norm_label": ".generate()",
+      "id": "entregable_b_llm_client_groq_client_groqclient_generate"
     },
     {
       "label": ".generate_stream()",
@@ -467,9 +474,9 @@
       "source_file": "entregable_b_llm_client/groq_client.py",
       "source_location": "L52",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_groq_client_groqclient_generate_stream",
-      "community": 0,
-      "norm_label": ".generate_stream()"
+      "community": 7,
+      "norm_label": ".generate_stream()",
+      "id": "entregable_b_llm_client_groq_client_groqclient_generate_stream"
     },
     {
       "label": "Groq provider client (free tier, no credit card required). Groq expone una API\u2026",
@@ -477,9 +484,9 @@
       "source_file": "entregable_b_llm_client/groq_client.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_groq_client_rationale_1",
-      "community": 0,
-      "norm_label": "groq provider client (free tier, no credit card required). groq expone una api..."
+      "community": 4,
+      "norm_label": "groq provider client (free tier, no credit card required). groq expone una api...",
+      "id": "entregable_b_llm_client_groq_client_rationale_1"
     },
     {
       "label": "llm_manager.py",
@@ -487,9 +494,9 @@
       "source_file": "entregable_b_llm_client/llm_manager.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_llm_manager",
-      "community": 0,
-      "norm_label": "llm_manager.py"
+      "community": 4,
+      "norm_label": "llm_manager.py",
+      "id": "entregable_b_llm_client_llm_manager"
     },
     {
       "label": "AsyncLLMManager",
@@ -497,9 +504,9 @@
       "source_file": "entregable_b_llm_client/llm_manager.py",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager",
       "community": 5,
-      "norm_label": "asyncllmmanager"
+      "norm_label": "asyncllmmanager",
+      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager"
     },
     {
       "label": ".__init__()",
@@ -507,9 +514,9 @@
       "source_file": "entregable_b_llm_client/llm_manager.py",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager_init",
       "community": 5,
-      "norm_label": ".__init__()"
+      "norm_label": ".__init__()",
+      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager_init"
     },
     {
       "label": "._build_client()",
@@ -517,9 +524,9 @@
       "source_file": "entregable_b_llm_client/llm_manager.py",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager_build_client",
       "community": 5,
-      "norm_label": "._build_client()"
+      "norm_label": "._build_client()",
+      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager_build_client"
     },
     {
       "label": ".generate()",
@@ -527,9 +534,9 @@
       "source_file": "entregable_b_llm_client/llm_manager.py",
       "source_location": "L52",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate",
       "community": 5,
-      "norm_label": ".generate()"
+      "norm_label": ".generate()",
+      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate"
     },
     {
       "label": ".generate_stream()",
@@ -537,9 +544,9 @@
       "source_file": "entregable_b_llm_client/llm_manager.py",
       "source_location": "L55",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate_stream",
       "community": 5,
-      "norm_label": ".generate_stream()"
+      "norm_label": ".generate_stream()",
+      "id": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate_stream"
     },
     {
       "label": "AsyncLLMManager: punto de entrada unico y agnostico al proveedor (patron\u2026",
@@ -547,9 +554,9 @@
       "source_file": "entregable_b_llm_client/llm_manager.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_llm_manager_rationale_1",
-      "community": 0,
-      "norm_label": "asyncllmmanager: punto de entrada unico y agnostico al proveedor (patron..."
+      "community": 4,
+      "norm_label": "asyncllmmanager: punto de entrada unico y agnostico al proveedor (patron...",
+      "id": "entregable_b_llm_client_llm_manager_rationale_1"
     },
     {
       "label": "Recibe un LLMConfig, arma internamente el cliente concreto y delega en el.",
@@ -557,49 +564,9 @@
       "source_file": "entregable_b_llm_client/llm_manager.py",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_llm_manager_rationale_13",
       "community": 5,
-      "norm_label": "recibe un llmconfig, arma internamente el cliente concreto y delega en el."
-    },
-    {
-      "label": "main.py",
-      "file_type": "code",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "entregable_b_llm_client_main",
-      "community": 5,
-      "norm_label": "main.py"
-    },
-    {
-      "label": "probar_proveedor()",
-      "file_type": "code",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "entregable_b_llm_client_main_probar_proveedor",
-      "community": 5,
-      "norm_label": "probar_proveedor()"
-    },
-    {
-      "label": "main()",
-      "file_type": "code",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "entregable_b_llm_client_main_main",
-      "community": 5,
-      "norm_label": "main()"
-    },
-    {
-      "label": "Script de validacion del Unified Async LLM Client. Carga las variables de\u2026",
-      "file_type": "rationale",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "entregable_b_llm_client_main_rationale_1",
-      "community": 5,
-      "norm_label": "script de validacion del unified async llm client. carga las variables de..."
+      "norm_label": "recibe un llmconfig, arma internamente el cliente concreto y delega en el.",
+      "id": "entregable_b_llm_client_llm_manager_rationale_13"
     },
     {
       "label": "openai_client.py",
@@ -607,9 +574,9 @@
       "source_file": "entregable_b_llm_client/openai_client.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_openai_client",
-      "community": 0,
-      "norm_label": "openai_client.py"
+      "community": 4,
+      "norm_label": "openai_client.py",
+      "id": "entregable_b_llm_client_openai_client"
     },
     {
       "label": "OpenAIClient",
@@ -617,9 +584,9 @@
       "source_file": "entregable_b_llm_client/openai_client.py",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_openai_client_openaiclient",
-      "community": 3,
-      "norm_label": "openaiclient"
+      "community": 5,
+      "norm_label": "openaiclient",
+      "id": "entregable_b_llm_client_openai_client_openaiclient"
     },
     {
       "label": ".__init__()",
@@ -627,9 +594,9 @@
       "source_file": "entregable_b_llm_client/openai_client.py",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_openai_client_openaiclient_init",
-      "community": 3,
-      "norm_label": ".__init__()"
+      "community": 5,
+      "norm_label": ".__init__()",
+      "id": "entregable_b_llm_client_openai_client_openaiclient_init"
     },
     {
       "label": ".generate()",
@@ -637,9 +604,9 @@
       "source_file": "entregable_b_llm_client/openai_client.py",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_openai_client_openaiclient_generate",
-      "community": 3,
-      "norm_label": ".generate()"
+      "community": 5,
+      "norm_label": ".generate()",
+      "id": "entregable_b_llm_client_openai_client_openaiclient_generate"
     },
     {
       "label": ".generate_stream()",
@@ -647,9 +614,9 @@
       "source_file": "entregable_b_llm_client/openai_client.py",
       "source_location": "L54",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_openai_client_openaiclient_generate_stream",
-      "community": 3,
-      "norm_label": ".generate_stream()"
+      "community": 5,
+      "norm_label": ".generate_stream()",
+      "id": "entregable_b_llm_client_openai_client_openaiclient_generate_stream"
     },
     {
       "label": "OpenAI provider client. Nota: OpenAI no tiene free tier (requiere tarjeta y\u2026",
@@ -657,19 +624,19 @@
       "source_file": "entregable_b_llm_client/openai_client.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_openai_client_rationale_1",
-      "community": 0,
-      "norm_label": "openai provider client. nota: openai no tiene free tier (requiere tarjeta y..."
+      "community": 4,
+      "norm_label": "openai provider client. nota: openai no tiene free tier (requiere tarjeta y...",
+      "id": "entregable_b_llm_client_openai_client_rationale_1"
     },
     {
-      "label": "schemas.py",
+      "label": "entregable_b_llm_client/schemas.py",
       "file_type": "code",
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas",
-      "community": 0,
-      "norm_label": "schemas.py"
+      "community": 4,
+      "norm_label": "entregable_b_llm_client/schemas.py",
+      "id": "entregable_b_llm_client_schemas"
     },
     {
       "label": "Provider",
@@ -677,9 +644,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L11",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_provider",
-      "community": 0,
-      "norm_label": "provider"
+      "community": 4,
+      "norm_label": "provider",
+      "id": "entregable_b_llm_client_schemas_provider"
     },
     {
       "label": "str",
@@ -687,9 +654,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "str",
-      "community": 0,
-      "norm_label": "str"
+      "community": 3,
+      "norm_label": "str",
+      "id": "str"
     },
     {
       "label": "Enum",
@@ -697,9 +664,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "enum",
-      "community": 0,
-      "norm_label": "enum"
+      "community": 3,
+      "norm_label": "enum",
+      "id": "enum"
     },
     {
       "label": "ChatMessage",
@@ -707,9 +674,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L19",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_chatmessage",
-      "community": 3,
-      "norm_label": "chatmessage"
+      "community": 6,
+      "norm_label": "chatmessage",
+      "id": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "label": "BaseModel",
@@ -717,9 +684,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "basemodel",
       "community": 5,
-      "norm_label": "basemodel"
+      "norm_label": "basemodel",
+      "id": "basemodel"
     },
     {
       "label": "field_validator",
@@ -727,9 +694,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "field_validator",
-      "community": 3,
-      "norm_label": "field_validator"
+      "community": 6,
+      "norm_label": "field_validator",
+      "id": "field_validator"
     },
     {
       "label": ".validate_role()",
@@ -737,9 +704,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L27",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_chatmessage_validate_role",
-      "community": 3,
-      "norm_label": ".validate_role()"
+      "community": 6,
+      "norm_label": ".validate_role()",
+      "id": "entregable_b_llm_client_schemas_chatmessage_validate_role"
     },
     {
       "label": "LLMConfig",
@@ -747,9 +714,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_llmconfig",
       "community": 5,
-      "norm_label": "llmconfig"
+      "norm_label": "llmconfig",
+      "id": "entregable_b_llm_client_schemas_llmconfig"
     },
     {
       "label": "ModelResponse",
@@ -757,9 +724,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L45",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_modelresponse",
-      "community": 0,
-      "norm_label": "modelresponse"
+      "community": 7,
+      "norm_label": "modelresponse",
+      "id": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "label": "Pydantic schemas shared across every LLM client and the manager.",
@@ -767,9 +734,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_rationale_1",
-      "community": 0,
-      "norm_label": "pydantic schemas shared across every llm client and the manager."
+      "community": 4,
+      "norm_label": "pydantic schemas shared across every llm client and the manager.",
+      "id": "entregable_b_llm_client_schemas_rationale_1"
     },
     {
       "label": "Supported LLM providers behind the unified interface.",
@@ -777,9 +744,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_rationale_12",
-      "community": 0,
-      "norm_label": "supported llm providers behind the unified interface."
+      "community": 4,
+      "norm_label": "supported llm providers behind the unified interface.",
+      "id": "entregable_b_llm_client_schemas_rationale_12"
     },
     {
       "label": "A single message in a conversation.",
@@ -787,9 +754,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_rationale_20",
-      "community": 3,
-      "norm_label": "a single message in a conversation."
+      "community": 6,
+      "norm_label": "a single message in a conversation.",
+      "id": "entregable_b_llm_client_schemas_rationale_20"
     },
     {
       "label": "Configuration required to instantiate a provider client via the factory.",
@@ -797,9 +764,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L34",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_rationale_34",
       "community": 5,
-      "norm_label": "configuration required to instantiate a provider client via the factory."
+      "norm_label": "configuration required to instantiate a provider client via the factory.",
+      "id": "entregable_b_llm_client_schemas_rationale_34"
     },
     {
       "label": "Uniform response returned by every client, success or failure.",
@@ -807,139 +774,9 @@
       "source_file": "entregable_b_llm_client/schemas.py",
       "source_location": "L46",
       "_origin": "ast",
-      "id": "entregable_b_llm_client_schemas_rationale_46",
-      "community": 0,
-      "norm_label": "uniform response returned by every client, success or failure."
-    },
-    {
-      "label": "Entregable A - Orquestador Concurrente de Modelos",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_entregable_a",
-      "community": 4,
-      "norm_label": "entregable a - orquestador concurrente de modelos"
-    },
-    {
-      "label": "Entregable B - Cliente de LLM robusto y asincrono",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_entregable_b",
-      "community": 1,
-      "norm_label": "entregable b - cliente de llm robusto y asincrono"
-    },
-    {
-      "label": "ChatMessage (modelo Pydantic)",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_chatmessage",
-      "community": 1,
-      "norm_label": "chatmessage (modelo pydantic)"
-    },
-    {
-      "label": "LLMConfig (modelo Pydantic)",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_llmconfig",
-      "community": 1,
-      "norm_label": "llmconfig (modelo pydantic)"
-    },
-    {
-      "label": "ModelResponse (modelo Pydantic)",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_modelresponse",
-      "community": 1,
-      "norm_label": "modelresponse (modelo pydantic)"
-    },
-    {
-      "label": "BaseLLMClient (ABC)",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_basellmclient",
-      "community": 1,
-      "norm_label": "basellmclient (abc)"
-    },
-    {
-      "label": "AsyncLLMManager (Factory)",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_asyncllmmanager",
-      "community": 1,
-      "norm_label": "asyncllmmanager (factory)"
-    },
-    {
-      "label": "OpenAIClient",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_openaiclient",
-      "community": 1,
-      "norm_label": "openaiclient"
-    },
-    {
-      "label": "GeminiClient",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_geminiclient",
-      "community": 1,
-      "norm_label": "geminiclient"
-    },
-    {
-      "label": "GroqClient",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_groqclient",
-      "community": 1,
-      "norm_label": "groqclient"
+      "community": 7,
+      "norm_label": "uniform response returned by every client, success or failure.",
+      "id": "entregable_b_llm_client_schemas_rationale_46"
     },
     {
       "label": "Programa AI Engineering (8 fases)",
@@ -950,9 +787,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_ai_engineering_program",
-      "community": 4,
-      "norm_label": "programa ai engineering (8 fases)"
+      "community": 1,
+      "norm_label": "programa ai engineering (8 fases)",
+      "id": "contexto_fase1_ai_engineering_program"
     },
     {
       "label": "Especificacion Entregable A: Orquestador Concurrente de Modelos",
@@ -963,9 +800,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_entregable_a",
-      "community": 4,
-      "norm_label": "especificacion entregable a: orquestador concurrente de modelos"
+      "community": 1,
+      "norm_label": "especificacion entregable a: orquestador concurrente de modelos",
+      "id": "contexto_fase1_entregable_a"
     },
     {
       "label": "Especificacion Entregable B: Cliente de LLM robusto y asincrono",
@@ -976,9 +813,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_entregable_b",
       "community": 1,
-      "norm_label": "especificacion entregable b: cliente de llm robusto y asincrono"
+      "norm_label": "especificacion entregable b: cliente de llm robusto y asincrono",
+      "id": "contexto_fase1_entregable_b"
     },
     {
       "label": "Google Gemini (proveedor gratuito recomendado)",
@@ -989,9 +826,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_provider_gemini",
       "community": 1,
-      "norm_label": "google gemini (proveedor gratuito recomendado)"
+      "norm_label": "google gemini (proveedor gratuito recomendado)",
+      "id": "contexto_fase1_provider_gemini"
     },
     {
       "label": "Groq (proveedor gratuito recomendado)",
@@ -1002,9 +839,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_provider_groq",
       "community": 1,
-      "norm_label": "groq (proveedor gratuito recomendado)"
+      "norm_label": "groq (proveedor gratuito recomendado)",
+      "id": "contexto_fase1_provider_groq"
     },
     {
       "label": "Ollama local (proveedor gratuito recomendado)",
@@ -1015,9 +852,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_provider_ollama",
       "community": 1,
-      "norm_label": "ollama local (proveedor gratuito recomendado)"
+      "norm_label": "ollama local (proveedor gratuito recomendado)",
+      "id": "contexto_fase1_provider_ollama"
     },
     {
       "label": "OpenAI (proveedor de pago)",
@@ -1028,9 +865,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_provider_openai",
       "community": 1,
-      "norm_label": "openai (proveedor de pago)"
+      "norm_label": "openai (proveedor de pago)",
+      "id": "contexto_fase1_provider_openai"
     },
     {
       "label": "Anthropic (proveedor de pago)",
@@ -1041,9 +878,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_provider_anthropic",
       "community": 1,
-      "norm_label": "anthropic (proveedor de pago)"
+      "norm_label": "anthropic (proveedor de pago)",
+      "id": "contexto_fase1_provider_anthropic"
     },
     {
       "label": "Notebook de referencia: Pista_Pre_entrega_1_Cliente_de_LLM_robusto_y_asincrono.ipynb",
@@ -1054,74 +891,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "contexto_fase1_reference_notebook",
       "community": 1,
-      "norm_label": "notebook de referencia: pista_pre_entrega_1_cliente_de_llm_robusto_y_asincrono.ipynb"
-    },
-    {
-      "label": "pydantic>=2.6 (dependencia)",
-      "file_type": "concept",
-      "source_file": "requirements.txt",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "requirements_pydantic",
-      "community": 1,
-      "norm_label": "pydantic>=2.6 (dependencia)"
-    },
-    {
-      "label": "python-dotenv>=1.0 (dependencia)",
-      "file_type": "concept",
-      "source_file": "requirements.txt",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "requirements_python_dotenv",
-      "community": 7,
-      "norm_label": "python-dotenv>=1.0 (dependencia)"
-    },
-    {
-      "label": "openai>=1.30 (dependencia)",
-      "file_type": "concept",
-      "source_file": "requirements.txt",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "requirements_openai",
-      "community": 1,
-      "norm_label": "openai>=1.30 (dependencia)"
-    },
-    {
-      "label": "google-genai>=0.3 (dependencia)",
-      "file_type": "concept",
-      "source_file": "requirements.txt",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "requirements_google_genai",
-      "community": 1,
-      "norm_label": "google-genai>=0.3 (dependencia)"
-    },
-    {
-      "label": "groq>=0.9 (dependencia)",
-      "file_type": "concept",
-      "source_file": "requirements.txt",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "requirements_groq",
-      "community": 1,
-      "norm_label": "groq>=0.9 (dependencia)"
+      "norm_label": "notebook de referencia: pista_pre_entrega_1_cliente_de_llm_robusto_y_asincrono.ipynb",
+      "id": "contexto_fase1_reference_notebook"
     },
     {
       "label": "Evidencia de ejecucion (logs de consola Demo 1 y Demo 2)",
@@ -1132,9 +904,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "entregable_a_orquestador_entregable_a_evidencia_execution_log",
       "community": 2,
-      "norm_label": "evidencia de ejecucion (logs de consola demo 1 y demo 2)"
+      "norm_label": "evidencia de ejecucion (logs de consola demo 1 y demo 2)",
+      "id": "entregable_a_orquestador_entregable_a_evidencia_execution_log"
     },
     {
       "label": "Curso AI Engineering (Coderhouse, 8 modulos, 30 horas)",
@@ -1145,9 +917,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_ai_engineering_course",
-      "community": 4,
-      "norm_label": "curso ai engineering (coderhouse, 8 modulos, 30 horas)"
+      "community": 1,
+      "norm_label": "curso ai engineering (coderhouse, 8 modulos, 30 horas)",
+      "id": "program_summary_ai_engineering_course"
     },
     {
       "label": "Modulo 1: La interfaz base - conexion y abstraccion de LLMs",
@@ -1158,9 +930,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_module_1",
-      "community": 4,
-      "norm_label": "modulo 1: la interfaz base - conexion y abstraccion de llms"
+      "community": 1,
+      "norm_label": "modulo 1: la interfaz base - conexion y abstraccion de llms",
+      "id": "program_summary_module_1"
     },
     {
       "label": "Modulo 2: Encadenamiento logico - orquestacion con LangChain (LCEL)",
@@ -1171,9 +943,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_module_2",
-      "community": 4,
-      "norm_label": "modulo 2: encadenamiento logico - orquestacion con langchain (lcel)"
+      "community": 1,
+      "norm_label": "modulo 2: encadenamiento logico - orquestacion con langchain (lcel)",
+      "id": "program_summary_module_2"
     },
     {
       "label": "Modulo 3: Persistencia de datos y vector DBs",
@@ -1184,9 +956,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_module_3",
-      "community": 4,
-      "norm_label": "modulo 3: persistencia de datos y vector dbs"
+      "community": 1,
+      "norm_label": "modulo 3: persistencia de datos y vector dbs",
+      "id": "program_summary_module_3"
     },
     {
       "label": "Modulo 4: Escalabilidad documental - RAG avanzado y Pinecone",
@@ -1197,9 +969,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_module_4",
-      "community": 4,
-      "norm_label": "modulo 4: escalabilidad documental - rag avanzado y pinecone"
+      "community": 1,
+      "norm_label": "modulo 4: escalabilidad documental - rag avanzado y pinecone",
+      "id": "program_summary_module_4"
     },
     {
       "label": "Modulo 5: Razonamiento autonomo - agentes con LangGraph",
@@ -1210,9 +982,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_module_5",
-      "community": 4,
-      "norm_label": "modulo 5: razonamiento autonomo - agentes con langgraph"
+      "community": 1,
+      "norm_label": "modulo 5: razonamiento autonomo - agentes con langgraph",
+      "id": "program_summary_module_5"
     },
     {
       "label": "Modulo 6: Sistemas multi-agente - colaboracion y especializacion",
@@ -1223,9 +995,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_module_6",
-      "community": 4,
-      "norm_label": "modulo 6: sistemas multi-agente - colaboracion y especializacion"
+      "community": 1,
+      "norm_label": "modulo 6: sistemas multi-agente - colaboracion y especializacion",
+      "id": "program_summary_module_6"
     },
     {
       "label": "Modulo 7: Produccion y robustez - observabilidad, costos y despliegue",
@@ -1236,9 +1008,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_module_7",
-      "community": 4,
-      "norm_label": "modulo 7: produccion y robustez - observabilidad, costos y despliegue"
+      "community": 1,
+      "norm_label": "modulo 7: produccion y robustez - observabilidad, costos y despliegue",
+      "id": "program_summary_module_7"
     },
     {
       "label": "Modulo 8: Capstone - entrega final",
@@ -1249,9 +1021,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_module_8",
-      "community": 4,
-      "norm_label": "modulo 8: capstone - entrega final"
+      "community": 1,
+      "norm_label": "modulo 8: capstone - entrega final",
+      "id": "program_summary_module_8"
     },
     {
       "label": "asyncio.gather (patron de concurrencia)",
@@ -1262,9 +1034,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_asyncio_gather",
-      "community": 4,
-      "norm_label": "asyncio.gather (patron de concurrencia)"
+      "community": 1,
+      "norm_label": "asyncio.gather (patron de concurrencia)",
+      "id": "program_summary_asyncio_gather"
     },
     {
       "label": "asyncio.Semaphore (control de flujo y rate limits)",
@@ -1275,9 +1047,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_asyncio_semaphore",
-      "community": 4,
-      "norm_label": "asyncio.semaphore (control de flujo y rate limits)"
+      "community": 2,
+      "norm_label": "asyncio.semaphore (control de flujo y rate limits)",
+      "id": "program_summary_asyncio_semaphore"
     },
     {
       "label": "asyncio.timeout (seguro contra latencia infinita)",
@@ -1288,9 +1060,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_asyncio_timeout",
-      "community": 2,
-      "norm_label": "asyncio.timeout (seguro contra latencia infinita)"
+      "community": 1,
+      "norm_label": "asyncio.timeout (seguro contra latencia infinita)",
+      "id": "program_summary_asyncio_timeout"
     },
     {
       "label": "Time To First Token (TTFT)",
@@ -1301,9 +1073,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_ttft",
-      "community": 4,
-      "norm_label": "time to first token (ttft)"
+      "community": 1,
+      "norm_label": "time to first token (ttft)",
+      "id": "program_summary_ttft"
     },
     {
       "label": "Factory Pattern para seleccion de cliente LLM",
@@ -1314,9 +1086,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_factory_pattern",
       "community": 1,
-      "norm_label": "factory pattern para seleccion de cliente llm"
+      "norm_label": "factory pattern para seleccion de cliente llm",
+      "id": "program_summary_factory_pattern"
     },
     {
       "label": "Ejercicio: Orquestador Concurrente de Modelos (practica Modulo 1)",
@@ -1327,9 +1099,739 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "program_summary_orquestador_exercise",
-      "community": 4,
-      "norm_label": "ejercicio: orquestador concurrente de modelos (practica modulo 1)"
+      "community": 1,
+      "norm_label": "ejercicio: orquestador concurrente de modelos (practica modulo 1)",
+      "id": "program_summary_orquestador_exercise"
+    },
+    {
+      "label": "entregable_b_llm_client/main.py",
+      "file_type": "code",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "entregable_b_llm_client_main",
+      "community": 9,
+      "norm_label": "entregable_b_llm_client/main.py"
+    },
+    {
+      "label": "probar_proveedor()",
+      "file_type": "code",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "entregable_b_llm_client_main_probar_proveedor",
+      "community": 9,
+      "norm_label": "probar_proveedor()"
+    },
+    {
+      "label": "LLMConfig",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "llmconfig",
+      "community": 9,
+      "norm_label": "llmconfig"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "entregable_b_llm_client_main_main",
+      "community": 9,
+      "norm_label": "main()"
+    },
+    {
+      "label": "Script de validacion del Unified Async LLM Client. Carga las variables de\u2026",
+      "file_type": "rationale",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "entregable_b_llm_client_main_rationale_1",
+      "community": 9,
+      "norm_label": "script de validacion del unified async llm client. carga las variables de..."
+    },
+    {
+      "label": "entity_extraction.py",
+      "file_type": "code",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_ejercicio_validacion_entity_extraction",
+      "community": 8,
+      "norm_label": "entity_extraction.py"
+    },
+    {
+      "label": "EntityExtraction",
+      "file_type": "code",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "fase2_ejercicio_validacion_entity_extraction_entityextraction",
+      "community": 8,
+      "norm_label": "entityextraction"
+    },
+    {
+      "label": "BaseModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "fase2_ejercicio_validacion_entity_extraction_py_basemodel",
+      "community": 8,
+      "norm_label": "basemodel"
+    },
+    {
+      "label": "run_validated_chain()",
+      "file_type": "code",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "fase2_ejercicio_validacion_entity_extraction_run_validated_chain",
+      "community": 8,
+      "norm_label": "run_validated_chain()"
+    },
+    {
+      "label": "Componente B - Fase 2: Validacion estructurada y resiliencia en cadenas.\u2026",
+      "file_type": "rationale",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_ejercicio_validacion_entity_extraction_rationale_1",
+      "community": 8,
+      "norm_label": "componente b - fase 2: validacion estructurada y resiliencia en cadenas...."
+    },
+    {
+      "label": "Contrato de datos validado que debe devolver el LLM.",
+      "file_type": "rationale",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "fase2_ejercicio_validacion_entity_extraction_rationale_19",
+      "community": 8,
+      "norm_label": "contrato de datos validado que debe devolver el llm."
+    },
+    {
+      "label": "Extrae entidades del texto de forma validada y resiliente ante fallos.",
+      "file_type": "rationale",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "fase2_ejercicio_validacion_entity_extraction_rationale_32",
+      "community": 8,
+      "norm_label": "extrae entidades del texto de forma validada y resiliente ante fallos."
+    },
+    {
+      "label": "fase2_lcel_refactor/main.py",
+      "file_type": "code",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_lcel_refactor_main",
+      "community": 10,
+      "norm_label": "fase2_lcel_refactor/main.py"
+    },
+    {
+      "label": "build_chain()",
+      "file_type": "code",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "fase2_lcel_refactor_main_build_chain",
+      "community": 10,
+      "norm_label": "build_chain()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "fase2_lcel_refactor_main_main",
+      "community": 10,
+      "norm_label": "main()"
+    },
+    {
+      "label": "Componente A - Fase 2: Refactorizacion a LCEL Asincrono. Reemplaza la llamada\u2026",
+      "file_type": "rationale",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_lcel_refactor_main_rationale_1",
+      "community": 10,
+      "norm_label": "componente a - fase 2: refactorizacion a lcel asincrono. reemplaza la llamada..."
+    },
+    {
+      "label": "Compone prompt | model | parser usando el operador LCEL.",
+      "file_type": "rationale",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "fase2_lcel_refactor_main_rationale_25",
+      "community": 10,
+      "norm_label": "compone prompt | model | parser usando el operador lcel."
+    },
+    {
+      "label": "fase2_pipeline_validado/__init__.py",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_init",
+      "community": 12,
+      "norm_label": "fase2_pipeline_validado/__init__.py"
+    },
+    {
+      "label": "chain.py",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_chain",
+      "community": 3,
+      "norm_label": "chain.py"
+    },
+    {
+      "label": "build_chain()",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_chain_build_chain",
+      "community": 3,
+      "norm_label": "build_chain()"
+    },
+    {
+      "label": "process_text()",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_chain_process_text",
+      "community": 3,
+      "norm_label": "process_text()"
+    },
+    {
+      "label": "Cadena LCEL del Pipeline de Extraccion de Entidades Tecnicas. prompt |\u2026",
+      "file_type": "rationale",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_chain_rationale_1",
+      "community": 3,
+      "norm_label": "cadena lcel del pipeline de extraccion de entidades tecnicas. prompt |..."
+    },
+    {
+      "label": "Compone prompt | model.with_structured_output(TechExtraction) + retry.",
+      "file_type": "rationale",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_chain_rationale_31",
+      "community": 3,
+      "norm_label": "compone prompt | model.with_structured_output(techextraction) + retry."
+    },
+    {
+      "label": "Procesa un parrafo de texto y devuelve un TechExtraction validado. Nunca deja\u2026",
+      "file_type": "rationale",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_chain_rationale_59",
+      "community": 3,
+      "norm_label": "procesa un parrafo de texto y devuelve un techextraction validado. nunca deja..."
+    },
+    {
+      "label": "fase2_pipeline_validado/main.py",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/main.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_main",
+      "community": 3,
+      "norm_label": "fase2_pipeline_validado/main.py"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/main.py",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_main_main",
+      "community": 3,
+      "norm_label": "main()"
+    },
+    {
+      "label": "Mini-script de prueba del Pipeline de Extraccion de Entidades Tecnicas. Ejecuta\u2026",
+      "file_type": "rationale",
+      "source_file": "fase2_pipeline_validado/main.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_main_rationale_1",
+      "community": 3,
+      "norm_label": "mini-script de prueba del pipeline de extraccion de entidades tecnicas. ejecuta..."
+    },
+    {
+      "label": "fase2_pipeline_validado/schemas.py",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_schemas",
+      "community": 3,
+      "norm_label": "fase2_pipeline_validado/schemas.py"
+    },
+    {
+      "label": "NivelCriticidad",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_schemas_nivelcriticidad",
+      "community": 3,
+      "norm_label": "nivelcriticidad"
+    },
+    {
+      "label": "TechExtraction",
+      "file_type": "code",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_schemas_techextraction",
+      "community": 3,
+      "norm_label": "techextraction"
+    },
+    {
+      "label": "BaseModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_schemas_py_basemodel",
+      "community": 3,
+      "norm_label": "basemodel"
+    },
+    {
+      "label": "Contrato de datos del Pipeline de Extraccion de Entidades Tecnicas.",
+      "file_type": "rationale",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_schemas_rationale_1",
+      "community": 3,
+      "norm_label": "contrato de datos del pipeline de extraccion de entidades tecnicas."
+    },
+    {
+      "label": "Nivel de criticidad tecnica detectado en el texto.",
+      "file_type": "rationale",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_schemas_rationale_10",
+      "community": 3,
+      "norm_label": "nivel de criticidad tecnica detectado en el texto."
+    },
+    {
+      "label": "Salida estructurada y validada que debe devolver la cadena LCEL.",
+      "file_type": "rationale",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "fase2_pipeline_validado_schemas_rationale_18",
+      "community": 3,
+      "norm_label": "salida estructurada y validada que debe devolver la cadena lcel."
+    },
+    {
+      "label": "Fase 2 \u2014 Encadenamiento logico con LangChain",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_fase2",
+      "community": 0,
+      "norm_label": "fase 2 \u2014 encadenamiento logico con langchain"
+    },
+    {
+      "label": "Componente A: Refactorizacion a LCEL Asincrono",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_fase2_lcel_refactor",
+      "community": 0,
+      "norm_label": "componente a: refactorizacion a lcel asincrono"
+    },
+    {
+      "label": "Componente B: Validacion estructurada y resiliencia",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_fase2_ejercicio_validacion",
+      "community": 0,
+      "norm_label": "componente b: validacion estructurada y resiliencia"
+    },
+    {
+      "label": "Componente C: Pipeline de Extraccion de Entidades Tecnicas",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_fase2_pipeline_validado",
+      "community": 0,
+      "norm_label": "componente c: pipeline de extraccion de entidades tecnicas"
+    },
+    {
+      "label": "LangChain",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_langchain",
+      "community": 0,
+      "norm_label": "langchain"
+    },
+    {
+      "label": "LCEL (LangChain Expression Language)",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_lcel",
+      "community": 0,
+      "norm_label": "lcel (langchain expression language)"
+    },
+    {
+      "label": "ChatGroq (LangChain wrapper)",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_chatgroq",
+      "community": 0,
+      "norm_label": "chatgroq (langchain wrapper)"
+    },
+    {
+      "label": "StrOutputParser",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_stroutputparser",
+      "community": 0,
+      "norm_label": "stroutputparser"
+    },
+    {
+      "label": "ChatPromptTemplate",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_chatprompttemplate",
+      "community": 0,
+      "norm_label": "chatprompttemplate"
+    },
+    {
+      "label": "Componente A \u2014 Refactorizacion a LCEL Asincrono (consigna)",
+      "file_type": "concept",
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "contexto_fase2_componente_a",
+      "community": 0,
+      "norm_label": "componente a \u2014 refactorizacion a lcel asincrono (consigna)"
+    },
+    {
+      "label": "Componente B \u2014 Validacion estructurada y resiliencia en cadenas (consigna)",
+      "file_type": "concept",
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "contexto_fase2_componente_b",
+      "community": 0,
+      "norm_label": "componente b \u2014 validacion estructurada y resiliencia en cadenas (consigna)"
+    },
+    {
+      "label": "Componente C \u2014 Pipeline de procesamiento validado (Pre-entrega 2, consigna)",
+      "file_type": "concept",
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "contexto_fase2_componente_c",
+      "community": 0,
+      "norm_label": "componente c \u2014 pipeline de procesamiento validado (pre-entrega 2, consigna)"
+    },
+    {
+      "label": "EntityExtraction (Pydantic schema, ejercicio TODO)",
+      "file_type": "concept",
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "contexto_fase2_entityextraction",
+      "community": 0,
+      "norm_label": "entityextraction (pydantic schema, ejercicio todo)"
+    },
+    {
+      "label": "with_structured_output()",
+      "file_type": "concept",
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "contexto_fase2_with_structured_output",
+      "community": 0,
+      "norm_label": "with_structured_output()"
+    },
+    {
+      "label": "with_retry()",
+      "file_type": "concept",
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "contexto_fase2_with_retry",
+      "community": 0,
+      "norm_label": "with_retry()"
+    },
+    {
+      "label": "Rationale: reemplazar AsyncLLMManager propio por LangChain/LCEL",
+      "file_type": "rationale",
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "contexto_fase2_reemplazo_manager_por_langchain",
+      "community": 0,
+      "norm_label": "rationale: reemplazar asyncllmmanager propio por langchain/lcel"
+    },
+    {
+      "label": "Rationale: preferir proveedores gratuitos (Groq/Gemini) con soporte with_structured_output",
+      "file_type": "rationale",
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "contexto_fase2_proveedores_gratuitos",
+      "community": 0,
+      "norm_label": "rationale: preferir proveedores gratuitos (groq/gemini) con soporte with_structured_output"
+    },
+    {
+      "label": "TechExtraction (Pydantic schema)",
+      "file_type": "concept",
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "fase2_pipeline_validado_readme_techextraction",
+      "community": 0,
+      "norm_label": "techextraction (pydantic schema)"
+    },
+    {
+      "label": "chain.py \u2014 cadena LCEL con ChatGroq",
+      "file_type": "concept",
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "fase2_pipeline_validado_readme_chain",
+      "community": 0,
+      "norm_label": "chain.py \u2014 cadena lcel con chatgroq"
+    },
+    {
+      "label": "process_text() \u2014 funcion asincrona",
+      "file_type": "concept",
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "fase2_pipeline_validado_readme_process_text",
+      "community": 0,
+      "norm_label": "process_text() \u2014 funcion asincrona"
+    },
+    {
+      "label": "Rationale: resultado de la prueba de estres con texto ambiguo",
+      "file_type": "rationale",
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "fase2_pipeline_validado_readme_prueba_de_estres",
+      "community": 0,
+      "norm_label": "rationale: resultado de la prueba de estres con texto ambiguo"
+    },
+    {
+      "label": "langchain (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_langchain",
+      "community": 0,
+      "norm_label": "langchain (package)"
+    },
+    {
+      "label": "langchain-core (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_langchain_core",
+      "community": 0,
+      "norm_label": "langchain-core (package)"
+    },
+    {
+      "label": "langchain-groq (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_langchain_groq",
+      "community": 0,
+      "norm_label": "langchain-groq (package)"
+    },
+    {
+      "label": "langchain-google-genai (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_langchain_google_genai",
+      "community": 0,
+      "norm_label": "langchain-google-genai (package)"
+    },
+    {
+      "label": "pydantic (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_pydantic",
+      "community": 0,
+      "norm_label": "pydantic (package)"
+    },
+    {
+      "label": "python-dotenv (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_python_dotenv",
+      "community": 15,
+      "norm_label": "python-dotenv (package)"
+    },
+    {
+      "label": "openai (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_openai",
+      "community": 14,
+      "norm_label": "openai (package)"
+    },
+    {
+      "label": "google-genai (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_google_genai",
+      "community": 13,
+      "norm_label": "google-genai (package)"
+    },
+    {
+      "label": "groq (package)",
+      "file_type": "concept",
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "requirements_groq",
+      "community": 0,
+      "norm_label": "groq (package)"
     }
   ],
   "links": [
@@ -1340,9 +1842,9 @@
       "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente",
-      "target": "entregable_a_orquestador_orquestador_concurrente_claude_3_call",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_claude_3_call"
     },
     {
       "relation": "contains",
@@ -1351,9 +1853,9 @@
       "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente",
-      "target": "entregable_a_orquestador_orquestador_concurrente_gpt_4_call",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_gpt_4_call"
     },
     {
       "relation": "contains",
@@ -1362,9 +1864,9 @@
       "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente",
-      "target": "entregable_a_orquestador_orquestador_concurrente_llamada_simulada",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_llamada_simulada"
     },
     {
       "relation": "contains",
@@ -1373,9 +1875,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente",
-      "target": "entregable_a_orquestador_orquestador_concurrente_local_llama_call",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_local_llama_call"
     },
     {
       "relation": "contains",
@@ -1384,9 +1886,9 @@
       "source_location": "L103",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente",
-      "target": "entregable_a_orquestador_orquestador_concurrente_main",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_main"
     },
     {
       "relation": "contains",
@@ -1395,9 +1897,9 @@
       "source_location": "L94",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente",
-      "target": "entregable_a_orquestador_orquestador_concurrente_orquestar_con_semaforo",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_orquestar_con_semaforo"
     },
     {
       "relation": "contains",
@@ -1406,9 +1908,9 @@
       "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente",
-      "target": "entregable_a_orquestador_orquestador_concurrente_orquestar_tres_modelos",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_orquestar_tres_modelos"
     },
     {
       "relation": "contains",
@@ -1417,9 +1919,9 @@
       "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente",
-      "target": "entregable_a_orquestador_orquestador_concurrente_transcurrido",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_transcurrido"
     },
     {
       "relation": "rationale_for",
@@ -1428,9 +1930,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_rationale_1",
-      "target": "entregable_a_orquestador_orquestador_concurrente",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente"
     },
     {
       "relation": "calls",
@@ -1499,9 +2001,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_rationale_28",
-      "target": "entregable_a_orquestador_orquestador_concurrente_transcurrido",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_transcurrido"
     },
     {
       "relation": "calls",
@@ -1522,9 +2024,9 @@
       "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_rationale_37",
-      "target": "entregable_a_orquestador_orquestador_concurrente_gpt_4_call",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_gpt_4_call"
     },
     {
       "relation": "calls",
@@ -1545,9 +2047,9 @@
       "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_rationale_45",
-      "target": "entregable_a_orquestador_orquestador_concurrente_claude_3_call",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_claude_3_call"
     },
     {
       "relation": "calls",
@@ -1568,9 +2070,9 @@
       "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_rationale_53",
-      "target": "entregable_a_orquestador_orquestador_concurrente_local_llama_call",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_local_llama_call"
     },
     {
       "relation": "rationale_for",
@@ -1601,9 +2103,9 @@
       "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_rationale_61",
-      "target": "entregable_a_orquestador_orquestador_concurrente_orquestar_tres_modelos",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_orquestar_tres_modelos"
     },
     {
       "relation": "conceptually_related_to",
@@ -1633,9 +2135,9 @@
       "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_llamada_simulada",
-      "target": "semaphore",
-      "confidence_score": 1.0
+      "target": "semaphore"
     },
     {
       "relation": "calls",
@@ -1656,9 +2158,9 @@
       "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_rationale_85",
-      "target": "entregable_a_orquestador_orquestador_concurrente_llamada_simulada",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_llamada_simulada"
     },
     {
       "relation": "calls",
@@ -1668,9 +2170,9 @@
       "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_orquestar_con_semaforo",
-      "target": "semaphore",
-      "confidence_score": 1.0
+      "target": "semaphore"
     },
     {
       "relation": "rationale_for",
@@ -1701,9 +2203,9 @@
       "source_location": "L95",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_a_orquestador_orquestador_concurrente_rationale_95",
-      "target": "entregable_a_orquestador_orquestador_concurrente_orquestar_con_semaforo",
-      "confidence_score": 1.0
+      "target": "entregable_a_orquestador_orquestador_concurrente_orquestar_con_semaforo"
     },
     {
       "relation": "conceptually_related_to",
@@ -1723,9 +2225,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client",
-      "target": "abc",
-      "confidence_score": 1.0
+      "target": "abc"
     },
     {
       "relation": "contains",
@@ -1734,9 +2236,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "imports_from",
@@ -1746,9 +2248,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client",
-      "target": "entregable_b_llm_client_schemas",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas"
     },
     {
       "relation": "imports",
@@ -1758,9 +2260,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "imports",
@@ -1770,9 +2272,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "rationale_for",
@@ -1781,9 +2283,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_rationale_1",
-      "target": "entregable_b_llm_client_base_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client"
     },
     {
       "relation": "imports_from",
@@ -1793,9 +2295,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client",
-      "target": "entregable_b_llm_client_base_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client"
     },
     {
       "relation": "imports_from",
@@ -1805,9 +2307,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client",
-      "target": "entregable_b_llm_client_base_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client"
     },
     {
       "relation": "imports_from",
@@ -1817,9 +2319,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_base_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client"
     },
     {
       "relation": "imports_from",
@@ -1829,9 +2331,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client",
-      "target": "entregable_b_llm_client_base_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client"
     },
     {
       "relation": "inherits",
@@ -1840,9 +2342,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_basellmclient",
-      "target": "abc",
-      "confidence_score": 1.0
+      "target": "abc"
     },
     {
       "relation": "method",
@@ -1851,9 +2353,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_basellmclient",
-      "target": "entregable_b_llm_client_base_client_basellmclient_generate",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient_generate"
     },
     {
       "relation": "method",
@@ -1862,9 +2364,9 @@
       "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_basellmclient",
-      "target": "entregable_b_llm_client_base_client_basellmclient_generate_stream",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient_generate_stream"
     },
     {
       "relation": "uses",
@@ -1873,9 +2375,9 @@
       "source_location": "L6",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_base_client_basellmclient",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "uses",
@@ -1884,9 +2386,9 @@
       "source_location": "L6",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_base_client_basellmclient",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "rationale_for",
@@ -1895,9 +2397,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_rationale_10",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "imports",
@@ -1907,9 +2409,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "uses",
@@ -1918,9 +2420,9 @@
       "source_location": "L8",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_gemini_client_geminiclient",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "imports",
@@ -1930,9 +2432,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "uses",
@@ -1941,9 +2443,9 @@
       "source_location": "L12",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_groq_client_groqclient",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "imports",
@@ -1953,9 +2455,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "uses",
@@ -1964,9 +2466,9 @@
       "source_location": "L5",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "references",
@@ -1976,9 +2478,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager_build_client",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "imports",
@@ -1988,9 +2490,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "uses",
@@ -1999,9 +2501,9 @@
       "source_location": "L14",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_openai_client_openaiclient",
-      "target": "entregable_b_llm_client_base_client_basellmclient",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_base_client_basellmclient"
     },
     {
       "relation": "references",
@@ -2011,9 +2513,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_basellmclient_generate",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "references",
@@ -2023,9 +2525,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_basellmclient_generate",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "rationale_for",
@@ -2034,9 +2536,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_rationale_14",
-      "target": "entregable_b_llm_client_base_client_basellmclient_generate",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient_generate"
     },
     {
       "relation": "references",
@@ -2046,9 +2548,9 @@
       "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_basellmclient_generate_stream",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "rationale_for",
@@ -2057,9 +2559,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_base_client_rationale_19",
-      "target": "entregable_b_llm_client_base_client_basellmclient_generate_stream",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_base_client_basellmclient_generate_stream"
     },
     {
       "relation": "contains",
@@ -2068,9 +2570,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient"
     },
     {
       "relation": "imports_from",
@@ -2080,9 +2582,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client",
-      "target": "entregable_b_llm_client_schemas",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas"
     },
     {
       "relation": "imports",
@@ -2092,9 +2594,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "imports",
@@ -2104,9 +2606,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "imports",
@@ -2116,9 +2618,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "rationale_for",
@@ -2127,9 +2629,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_rationale_1",
-      "target": "entregable_b_llm_client_gemini_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client"
     },
     {
       "relation": "imports_from",
@@ -2139,9 +2641,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_gemini_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client"
     },
     {
       "relation": "method",
@@ -2150,9 +2652,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages"
     },
     {
       "relation": "method",
@@ -2161,9 +2663,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient_generate",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient_generate"
     },
     {
       "relation": "method",
@@ -2172,9 +2674,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient_generate_stream",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient_generate_stream"
     },
     {
       "relation": "method",
@@ -2183,9 +2685,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient_init",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient_init"
     },
     {
       "relation": "uses",
@@ -2194,9 +2696,9 @@
       "source_location": "L9",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_gemini_client_geminiclient",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "uses",
@@ -2205,9 +2707,9 @@
       "source_location": "L9",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_gemini_client_geminiclient",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "uses",
@@ -2216,9 +2718,9 @@
       "source_location": "L9",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_gemini_client_geminiclient",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "imports",
@@ -2228,9 +2730,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient"
     },
     {
       "relation": "uses",
@@ -2239,9 +2741,9 @@
       "source_location": "L6",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_gemini_client_geminiclient"
     },
     {
       "relation": "calls",
@@ -2263,9 +2765,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages",
-      "target": "content",
-      "confidence_score": 1.0
+      "target": "content"
     },
     {
       "relation": "references",
@@ -2275,9 +2777,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "calls",
@@ -2287,9 +2789,9 @@
       "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient_generate",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages"
     },
     {
       "relation": "calls",
@@ -2299,9 +2801,9 @@
       "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient_generate_stream",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages"
     },
     {
       "relation": "rationale_for",
@@ -2310,9 +2812,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_rationale_22",
-      "target": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_gemini_client_geminiclient_convert_messages"
     },
     {
       "relation": "references",
@@ -2322,9 +2824,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient_generate",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "references",
@@ -2334,9 +2836,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient_generate",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "references",
@@ -2346,9 +2848,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_gemini_client_geminiclient_generate_stream",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "contains",
@@ -2357,9 +2859,9 @@
       "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client",
-      "target": "entregable_b_llm_client_groq_client_groqclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_groq_client_groqclient"
     },
     {
       "relation": "imports_from",
@@ -2369,9 +2871,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client",
-      "target": "entregable_b_llm_client_schemas",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas"
     },
     {
       "relation": "imports",
@@ -2381,9 +2883,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "imports",
@@ -2393,9 +2895,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "imports",
@@ -2405,9 +2907,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "rationale_for",
@@ -2416,9 +2918,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client_rationale_1",
-      "target": "entregable_b_llm_client_groq_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_groq_client"
     },
     {
       "relation": "imports_from",
@@ -2428,9 +2930,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_groq_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_groq_client"
     },
     {
       "relation": "method",
@@ -2439,9 +2941,9 @@
       "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client_groqclient",
-      "target": "entregable_b_llm_client_groq_client_groqclient_generate",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_groq_client_groqclient_generate"
     },
     {
       "relation": "method",
@@ -2450,9 +2952,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client_groqclient",
-      "target": "entregable_b_llm_client_groq_client_groqclient_generate_stream",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_groq_client_groqclient_generate_stream"
     },
     {
       "relation": "method",
@@ -2461,9 +2963,9 @@
       "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client_groqclient",
-      "target": "entregable_b_llm_client_groq_client_groqclient_init",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_groq_client_groqclient_init"
     },
     {
       "relation": "uses",
@@ -2472,9 +2974,9 @@
       "source_location": "L13",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_groq_client_groqclient",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "uses",
@@ -2483,9 +2985,9 @@
       "source_location": "L13",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_groq_client_groqclient",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "uses",
@@ -2494,9 +2996,9 @@
       "source_location": "L13",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_groq_client_groqclient",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "imports",
@@ -2506,9 +3008,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_groq_client_groqclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_groq_client_groqclient"
     },
     {
       "relation": "uses",
@@ -2517,9 +3019,9 @@
       "source_location": "L7",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_groq_client_groqclient",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_groq_client_groqclient"
     },
     {
       "relation": "calls",
@@ -2541,9 +3043,9 @@
       "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client_groqclient_generate",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "references",
@@ -2553,9 +3055,9 @@
       "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client_groqclient_generate",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "references",
@@ -2565,9 +3067,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_groq_client_groqclient_generate_stream",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "contains",
@@ -2576,9 +3078,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager"
     },
     {
       "relation": "imports_from",
@@ -2588,9 +3090,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_openai_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_openai_client"
     },
     {
       "relation": "imports",
@@ -2600,9 +3102,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_openai_client_openaiclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_openai_client_openaiclient"
     },
     {
       "relation": "imports_from",
@@ -2612,9 +3114,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_schemas",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas"
     },
     {
       "relation": "imports",
@@ -2624,9 +3126,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "imports",
@@ -2636,9 +3138,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_schemas_llmconfig",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_llmconfig"
     },
     {
       "relation": "imports",
@@ -2648,9 +3150,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "imports",
@@ -2660,9 +3162,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "rationale_for",
@@ -2671,9 +3173,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_rationale_1",
-      "target": "entregable_b_llm_client_llm_manager",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_llm_manager"
     },
     {
       "relation": "imports_from",
@@ -2694,9 +3196,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_build_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_build_client"
     },
     {
       "relation": "method",
@@ -2705,9 +3207,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate"
     },
     {
       "relation": "method",
@@ -2716,9 +3218,9 @@
       "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate_stream",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate_stream"
     },
     {
       "relation": "method",
@@ -2727,9 +3229,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_init",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_init"
     },
     {
       "relation": "uses",
@@ -2738,9 +3240,9 @@
       "source_location": "L8",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_openai_client_openaiclient",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_openai_client_openaiclient"
     },
     {
       "relation": "uses",
@@ -2749,9 +3251,9 @@
       "source_location": "L9",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "uses",
@@ -2760,9 +3262,9 @@
       "source_location": "L9",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_schemas_llmconfig",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_llmconfig"
     },
     {
       "relation": "uses",
@@ -2771,9 +3273,9 @@
       "source_location": "L9",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "uses",
@@ -2782,9 +3284,9 @@
       "source_location": "L9",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "rationale_for",
@@ -2793,33 +3295,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_rationale_13",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L16",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L25",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main_probar_proveedor",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager"
     },
     {
       "relation": "calls",
@@ -2829,9 +3307,9 @@
       "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager_init",
-      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_build_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_llm_manager_asyncllmmanager_build_client"
     },
     {
       "relation": "references",
@@ -2841,9 +3319,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager_init",
-      "target": "entregable_b_llm_client_schemas_llmconfig",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_llmconfig"
     },
     {
       "relation": "calls",
@@ -2865,9 +3343,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "references",
@@ -2877,9 +3355,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "references",
@@ -2889,126 +3367,9 @@
       "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_llm_manager_asyncllmmanager_generate_stream",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L43",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main",
-      "target": "entregable_b_llm_client_main_main",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L22",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main",
-      "target": "entregable_b_llm_client_main_probar_proveedor",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L17",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main",
-      "target": "entregable_b_llm_client_schemas",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L17",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L17",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main",
-      "target": "entregable_b_llm_client_schemas_llmconfig",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L17",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main_rationale_1",
-      "target": "entregable_b_llm_client_main",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L51",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main_main",
-      "target": "entregable_b_llm_client_main_probar_proveedor",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L22",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main_probar_proveedor",
-      "target": "entregable_b_llm_client_schemas_llmconfig",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "entregable_b_llm_client/main.py",
-      "source_location": "L53",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "entregable_b_llm_client_main_main",
-      "target": "entregable_b_llm_client_schemas_llmconfig",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "contains",
@@ -3017,9 +3378,9 @@
       "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client",
-      "target": "entregable_b_llm_client_openai_client_openaiclient",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_openai_client_openaiclient"
     },
     {
       "relation": "imports_from",
@@ -3029,9 +3390,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client",
-      "target": "entregable_b_llm_client_schemas",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas"
     },
     {
       "relation": "imports",
@@ -3041,9 +3402,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "imports",
@@ -3053,9 +3414,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "imports",
@@ -3065,9 +3426,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "rationale_for",
@@ -3076,9 +3437,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client_rationale_1",
-      "target": "entregable_b_llm_client_openai_client",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_openai_client"
     },
     {
       "relation": "method",
@@ -3087,9 +3448,9 @@
       "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client_openaiclient",
-      "target": "entregable_b_llm_client_openai_client_openaiclient_generate",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_openai_client_openaiclient_generate"
     },
     {
       "relation": "method",
@@ -3098,9 +3459,9 @@
       "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client_openaiclient",
-      "target": "entregable_b_llm_client_openai_client_openaiclient_generate_stream",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_openai_client_openaiclient_generate_stream"
     },
     {
       "relation": "method",
@@ -3109,9 +3470,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client_openaiclient",
-      "target": "entregable_b_llm_client_openai_client_openaiclient_init",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_openai_client_openaiclient_init"
     },
     {
       "relation": "uses",
@@ -3120,9 +3481,9 @@
       "source_location": "L15",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_openai_client_openaiclient",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "uses",
@@ -3131,9 +3492,9 @@
       "source_location": "L15",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_openai_client_openaiclient",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "uses",
@@ -3142,9 +3503,9 @@
       "source_location": "L15",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "entregable_b_llm_client_openai_client_openaiclient",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 0.5
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "references",
@@ -3154,9 +3515,9 @@
       "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client_openaiclient_generate",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "references",
@@ -3166,9 +3527,9 @@
       "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client_openaiclient_generate",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "references",
@@ -3178,8 +3539,20 @@
       "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_openai_client_openaiclient_generate_stream",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
+      "target": "entregable_b_llm_client_schemas_chatmessage"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "entregable_b_llm_client_main",
+      "target": "entregable_b_llm_client_schemas",
       "confidence_score": 1.0
     },
     {
@@ -3189,9 +3562,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "contains",
@@ -3200,9 +3573,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas",
-      "target": "entregable_b_llm_client_schemas_llmconfig",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_llmconfig"
     },
     {
       "relation": "contains",
@@ -3211,9 +3584,9 @@
       "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "contains",
@@ -3222,9 +3595,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas",
-      "target": "entregable_b_llm_client_schemas_provider",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_provider"
     },
     {
       "relation": "imports_from",
@@ -3234,9 +3607,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas",
-      "target": "enum",
-      "confidence_score": 1.0
+      "target": "enum"
     },
     {
       "relation": "rationale_for",
@@ -3245,9 +3618,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_rationale_1",
-      "target": "entregable_b_llm_client_schemas",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas"
     },
     {
       "relation": "inherits",
@@ -3256,9 +3629,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_provider",
-      "target": "enum",
-      "confidence_score": 1.0
+      "target": "enum"
     },
     {
       "relation": "inherits",
@@ -3267,9 +3640,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_provider",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "rationale_for",
@@ -3278,8 +3651,42 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_rationale_12",
-      "target": "entregable_b_llm_client_schemas_provider",
+      "target": "entregable_b_llm_client_schemas_provider"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas_nivelcriticidad",
+      "target": "str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas",
+      "target": "enum",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas_nivelcriticidad",
+      "target": "enum",
       "confidence_score": 1.0
     },
     {
@@ -3289,9 +3696,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_chatmessage",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "method",
@@ -3300,9 +3707,9 @@
       "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_chatmessage",
-      "target": "entregable_b_llm_client_schemas_chatmessage_validate_role",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage_validate_role"
     },
     {
       "relation": "rationale_for",
@@ -3311,9 +3718,9 @@
       "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_rationale_20",
-      "target": "entregable_b_llm_client_schemas_chatmessage",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_chatmessage"
     },
     {
       "relation": "inherits",
@@ -3322,9 +3729,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_llmconfig",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -3333,9 +3740,9 @@
       "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_modelresponse",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "references",
@@ -3345,9 +3752,9 @@
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_chatmessage_validate_role",
-      "target": "field_validator",
-      "confidence_score": 1.0
+      "target": "field_validator"
     },
     {
       "relation": "rationale_for",
@@ -3356,9 +3763,9 @@
       "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_rationale_34",
-      "target": "entregable_b_llm_client_schemas_llmconfig",
-      "confidence_score": 1.0
+      "target": "entregable_b_llm_client_schemas_llmconfig"
     },
     {
       "relation": "rationale_for",
@@ -3367,279 +3774,9 @@
       "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "entregable_b_llm_client_schemas_rationale_46",
-      "target": "entregable_b_llm_client_schemas_modelresponse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "contexto_fase1_entregable_a",
-      "target": "readme_entregable_a"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "contexto_fase1_entregable_b",
-      "target": "readme_entregable_b"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_entregable_b",
-      "target": "readme_asyncllmmanager"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_entregable_b",
-      "target": "readme_basellmclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_entregable_b",
-      "target": "readme_chatmessage"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_entregable_b",
-      "target": "readme_geminiclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_entregable_b",
-      "target": "readme_groqclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_entregable_b",
-      "target": "readme_llmconfig"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_entregable_b",
-      "target": "readme_modelresponse"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_entregable_b",
-      "target": "readme_openaiclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_chatmessage",
-      "target": "requirements_pydantic"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_llmconfig",
-      "target": "requirements_pydantic"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_modelresponse",
-      "target": "requirements_pydantic"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "program-summary.pdf",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "program_summary_module_1",
-      "target": "readme_basellmclient"
-    },
-    {
-      "relation": "implements",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_geminiclient",
-      "target": "readme_basellmclient"
-    },
-    {
-      "relation": "implements",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_groqclient",
-      "target": "readme_basellmclient"
-    },
-    {
-      "relation": "implements",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_openaiclient",
-      "target": "readme_basellmclient"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "program-summary.pdf",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "program_summary_factory_pattern",
-      "target": "readme_asyncllmmanager"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_asyncllmmanager",
-      "target": "readme_geminiclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_asyncllmmanager",
-      "target": "readme_groqclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_asyncllmmanager",
-      "target": "readme_openaiclient"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "contexto_fase1.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "contexto_fase1_provider_openai",
-      "target": "readme_openaiclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_openaiclient",
-      "target": "requirements_openai"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "contexto_fase1.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "contexto_fase1_provider_gemini",
-      "target": "readme_geminiclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_geminiclient",
-      "target": "requirements_google_genai"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "contexto_fase1.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "contexto_fase1_provider_groq",
-      "target": "readme_groqclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_groqclient",
-      "target": "requirements_groq"
+      "target": "entregable_b_llm_client_schemas_modelresponse"
     },
     {
       "relation": "references",
@@ -3880,9 +4017,854 @@
       "weight": 1.0,
       "source": "program_summary_module_1",
       "target": "program_summary_ttft"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "entregable_b_llm_client_main",
+      "target": "entregable_b_llm_client_main_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "entregable_b_llm_client_main",
+      "target": "entregable_b_llm_client_main_probar_proveedor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "entregable_b_llm_client_main_rationale_1",
+      "target": "entregable_b_llm_client_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "entregable_b_llm_client_main_main",
+      "target": "entregable_b_llm_client_main_probar_proveedor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "entregable_b_llm_client_main_probar_proveedor",
+      "target": "llmconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entregable_b_llm_client/main.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "entregable_b_llm_client_main_main",
+      "target": "llmconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_ejercicio_validacion_entity_extraction",
+      "target": "fase2_ejercicio_validacion_entity_extraction_entityextraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_ejercicio_validacion_entity_extraction",
+      "target": "fase2_ejercicio_validacion_entity_extraction_run_validated_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_ejercicio_validacion_entity_extraction_rationale_1",
+      "target": "fase2_ejercicio_validacion_entity_extraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_ejercicio_validacion_entity_extraction_entityextraction",
+      "target": "fase2_ejercicio_validacion_entity_extraction_py_basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_ejercicio_validacion_entity_extraction_rationale_19",
+      "target": "fase2_ejercicio_validacion_entity_extraction_entityextraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_ejercicio_validacion_entity_extraction_run_validated_chain",
+      "target": "fase2_ejercicio_validacion_entity_extraction_entityextraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_ejercicio_validacion/entity_extraction.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_ejercicio_validacion_entity_extraction_rationale_32",
+      "target": "fase2_ejercicio_validacion_entity_extraction_run_validated_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_lcel_refactor_main",
+      "target": "fase2_lcel_refactor_main_build_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_lcel_refactor_main",
+      "target": "fase2_lcel_refactor_main_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_lcel_refactor_main_rationale_1",
+      "target": "fase2_lcel_refactor_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_lcel_refactor_main_main",
+      "target": "fase2_lcel_refactor_main_build_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_lcel_refactor/main.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_lcel_refactor_main_rationale_25",
+      "target": "fase2_lcel_refactor_main_build_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain",
+      "target": "fase2_pipeline_validado_chain_build_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain",
+      "target": "fase2_pipeline_validado_chain_process_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain",
+      "target": "fase2_pipeline_validado_schemas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain",
+      "target": "fase2_pipeline_validado_schemas_techextraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain_rationale_1",
+      "target": "fase2_pipeline_validado_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/main.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_main",
+      "target": "fase2_pipeline_validado_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain_process_text",
+      "target": "fase2_pipeline_validado_chain_build_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain_rationale_31",
+      "target": "fase2_pipeline_validado_chain_build_chain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain_process_text",
+      "target": "fase2_pipeline_validado_schemas_techextraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/chain.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_chain_rationale_59",
+      "target": "fase2_pipeline_validado_chain_process_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/main.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_main",
+      "target": "fase2_pipeline_validado_chain_process_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/main.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_main_main",
+      "target": "fase2_pipeline_validado_chain_process_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/main.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_main",
+      "target": "fase2_pipeline_validado_main_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/main.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_main_rationale_1",
+      "target": "fase2_pipeline_validado_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas",
+      "target": "fase2_pipeline_validado_schemas_nivelcriticidad",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas",
+      "target": "fase2_pipeline_validado_schemas_techextraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas_rationale_1",
+      "target": "fase2_pipeline_validado_schemas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas_rationale_10",
+      "target": "fase2_pipeline_validado_schemas_nivelcriticidad",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas_rationale_18",
+      "target": "fase2_pipeline_validado_schemas_techextraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "fase2_pipeline_validado/schemas.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "fase2_pipeline_validado_schemas_techextraction",
+      "target": "fase2_pipeline_validado_schemas_py_basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2",
+      "target": "contexto_fase2_componente_a"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2",
+      "target": "contexto_fase2_componente_b"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2",
+      "target": "contexto_fase2_componente_c"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2",
+      "target": "readme_langchain"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2",
+      "target": "readme_lcel"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_lcel_refactor",
+      "target": "contexto_fase2_componente_a"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_lcel_refactor",
+      "target": "readme_chatgroq"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_lcel_refactor",
+      "target": "readme_chatprompttemplate"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_lcel_refactor",
+      "target": "readme_stroutputparser"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_ejercicio_validacion",
+      "target": "contexto_fase2_componente_b"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_ejercicio_validacion",
+      "target": "contexto_fase2_entityextraction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_ejercicio_validacion",
+      "target": "contexto_fase2_with_retry"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_ejercicio_validacion",
+      "target": "contexto_fase2_with_structured_output"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_pipeline_validado",
+      "target": "contexto_fase2_componente_c"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_pipeline_validado",
+      "target": "fase2_pipeline_validado_readme_chain"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_fase2_pipeline_validado",
+      "target": "fase2_pipeline_validado_readme_techextraction"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_reemplazo_manager_por_langchain",
+      "target": "readme_langchain"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "requirements_langchain",
+      "target": "readme_langchain"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "requirements_langchain_google_genai",
+      "target": "readme_langchain"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "fase2_pipeline_validado_readme_chain",
+      "target": "readme_lcel"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "requirements_langchain_core",
+      "target": "readme_lcel"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_proveedores_gratuitos",
+      "target": "readme_chatgroq"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "fase2_pipeline_validado_readme_chain",
+      "target": "readme_chatgroq"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "requirements_langchain_groq",
+      "target": "readme_chatgroq"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_componente_b",
+      "target": "contexto_fase2_entityextraction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_componente_b",
+      "target": "contexto_fase2_with_retry"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_componente_b",
+      "target": "contexto_fase2_with_structured_output"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_componente_c",
+      "target": "contexto_fase2_with_retry"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_componente_c",
+      "target": "contexto_fase2_with_structured_output"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "fase2_pipeline_validado_readme_chain",
+      "target": "contexto_fase2_componente_c"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "fase2_pipeline_validado_readme_techextraction",
+      "target": "contexto_fase2_componente_c"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_entityextraction",
+      "target": "fase2_pipeline_validado_readme_techextraction"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "requirements_pydantic",
+      "target": "contexto_fase2_entityextraction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "contexto_fase2_proveedores_gratuitos",
+      "target": "contexto_fase2_with_structured_output"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "fase2_pipeline_validado_readme_chain",
+      "target": "fase2_pipeline_validado_readme_techextraction"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "fase2_pipeline_validado_readme_prueba_de_estres",
+      "target": "fase2_pipeline_validado_readme_techextraction"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "requirements_pydantic",
+      "target": "fase2_pipeline_validado_readme_techextraction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "fase2_pipeline_validado/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "fase2_pipeline_validado_readme_process_text",
+      "target": "fase2_pipeline_validado_readme_chain"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "requirements.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "requirements_groq",
+      "target": "requirements_langchain_groq"
     }
   ],
   "hyperedges": [
+    {
+      "id": "fase2_components_deliverable",
+      "label": "Fase 2 \u2014 Tres componentes evaluables del curso AI Engineering",
+      "nodes": [
+        "contexto_fase2_componente_a",
+        "contexto_fase2_componente_b",
+        "contexto_fase2_componente_c"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexto_fase2.md"
+    },
+    {
+      "id": "pydantic_validated_schemas_fase1_fase2",
+      "label": "Modelos Pydantic de validacion (Fase 1 y Fase 2)",
+      "nodes": [
+        "contexto_fase2_entityextraction",
+        "fase2_pipeline_validado_readme_techextraction"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "README.md"
+    },
     {
       "id": "demo1_concurrent_model_calls",
       "label": "Demo 1: gather + timeout sobre tres llamadas simuladas a modelos",
@@ -3898,24 +4880,6 @@
       "source_file": "entregable_a_orquestador/entregable_a_evidencia.pdf"
     },
     {
-      "id": "unified_async_llm_client_architecture",
-      "label": "Componentes de la arquitectura Unified Async LLM Client",
-      "nodes": [
-        "readme_chatmessage",
-        "readme_llmconfig",
-        "readme_modelresponse",
-        "readme_basellmclient",
-        "readme_asyncllmmanager",
-        "readme_openaiclient",
-        "readme_geminiclient",
-        "readme_groqclient"
-      ],
-      "relation": "form",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "README.md"
-    },
-    {
       "id": "free_ai_providers_recommendation",
       "label": "Proveedores de IA gratuitos recomendados para Entregable B",
       "nodes": [
@@ -3929,5 +4893,5 @@
       "source_file": "contexto_fase1.md"
     }
   ],
-  "built_at_commit": "1a3525f62679b074761fb3c4bf4b32cc065097e4"
+  "built_at_commit": "b8bcf39a3d369ac3b459a0a2d403fd46e07d7968"
 }
