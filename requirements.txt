@@ -19,3 +19,14 @@ tiktoken>=0.8
 langchain-text-splitters>=1.0
 scikit-learn>=1.5
 numpy>=2.0
+
+# Fase 4 - Escalabilidad documental (RAG avanzado y Pinecone)
+pinecone>=8.0
+rank-bm25>=0.2
+langchain-community>=0.4
+# nota: langchain-pinecone se omite - todavia no tiene build para Python
+# 3.14 en este entorno (depende de simsimd<4.0, sin wheels para 3.14).
+# Se usa el SDK nativo `pinecone` directo via un BaseRetriever propio
+# (fase4_rag_pinecone/pinecone_retriever.py). Si tu Python es <3.14, podes
+# instalar langchain-pinecone y reemplazar ese modulo por
+# PineconeVectorStore sin cambiar el resto del componente.

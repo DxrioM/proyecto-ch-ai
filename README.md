@@ -2,7 +2,7 @@
 
 Proyecto de 8 fases del curso "AI Engineering". Cada fase se documenta en su
 propio `contexto_faseN.md` y se implementa en su propia carpeta. Este README
-cubre las Fases 1 a 3; a medida que se aprueben las siguientes fases se van
+cubre las Fases 1 a 4; a medida que se aprueben las siguientes fases se van
 agregando sus secciones.
 
 - Fase 1: [contexto_fase1.md](contexto_fase1.md) — interfaz base, conexion y
@@ -11,6 +11,8 @@ agregando sus secciones.
   orquestacion con LangChain.
 - Fase 3: [contexto_fase3.md](contexto_fase3.md) — persistencia de datos y
   vector DBs (RAG).
+- Fase 4: [contexto_fase4.md](contexto_fase4.md) — escalabilidad documental,
+  RAG avanzado y Pinecone.
 
 ## Estructura
 
@@ -51,12 +53,27 @@ proyecto_ch_ai/
 │   └── document_processor.py     # chunking por tokens (tiktoken + RecursiveCharacterTextSplitter)
 ├── fase3_ejercicio_chromadb/            # Fase 3 - Componente C
 │   └── vector_memory_manager.py  # ChromaDB CRUD (upsert/query/delete)
-└── fase3_rag_local/                     # Fase 3 - Componente D (Pre-entrega 3)
-    ├── data/                     # dataset de ejemplo (.md)
-    ├── ingest.py                 # ingesta idempotente: chunking + ChromaDB
-    ├── rag_chain.py               # retriever + cadena LCEL grounded (RagResponse)
-    ├── main.py                   # get_rag_response() + pregunta valida + pregunta trampa
-    └── README.md
+├── fase3_rag_local/                     # Fase 3 - Componente D (Pre-entrega 3)
+│   ├── data/                     # dataset de ejemplo (.md)
+│   ├── ingest.py                 # ingesta idempotente: chunking + ChromaDB
+│   ├── rag_chain.py              # retriever + cadena LCEL grounded (RagResponse)
+│   ├── main.py                   # get_rag_response() + pregunta valida + pregunta trampa
+│   └── README.md
+├── fase4_ejercicio_pinecone_setup/      # Fase 4 - Componente A
+│   └── setup_infra.py            # crea/verifica indice Pinecone Serverless (idempotente)
+├── fase4_ejercicio_ingesta_masiva/      # Fase 4 - Componente B
+│   └── ingestion_pipeline.py     # IngestionPipeline: batching + metadatos + filtro por categoria
+├── fase4_metricas_recuperacion_hibrida/ # Fase 4 - Componente C (repaso conceptual)
+│   └── README.md                 # Precision/Recall, BM25+embeddings, RRF, cross-encoders
+└── fase4_rag_pinecone/                  # Fase 4 - Componente D (Pre-entrega 4)
+    ├── data/                     # reutiliza el corpus de fase3_rag_local/data
+    ├── golden_set.json           # 5 preguntas con documento fuente esperado
+    ├── embeddings.py             # adaptador LangChain sobre el embedding local de la Fase 3
+    ├── pinecone_retriever.py     # BaseRetriever propio sobre el SDK nativo de Pinecone
+    ├── ingest.py                 # chunking + embeddings + upsert idempotente a Pinecone
+    ├── rag_system.py             # RAGSystem: EnsembleRetriever (Pinecone + BM25)
+    ├── evaluate.py                # Precision@5 / Recall@5 sobre el golden set
+    └── README.md                 # incluye pasos para replicar el indice
 ```
 
 ## Requisitos
@@ -330,3 +347,105 @@ nunca antes ejercitada) y casos limite de `DocumentProcessor`.
 ```bash
 python -m pytest tests/ -v
 ```
+
+---
+
+# Fase 4 — Escalabilidad documental: RAG avanzado y Pinecone
+
+Escala el RAG local de la Fase 3 a la nube: Pinecone Serverless reemplaza a
+ChromaDB, se agrega recuperacion **hibrida** (vectorial + BM25) y una capa
+de evaluacion cuantitativa (`Precision@5` / `Recall@5`). El chunking, el
+LLM de generacion y el corpus de ejemplo de la Fase 3 se reutilizan tal
+cual. Ver [contexto_fase4.md](contexto_fase4.md) para el detalle completo.
+
+> **Estado**: el Componente B (mock, sin Pinecone real) esta completo y
+> probado. Los Componentes A y D necesitan una cuenta gratuita de Pinecone
+> (`PINECONE_API_KEY`, sin tarjeta — `app.pinecone.io`); el codigo esta
+> completo y lo que no depende de una conexion real ya esta probado con
+> tests sinteticos (ver mas abajo). Falta la validacion end-to-end real en
+> cuanto la key este disponible.
+
+**Nota de compatibilidad**: `langchain-pinecone` (el paquete que sugiere la
+consigna) todavia no tiene build para Python 3.14 en este entorno (depende
+de `simsimd<4.0`, sin wheels para esa version). Se reemplaza por un
+`BaseRetriever` propio sobre el SDK nativo de `pinecone`
+(`fase4_rag_pinecone/pinecone_retriever.py`), que cumple el mismo contrato
+y se combina con `BM25Retriever` exactamente igual. Detalle completo en
+[fase4_rag_pinecone/README.md](fase4_rag_pinecone/README.md).
+
+## Componente A — Pinecone Serverless
+
+`fase4_ejercicio_pinecone_setup/setup_infra.py`: crea el indice Serverless
+solo si no existe (`ensure_index_exists`, idempotente), espera a que este
+listo, y hace un upsert de prueba en el namespace `dev-environment`
+(separado de los datos reales del Componente D).
+
+```bash
+python fase4_ejercicio_pinecone_setup/setup_infra.py
+```
+
+## Componente B — Ingesta masiva y metadatos avanzados
+
+`fase4_ejercicio_ingesta_masiva/ingestion_pipeline.py`: `IngestionPipeline`
+sobre un `MockPineconeIndex` (no requiere cuenta real). Metadatos
+enriquecidos (`category`, `author`, `ingested_at`, `char_count`), batching
+(nunca vector por vector), y busqueda filtrada por categoria (`$eq`). Se
+reutiliza tal cual en el Componente D contra Pinecone real.
+
+```bash
+python fase4_ejercicio_ingesta_masiva/ingestion_pipeline.py
+```
+
+## Componente C — Metricas y recuperacion hibrida (repaso conceptual)
+
+No es un entregable con codigo propio. Ver
+[fase4_metricas_recuperacion_hibrida/README.md](fase4_metricas_recuperacion_hibrida/README.md):
+Precision vs Recall, por que combinar BM25 + embeddings, RRF, re-ranking
+con cross-encoders — la base teorica que aplica el Componente D.
+
+## Componente D — Sistema RAG escalable en la nube (Pre-entrega 4)
+
+El entregable principal de la Fase 4. `RAGSystem` (`EnsembleRetriever`
+combinando el `PineconeRetriever` propio + `BM25Retriever`) y `evaluate.py`
+(`Precision@5`/`Recall@5` sobre un golden set de 5 preguntas). Reutiliza el
+corpus de `fase3_rag_local/data/` para demostrar que es el mismo sistema
+escalado a la nube. Detalle completo, pasos para replicar el indice de
+Pinecone, y que esta validado hasta ahora en
+[fase4_rag_pinecone/README.md](fase4_rag_pinecone/README.md).
+
+```bash
+python -m fase4_rag_pinecone.ingest
+python -m fase4_rag_pinecone.evaluate
+```
+
+## Variables de entorno (Fase 4)
+
+| Variable | Notas |
+|---|---|
+| `PINECONE_API_KEY` | Gratis, sin tarjeta — `app.pinecone.io` |
+
+## Tests sinteticos (Fase 4)
+
+`tests/test_fase4_resilience.py`: batching y filtrado de `IngestionPipeline`,
+`PineconeRetriever` construyendo `Document` a partir de una respuesta con
+la misma forma que el SDK real, `evaluate.evaluar()` con sistemas
+perfectos/fallidos, e idempotencia + limpieza de chunks huerfanos de
+`fase4_rag_pinecone.ingest()` — todo sin necesitar `PINECONE_API_KEY`.
+
+```bash
+python -m pytest tests/ -v
+```
+
+## Errores comunes evitados (especificos de Pinecone)
+
+- **Mismatch de dimensiones**: el indice se crea con `dimension=384`,
+  exactamente la que produce `LocalChromaEmbeddings`; nunca se mezclan
+  embeddings de distintos modelos entre indexar y consultar.
+- **Ignorar namespaces**: los datos de prueba del Componente A
+  (`dev-environment`) y los datos reales del Componente D
+  (`fase4-corpus`) viven en namespaces separados dentro del mismo indice.
+- **Metrica erronea**: `metric="cosine"`, la correcta para embeddings de
+  Sentence Transformers (nunca euclidiana).
+- **IDs no deterministicos**: a diferencia del enunciado generico del
+  Componente B (que usa `uuid4`), la ingesta real del Componente D usa IDs
+  deterministicos (`id_generator` inyectable) para poder ser idempotente.

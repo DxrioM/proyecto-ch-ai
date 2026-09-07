@@ -1,0 +1,22 @@
+[
+  {
+    "pregunta": "Que base de datos usa el sistema de pedidos para persistencia?",
+    "documento_id_esperado": "arquitectura.md"
+  },
+  {
+    "pregunta": "Que cola de mensajes se usa para la comunicacion asincrona entre los microservicios?",
+    "documento_id_esperado": "arquitectura.md"
+  },
+  {
+    "pregunta": "Que pasa si el health check de Kubernetes falla en los primeros minutos despues de un despliegue?",
+    "documento_id_esperado": "despliegue.md"
+  },
+  {
+    "pregunta": "Cual es el tiempo de respuesta comprometido para un incidente de Severidad 1?",
+    "documento_id_esperado": "politicas_soporte.md"
+  },
+  {
+    "pregunta": "Por que puede aparecer stock insuficiente en pedidos que si tienen stock disponible?",
+    "documento_id_esperado": "troubleshooting.md"
+  }
+]
