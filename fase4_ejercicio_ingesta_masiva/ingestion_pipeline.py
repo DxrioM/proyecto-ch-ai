@@ -52,21 +52,31 @@ class IngestionPipeline:
         # contexto sin inflar el tamano del vector.
         self.text_snippet_length = text_snippet_length
 
-    def create_metadata(self, doc_text: str, category: str, author: str) -> Dict[str, Any]:
+    def create_metadata(
+        self, doc_text: str, category: str, author: str, extra_metadata: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
         """Arma los metadatos enriquecidos de un documento.
 
         Guardar el texto (completo o un snippet, segun text_snippet_length)
         dentro de la metadata evita tener que consultar otra base de datos
         relacional solo para mostrar o reconstruir el contenido.
+
+        extra_metadata es inyectable para agregar campos que el enunciado
+        generico del ejercicio no contempla (ej. "source", el nombre de
+        archivo de origen, que necesita fase4_rag_pinecone para poder
+        identificar de que documento vino cada chunk recuperado).
         """
         texto = doc_text if self.text_snippet_length is None else doc_text[: self.text_snippet_length]
-        return {
+        metadata = {
             "text": texto,
             "category": category,
             "author": author,
             "ingested_at": datetime.now(timezone.utc).isoformat(),
             "char_count": len(doc_text),
         }
+        if extra_metadata:
+            metadata.update(extra_metadata)
+        return metadata
 
     async def process_and_upsert_batches(
         self,
@@ -97,7 +107,9 @@ class IngestionPipeline:
                 {
                     "id": id_generator(i + j, doc),
                     "values": doc["embedding"],
-                    "metadata": self.create_metadata(doc["text"], doc["category"], doc["author"]),
+                    "metadata": self.create_metadata(
+                        doc["text"], doc["category"], doc["author"], doc.get("extra_metadata")
+                    ),
                 }
                 for j, doc in enumerate(lote)
             ]

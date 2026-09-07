@@ -29,7 +29,11 @@ class LocalChromaEmbeddings(Embeddings):
         self._fn = embedding_functions.DefaultEmbeddingFunction()
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        return [list(vector) for vector in self._fn(texts)]
+        # DefaultEmbeddingFunction devuelve numpy.float32; hay que castear
+        # a float nativo de Python, si no el SDK de Pinecone no puede
+        # serializar el vector a JSON al upsertear ("Type is not JSON
+        # serializable: numpy.float32").
+        return [[float(x) for x in vector] for vector in self._fn(texts)]
 
     def embed_query(self, text: str) -> List[float]:
-        return list(self._fn([text])[0])
+        return [float(x) for x in self._fn([text])[0]]

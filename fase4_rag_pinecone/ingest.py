@@ -151,6 +151,11 @@ async def ingest(
                 "embedding": vectores[i],
                 "category": path.stem,
                 "author": "sistema-pedidos-online",
+                # extra_metadata: create_metadata() del ejercicio generico
+                # no tiene un campo "source" (solo "category"); se agrega
+                # aca para que rag_system.py/evaluate.py puedan identificar
+                # de que archivo vino cada chunk recuperado.
+                "extra_metadata": {"source": path.name, "chunk_index": i},
             }
             for i in range(len(chunks))
         ]

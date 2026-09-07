@@ -45,9 +45,9 @@
     "semantic_hash": "fab6d80ba8b6ae26b95a59065a032149"
   },
   "README.md": {
-    "mtime": 1788795791.4759824,
-    "ast_hash": "599bc2e314f287d6c9932331d140c19b",
-    "semantic_hash": "599bc2e314f287d6c9932331d140c19b"
+    "mtime": 1788797898.915405,
+    "ast_hash": "366a5787f440d1579810067ab135e239",
+    "semantic_hash": "366a5787f440d1579810067ab135e239"
   },
   "contexto_fase1.md": {
     "mtime": 1786320228.9377115,
@@ -200,9 +200,9 @@
     "semantic_hash": "6aaa01dbd1016da1403acc2a0665d1ef"
   },
   "fase4_ejercicio_ingesta_masiva/ingestion_pipeline.py": {
-    "mtime": 1788795357.2452083,
-    "ast_hash": "cd8f3ed0891100f40a0264ed938606ab",
-    "semantic_hash": "cd8f3ed0891100f40a0264ed938606ab"
+    "mtime": 1788797724.2500656,
+    "ast_hash": "a69fe2d0fe1c72179e02148530653c9a",
+    "semantic_hash": "a69fe2d0fe1c72179e02148530653c9a"
   },
   "fase4_ejercicio_pinecone_setup/setup_infra.py": {
     "mtime": 1788795308.8765166,
@@ -215,9 +215,9 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "fase4_rag_pinecone/embeddings.py": {
-    "mtime": 1788795204.7743285,
-    "ast_hash": "07feb019c7437b3e58d81d61a61f6522",
-    "semantic_hash": "07feb019c7437b3e58d81d61a61f6522"
+    "mtime": 1788797590.8850703,
+    "ast_hash": "b820a4ade50dcaf5fbb471959a2ca872",
+    "semantic_hash": "b820a4ade50dcaf5fbb471959a2ca872"
   },
   "fase4_rag_pinecone/evaluate.py": {
     "mtime": 1788795484.3014622,
@@ -230,9 +230,9 @@
     "semantic_hash": "dff3efe29ffcf503dae4f5bfac89ca3e"
   },
   "fase4_rag_pinecone/ingest.py": {
-    "mtime": 1788795630.2538311,
-    "ast_hash": "3adcd748ba537a396597b3248aded60e",
-    "semantic_hash": "3adcd748ba537a396597b3248aded60e"
+    "mtime": 1788797737.0359483,
+    "ast_hash": "85b4f25d664c912865090c0c15696671",
+    "semantic_hash": "85b4f25d664c912865090c0c15696671"
   },
   "fase4_rag_pinecone/pinecone_retriever.py": {
     "mtime": 1788795236.6424978,
@@ -260,9 +260,9 @@
     "semantic_hash": "e00db19101e9f4986b1480071cc028ca"
   },
   "fase4_rag_pinecone/README.md": {
-    "mtime": 1788795533.7357812,
-    "ast_hash": "cc0a748d7ffea99e4b4fe2595959be0a",
-    "semantic_hash": "cc0a748d7ffea99e4b4fe2595959be0a"
+    "mtime": 1788797879.39133,
+    "ast_hash": "de9294e397b505b8da19f8be1438bf97",
+    "semantic_hash": "de9294e397b505b8da19f8be1438bf97"
   },
   "fase4_rag_pinecone/data/README.md": {
     "mtime": 1788795508.1473277,

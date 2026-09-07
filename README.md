@@ -358,12 +358,11 @@ de evaluacion cuantitativa (`Precision@5` / `Recall@5`). El chunking, el
 LLM de generacion y el corpus de ejemplo de la Fase 3 se reutilizan tal
 cual. Ver [contexto_fase4.md](contexto_fase4.md) para el detalle completo.
 
-> **Estado**: el Componente B (mock, sin Pinecone real) esta completo y
-> probado. Los Componentes A y D necesitan una cuenta gratuita de Pinecone
-> (`PINECONE_API_KEY`, sin tarjeta — `app.pinecone.io`); el codigo esta
-> completo y lo que no depende de una conexion real ya esta probado con
-> tests sinteticos (ver mas abajo). Falta la validacion end-to-end real en
-> cuanto la key este disponible.
+> **Estado**: los 4 componentes estan completos y validados, incluida la
+> Pre-entrega 4 end-to-end contra una cuenta real de Pinecone (free tier):
+> `Recall@5 = 1.00` sobre el golden set (el documento correcto siempre
+> aparecio primero en el ranking hibrido). Detalle completo en
+> [fase4_rag_pinecone/README.md](fase4_rag_pinecone/README.md).
 
 **Nota de compatibilidad**: `langchain-pinecone` (el paquete que sugiere la
 consigna) todavia no tiene build para Python 3.14 en este entorno (depende

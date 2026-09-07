@@ -6,14 +6,35 @@ evaluacion cuantitativa (`Precision@5` / `Recall@5`).
 
 ## Estado de este componente
 
-> **Pendiente de validacion end-to-end real**: este componente necesita
-> una cuenta de Pinecone (`PINECONE_API_KEY`, free tier, sin tarjeta —
-> `app.pinecone.io`). El codigo esta completo y las partes que no dependen
-> de una conexion real a Pinecone ya estan probadas (ver "Que esta
-> validado" mas abajo); en cuanto la key este disponible, correr
-> `python -m fase4_rag_pinecone.ingest` seguido de
-> `python -m fase4_rag_pinecone.evaluate` y actualizar esta seccion con los
-> resultados reales.
+**Validado end-to-end contra Pinecone real** (indice `proyecto-ch-ai-fase4`,
+free tier). Resultado de `evaluate.py` sobre el golden set de 5 preguntas:
+
+```
+Recall@5: 1.00
+Precision@5: 0.25
+```
+
+- **Recall@5 = 1.00**: el documento fuente correcto aparecio entre los
+  recuperados en las 5 preguntas, y en los 5 casos quedo **primero** en el
+  ranking — la busqueda hibrida (Pinecone + BM25) funciona.
+- **Precision@5 = 0.25 es un artefacto del tamano del corpus de prueba**,
+  no un problema de calidad: el dataset de ejemplo tiene solo 4 documentos
+  en total, asi que pedir `top_k=5` siempre devuelve los 4 (1 correcto de
+  4 recuperados = 0.25) en vez de filtrar ruido real. Con un corpus mas
+  grande (docenas o cientos de documentos), `Precision@5` reflejaria
+  cuanto ruido hay entre los 5 recuperados de verdad.
+
+Dos bugs reales se encontraron y corrigieron durante esta validacion (no
+detectables sin conexion real a Pinecone):
+
+1. `LocalChromaEmbeddings` devolvia `numpy.float32` en vez de `float`
+   nativo de Python — el SDK de Pinecone no puede serializar eso a JSON
+   (`upsert` fallaba con `PineconeTypeError`).
+2. `IngestionPipeline.create_metadata()` (Componente B) no tiene un campo
+   `source`, solo `category` — sin el, no habia forma de saber de que
+   archivo vino cada chunk recuperado. Se agrego `extra_metadata`
+   inyectable (opcional, no rompe el comportamiento del Componente B) para
+   poder incluir `source` sin tocar el esquema generico del ejercicio.
 
 ## Como replicar el indice de Pinecone
 
@@ -69,21 +90,17 @@ evaluacion cuantitativa (`Precision@5` / `Recall@5`).
   documento esperado?) sobre `golden_set.json` (5 preguntas con fuente
   conocida).
 
-## Que esta validado ahora mismo (sin Pinecone real)
+## Que esta probado
 
-- `LocalChromaEmbeddings`: dimension real verificada en 384, coincide con
-  el indice configurado.
-- `PineconeRetriever`: probado con un indice falso (misma forma de
-  respuesta que el SDK real) — arma correctamente los `Document` de
-  LangChain a partir de los matches.
-- `evaluate.evaluar()`: probado con sistemas falsos (uno que siempre
-  acierta, uno que siempre falla) — la logica de `Recall@k`/`Precision@k`
-  da los numeros esperados en ambos casos extremos.
-- Componente A (`setup_infra.py`) y Componente B (`ingestion_pipeline.py`)
-  validados por separado (ver sus propias secciones en el README raiz).
-
-Lo unico que falta ejercitar con una cuenta real es la ingesta y
-recuperacion contra Pinecone en si (network + indice real).
+- Tests sinteticos (sin red, deterministas): `LocalChromaEmbeddings`
+  (dimension 384), `PineconeRetriever` con un indice falso,
+  `evaluate.evaluar()` con sistemas falsos (perfecto / siempre falla), e
+  idempotencia + limpieza de chunks huerfanos de `ingest()` — ver
+  `tests/test_fase4_resilience.py`.
+- Validacion real end-to-end (ver "Estado de este componente" arriba):
+  `setup_infra.py` crea el indice real e idempotente (2da corrida lo
+  reutiliza sin recrearlo), `ingest.py` sube el corpus completo, y
+  `evaluate.py` da `Recall@5 = 1.00` sobre el golden set.
 
 ## Variables de entorno
 
