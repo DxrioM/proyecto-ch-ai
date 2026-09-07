@@ -4,6 +4,7 @@ retriever (ChromaDB) -> prompt con el contexto recuperado -> LLM (Groq,
 reutilizando el patron LCEL de la Fase 2) -> salida validada con Pydantic.
 """
 
+import logging
 import os
 from typing import List, Optional
 
@@ -14,6 +15,9 @@ from langchain_groq import ChatGroq
 from pydantic import BaseModel, Field
 
 from fase3_ejercicio_chromadb.vector_memory_manager import VectorMemoryManager
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(message)s", datefmt="%H:%M:%S")
+logger = logging.getLogger("rag_chain")
 
 # Entre 3 y 5, nunca mas: evita el problema de "contexto infinito" /
 # "Lost in the Middle" (el LLM pierde precision con demasiados fragmentos).
@@ -90,10 +94,25 @@ async def get_rag_response(
     top_k: int = TOP_K,
 ) -> RagResponse:
     """Flujo RAG end-to-end asincrono: recupera contexto relevante en
-    ChromaDB y genera una respuesta grounded (basada solo en ese contexto)."""
+    ChromaDB y genera una respuesta grounded (basada solo en ese contexto).
+
+    Nunca deja escapar una excepcion: si la generacion falla incluso
+    despues de los reintentos de with_retry() (error de red persistente) o
+    el LLM devuelve algo que no valida contra RagResponse, se loggea el
+    error y se devuelve una RagResponse de fallback en vez de romper el
+    programa (mismo criterio que entregable_b_llm_client y
+    fase2_pipeline_validado)."""
     chain = chain or build_generation_chain()
 
     resultados = manager.semantic_search(query, n_results=top_k)
     contexto = format_context(resultados)
 
-    return await chain.ainvoke({"contexto": contexto, "pregunta": query})
+    try:
+        return await chain.ainvoke({"contexto": contexto, "pregunta": query})
+    except Exception as e:
+        logger.error("Fallo la generacion RAG (%s): %s", type(e).__name__, e)
+        return RagResponse(
+            respuesta="No se pudo generar una respuesta por un error tecnico. Intenta de nuevo mas tarde.",
+            fuentes=[],
+            encontrado_en_contexto=False,
+        )

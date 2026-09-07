@@ -10,7 +10,7 @@ import hashlib
 import json
 import logging
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Optional
 
 from fase3_ejercicio_chromadb.vector_memory_manager import VectorMemoryManager
 from fase3_ejercicio_chunking.document_processor import DocumentProcessor
@@ -29,23 +29,34 @@ def _file_hash(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
-def _load_manifest() -> Dict[str, dict]:
-    if MANIFEST_PATH.exists():
-        return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+def _load_manifest(manifest_path: Path) -> Dict[str, dict]:
+    if manifest_path.exists():
+        return json.loads(manifest_path.read_text(encoding="utf-8"))
     return {}
 
 
-def _save_manifest(manifest: Dict[str, dict]) -> None:
-    VECTORSTORE_DIR.mkdir(parents=True, exist_ok=True)
-    MANIFEST_PATH.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
+def _save_manifest(manifest: Dict[str, dict], manifest_path: Path) -> None:
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
-def ingest(data_dir: Path = DATA_DIR, force: bool = False) -> VectorMemoryManager:
+def ingest(
+    data_dir: Path = DATA_DIR,
+    force: bool = False,
+    manager: Optional[VectorMemoryManager] = None,
+    processor: Optional[DocumentProcessor] = None,
+    manifest_path: Path = MANIFEST_PATH,
+) -> VectorMemoryManager:
     """Fragmenta y persiste los archivos de data_dir en ChromaDB de forma
-    idempotente. Si force=True, ignora el manifest y reindexa todo."""
-    manager = VectorMemoryManager(persist_path=str(VECTORSTORE_DIR), collection_name=COLLECTION_NAME)
-    processor = DocumentProcessor()
-    manifest = {} if force else _load_manifest()
+    idempotente. Si force=True, ignora el manifest y reindexa todo.
+
+    manager y processor son inyectables para poder testear la logica de
+    idempotencia y limpieza de chunks huerfanos con dobles falsos, sin
+    depender de ChromaDB/tiktoken reales (ver tests/).
+    """
+    manager = manager or VectorMemoryManager(persist_path=str(VECTORSTORE_DIR), collection_name=COLLECTION_NAME)
+    processor = processor or DocumentProcessor()
+    manifest = {} if force else _load_manifest(manifest_path)
     new_manifest: Dict[str, dict] = {}
 
     source_files = sorted(data_dir.glob("*.md")) + sorted(data_dir.glob("*.txt"))
@@ -78,7 +89,7 @@ def ingest(data_dir: Path = DATA_DIR, force: bool = False) -> VectorMemoryManage
         logger.info("Indexado: %s (%d chunks)", path.name, len(chunks))
         new_manifest[path.name] = {"hash": current_hash, "chunk_count": len(chunks)}
 
-    _save_manifest(new_manifest)
+    _save_manifest(new_manifest, manifest_path)
     logger.info("Ingesta completa. Documentos en la coleccion: %d", manager.count())
     return manager
 

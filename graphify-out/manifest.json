@@ -45,9 +45,9 @@
     "semantic_hash": "fab6d80ba8b6ae26b95a59065a032149"
   },
   "README.md": {
-    "mtime": 1788790600.3762524,
-    "ast_hash": "47cc35af097d3601a05667b7a6eb1d08",
-    "semantic_hash": "47cc35af097d3601a05667b7a6eb1d08"
+    "mtime": 1788792330.800541,
+    "ast_hash": "7c9cbcfd3535ef4cd79992ac22529fde",
+    "semantic_hash": "7c9cbcfd3535ef4cd79992ac22529fde"
   },
   "contexto_fase1.md": {
     "mtime": 1786320228.9377115,
@@ -140,9 +140,9 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "fase3_rag_local/ingest.py": {
-    "mtime": 1788790127.4418795,
-    "ast_hash": "0490c3cd21fa835dba13fe635323c268",
-    "semantic_hash": "0490c3cd21fa835dba13fe635323c268"
+    "mtime": 1788792200.3686478,
+    "ast_hash": "32c7b3c14f6c96ca6b5bef7f72780a32",
+    "semantic_hash": "32c7b3c14f6c96ca6b5bef7f72780a32"
   },
   "fase3_rag_local/main.py": {
     "mtime": 1788790150.0348911,
@@ -150,9 +150,9 @@
     "semantic_hash": "b6287817ceaa35b137e2d01583dbacfa"
   },
   "fase3_rag_local/rag_chain.py": {
-    "mtime": 1788790142.2389703,
-    "ast_hash": "11c86aecc07e773a7720c2fd4ffad571",
-    "semantic_hash": "11c86aecc07e773a7720c2fd4ffad571"
+    "mtime": 1788792216.0245278,
+    "ast_hash": "3d2943ff7f07a9afdcdf8d765d93c78f",
+    "semantic_hash": "3d2943ff7f07a9afdcdf8d765d93c78f"
   },
   "contexto_fase3.md": {
     "mtime": 1788789471.811497,
@@ -165,9 +165,9 @@
     "semantic_hash": "5a87d81c2e5abae65e727326e28f547c"
   },
   "fase3_rag_local/README.md": {
-    "mtime": 1788790311.8086803,
-    "ast_hash": "f6e63331aa7ff11db1ba7395ce1f1859",
-    "semantic_hash": "f6e63331aa7ff11db1ba7395ce1f1859"
+    "mtime": 1788792324.1567013,
+    "ast_hash": "2646bad95835d38a0241f9c9acfb1c08",
+    "semantic_hash": "2646bad95835d38a0241f9c9acfb1c08"
   },
   "fase3_rag_local/data/arquitectura.md": {
     "mtime": 1788790094.9958103,
@@ -193,5 +193,10 @@
     "mtime": 1788790530.4489982,
     "ast_hash": "04dcf57d861553939a9c379c4322454d",
     "semantic_hash": "04dcf57d861553939a9c379c4322454d"
+  },
+  "tests/test_fase3_resilience.py": {
+    "mtime": 1788792261.253522,
+    "ast_hash": "6aaa01dbd1016da1403acc2a0665d1ef",
+    "semantic_hash": "6aaa01dbd1016da1403acc2a0665d1ef"
   }
 }

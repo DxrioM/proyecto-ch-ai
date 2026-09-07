@@ -85,6 +85,26 @@ inventar una respuesta plausible.
 - **IDs deterministicos**: `f"{nombre_archivo}_{indice_de_chunk}"`, nunca
   aleatorios — permite que `upsert()` actualice en vez de duplicar.
 
+## Tests sinteticos (sin llamar a la API real)
+
+`tests/test_fase3_resilience.py` (en la raiz del repo) prueba, con dobles
+falsos deterministas:
+
+- `get_rag_response()`: recuperacion tras fallos transitorios de `with_retry()`,
+  fallback controlado (sin crash) cuando se agotan los reintentos, y
+  contencion de `ValidationError`.
+- `VectorMemoryManager`: `upsert_documents`/`semantic_search`/`delete_by_id`
+  devuelven un valor seguro (`False`/`[]`) ante un `ChromaError`, en vez de
+  propagar la excepcion.
+- `ingest()`: idempotencia real (un archivo sin cambios no dispara upsert)
+  y la rama que borra chunks huerfanos cuando un archivo se achica —
+  documentada pero nunca antes ejercitada hasta este test.
+- `DocumentProcessor`: casos limite (texto vacio, texto muy corto).
+
+```bash
+python -m pytest tests/test_fase3_resilience.py -v
+```
+
 ## Vectorstore local
 
 `vectorstore/` (la base de ChromaDB en disco + `manifest.json`) se genera

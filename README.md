@@ -318,3 +318,15 @@ locales y no necesitan ninguna key.
   explicitamente a responder "no lo se" cuando la respuesta no esta en el
   contexto recuperado; probado con una pregunta trampa real (ver
   `fase3_rag_local/README.md`).
+
+## Tests sinteticos (Fase 3)
+
+`tests/test_fase3_resilience.py` prueba `get_rag_response()` (retry +
+ValidationError, mismo patron que la Fase 2), el manejo de `ChromaError` de
+`VectorMemoryManager`, la idempotencia real de `ingest()` (incluida la
+rama que borra chunks huerfanos al achicarse un archivo, documentada pero
+nunca antes ejercitada) y casos limite de `DocumentProcessor`.
+
+```bash
+python -m pytest tests/ -v
+```
