@@ -72,3 +72,27 @@ sus 3 intentos (por un error de red/rate limit persistente, o porque el LLM
 sigue devolviendo un JSON que no valida contra `TechExtraction`), la funcion
 loggea el error (`type(e).__name__` + mensaje) y devuelve `None`, dejando que
 el llamador decida el siguiente paso (reintento manual, fallback, alerta).
+
+`process_text()` y `run_validated_chain()` (Componente B) aceptan un modelo
+resiliente inyectable (`resilient_model` / `resilient_llm`) para poder
+testear el mecanismo de retry sin depender de la API real — ver
+`tests/test_fase2_resilience.py` en la raiz del repo.
+
+## Tests sinteticos (sin llamar a la API real)
+
+`tests/test_fase2_resilience.py` prueba la resiliencia real de los
+Componentes B y C con un `Runnable` falso envuelto en el `.with_retry()`
+autentico de LangChain (no una reimplementacion casera), cubriendo:
+
+1. El modelo falla 2 veces por un error de red transitorio y se recupera al
+   3er intento -> la cadena devuelve el resultado final.
+2. El modelo falla siempre -> `with_retry` agota los 3 intentos y la funcion
+   devuelve `None` sin crashear.
+3. El LLM devuelve datos que no validan contra el esquema Pydantic
+   (`ValidationError`) -> tambien queda contenido, sin crashear.
+
+Correr desde la raiz del repo:
+
+```bash
+python -m pytest tests/ -v
+```

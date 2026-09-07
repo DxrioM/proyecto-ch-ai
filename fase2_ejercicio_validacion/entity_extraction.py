@@ -11,6 +11,7 @@ from typing import List, Optional
 
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import Runnable
 from langchain_groq import ChatGroq
 from pydantic import BaseModel, Field
 
@@ -28,25 +29,33 @@ class EntityExtraction(BaseModel):
     )
 
 
-async def run_validated_chain(text: str) -> Optional[EntityExtraction]:
-    """Extrae entidades del texto de forma validada y resiliente ante fallos."""
-    load_dotenv()
-    groq_api_key = os.environ.get("GROQ_API_KEY")
-    if not groq_api_key:
-        raise ValueError("Falta GROQ_API_KEY en .env")
+async def run_validated_chain(
+    text: str, resilient_llm: Optional[Runnable] = None
+) -> Optional[EntityExtraction]:
+    """Extrae entidades del texto de forma validada y resiliente ante fallos.
 
-    llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0, api_key=groq_api_key)
+    resilient_llm es inyectable para poder testear la cadena con un Runnable
+    falso (ver tests/), sin depender de la API real de Groq. Si no se pasa,
+    se arma el modelo real con ChatGroq.
+    """
+    if resilient_llm is None:
+        load_dotenv()
+        groq_api_key = os.environ.get("GROQ_API_KEY")
+        if not groq_api_key:
+            raise ValueError("Falta GROQ_API_KEY en .env")
 
-    # Salida estructurada: el LLM debe devolver un EntityExtraction valido,
-    # no texto libre que despues haya que parsear a mano.
-    structured_llm = llm.with_structured_output(EntityExtraction)
+        llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0, api_key=groq_api_key)
 
-    # Resiliencia: reintenta hasta 3 veces ante fallos transitorios de red,
-    # rate limit o JSON mal formado, con backoff exponencial con jitter.
-    resilient_llm = structured_llm.with_retry(
-        stop_after_attempt=3,
-        wait_exponential_jitter=True,
-    )
+        # Salida estructurada: el LLM debe devolver un EntityExtraction valido,
+        # no texto libre que despues haya que parsear a mano.
+        structured_llm = llm.with_structured_output(EntityExtraction)
+
+        # Resiliencia: reintenta hasta 3 veces ante fallos transitorios de red,
+        # rate limit o JSON mal formado, con backoff exponencial con jitter.
+        resilient_llm = structured_llm.with_retry(
+            stop_after_attempt=3,
+            wait_exponential_jitter=True,
+        )
 
     prompt = ChatPromptTemplate.from_messages(
         [

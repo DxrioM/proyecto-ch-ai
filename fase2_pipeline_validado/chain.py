@@ -10,6 +10,7 @@ from typing import Optional
 
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import Runnable
 from langchain_groq import ChatGroq
 
 from .schemas import TechExtraction
@@ -27,23 +28,28 @@ SYSTEM_PROMPT = (
 )
 
 
-def build_chain():
-    """Compone prompt | model.with_structured_output(TechExtraction) + retry."""
-    load_dotenv()
-    groq_api_key = os.environ.get("GROQ_API_KEY")
-    if not groq_api_key:
-        raise ValueError("Falta GROQ_API_KEY en .env")
+def build_chain(resilient_model: Optional[Runnable] = None):
+    """Compone prompt | model.with_structured_output(TechExtraction) + retry.
 
-    model = ChatGroq(model="openai/gpt-oss-120b", temperature=0, api_key=groq_api_key)
+    resilient_model es inyectable para poder testear la cadena con un
+    Runnable falso (ver tests/), sin depender de la API real de Groq. Si no
+    se pasa, se arma el modelo real con ChatGroq.
+    """
+    if resilient_model is None:
+        load_dotenv()
+        groq_api_key = os.environ.get("GROQ_API_KEY")
+        if not groq_api_key:
+            raise ValueError("Falta GROQ_API_KEY en .env")
 
-    structured_model = model.with_structured_output(TechExtraction)
+        model = ChatGroq(model="openai/gpt-oss-120b", temperature=0, api_key=groq_api_key)
+        structured_model = model.with_structured_output(TechExtraction)
 
-    # Resiliencia: reintenta ante fallos transitorios (red, rate limit) o
-    # ante una respuesta del LLM que no valida contra el esquema Pydantic.
-    resilient_model = structured_model.with_retry(
-        stop_after_attempt=3,
-        wait_exponential_jitter=True,
-    )
+        # Resiliencia: reintenta ante fallos transitorios (red, rate limit) o
+        # ante una respuesta del LLM que no valida contra el esquema Pydantic.
+        resilient_model = structured_model.with_retry(
+            stop_after_attempt=3,
+            wait_exponential_jitter=True,
+        )
 
     prompt = ChatPromptTemplate.from_messages(
         [
@@ -55,14 +61,14 @@ def build_chain():
     return prompt | resilient_model
 
 
-async def process_text(text: str) -> Optional[TechExtraction]:
+async def process_text(text: str, resilient_model: Optional[Runnable] = None) -> Optional[TechExtraction]:
     """Procesa un parrafo de texto y devuelve un TechExtraction validado.
 
     Nunca deja escapar una excepcion: si falla la validacion o la conexion
     incluso despues de los reintentos, devuelve None y deja el error en los
     logs, para que el llamador decida como continuar (fallback, alerta, etc.).
     """
-    chain = build_chain()
+    chain = build_chain(resilient_model)
     logger.info("Procesando texto (%d caracteres)", len(text))
     try:
         resultado = await chain.ainvoke({"texto": text})

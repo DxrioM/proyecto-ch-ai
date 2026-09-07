@@ -17,7 +17,10 @@ proyecto_ch_ai/
 ├── .env                          # claves reales (NO se versiona)
 ├── .env.example                  # mismas claves, sin valores
 ├── .gitignore
+├── conftest.py                   # hace importable la raiz del repo para pytest
 ├── requirements.txt
+├── tests/
+│   └── test_fase2_resilience.py  # tests sinteticos de with_retry() / ValidationError
 ├── entregable_a_orquestador/            # Fase 1 - Entregable A
 │   ├── orquestador_concurrente.py
 │   ├── evidencia_ejecucion.log   # salida de consola capturada
@@ -189,6 +192,17 @@ python -m fase2_pipeline_validado.main
 
 Reutiliza las mismas variables de la Fase 1 (`.env` en la raiz). Los tres
 componentes de la Fase 2 solo necesitan `GROQ_API_KEY`.
+
+## Tests sinteticos de resiliencia
+
+`tests/test_fase2_resilience.py` prueba `with_retry()` y el manejo de
+`ValidationError` de los Componentes B y C con un modelo falso (no llama a
+la API real ni gasta cuota). Ver el detalle en
+[fase2_pipeline_validado/README.md](fase2_pipeline_validado/README.md#tests-sinteticos-sin-llamar-a-la-api-real).
+
+```bash
+python -m pytest tests/ -v
+```
 
 ## Errores comunes evitados (especificos de LangChain)
 
