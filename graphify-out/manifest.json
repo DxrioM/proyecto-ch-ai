@@ -45,9 +45,9 @@
     "semantic_hash": "fab6d80ba8b6ae26b95a59065a032149"
   },
   "README.md": {
-    "mtime": 1788788218.2400343,
-    "ast_hash": "e36fec749923481256a48e4038bd0cc6",
-    "semantic_hash": "e36fec749923481256a48e4038bd0cc6"
+    "mtime": 1788790600.3762524,
+    "ast_hash": "47cc35af097d3601a05667b7a6eb1d08",
+    "semantic_hash": "47cc35af097d3601a05667b7a6eb1d08"
   },
   "contexto_fase1.md": {
     "mtime": 1786320228.9377115,
@@ -55,9 +55,9 @@
     "semantic_hash": "c3ea4a9c2586957df8ba80287728facb"
   },
   "requirements.txt": {
-    "mtime": 1788788193.1010356,
-    "ast_hash": "9f7f8062a02261c3e150153640734b70",
-    "semantic_hash": "9f7f8062a02261c3e150153640734b70"
+    "mtime": 1788790550.0498748,
+    "ast_hash": "ee4db08c872065b886e0450496c58873",
+    "semantic_hash": "ee4db08c872065b886e0450496c58873"
   },
   "entregable_a_orquestador/entregable_a_evidencia.pdf": {
     "mtime": 1786381397.2776666,
@@ -118,5 +118,80 @@
     "mtime": 1788788110.139942,
     "ast_hash": "414217d922ec23db1ae5c7b7d39d301a",
     "semantic_hash": "414217d922ec23db1ae5c7b7d39d301a"
+  },
+  "fase3_ejercicio_chromadb/vector_memory_manager.py": {
+    "mtime": 1788789986.5160236,
+    "ast_hash": "4068aa9456c4042b8d24ef7b12248337",
+    "semantic_hash": "4068aa9456c4042b8d24ef7b12248337"
+  },
+  "fase3_ejercicio_chunking/document_processor.py": {
+    "mtime": 1788789968.3085825,
+    "ast_hash": "33a93f0591bce294e64b42c9a40af008",
+    "semantic_hash": "33a93f0591bce294e64b42c9a40af008"
+  },
+  "fase3_embeddings_similitud/embeddings_similitud.py": {
+    "mtime": 1788790452.163001,
+    "ast_hash": "7b42cc14b4e0284f148b87a4f549186b",
+    "semantic_hash": "7b42cc14b4e0284f148b87a4f549186b"
+  },
+  "fase3_rag_local/__init__.py": {
+    "mtime": 1788790088.2340128,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "fase3_rag_local/ingest.py": {
+    "mtime": 1788790127.4418795,
+    "ast_hash": "0490c3cd21fa835dba13fe635323c268",
+    "semantic_hash": "0490c3cd21fa835dba13fe635323c268"
+  },
+  "fase3_rag_local/main.py": {
+    "mtime": 1788790150.0348911,
+    "ast_hash": "b6287817ceaa35b137e2d01583dbacfa",
+    "semantic_hash": "b6287817ceaa35b137e2d01583dbacfa"
+  },
+  "fase3_rag_local/rag_chain.py": {
+    "mtime": 1788790142.2389703,
+    "ast_hash": "11c86aecc07e773a7720c2fd4ffad571",
+    "semantic_hash": "11c86aecc07e773a7720c2fd4ffad571"
+  },
+  "contexto_fase3.md": {
+    "mtime": 1788789471.811497,
+    "ast_hash": "b1e994d277f7017e854521ab2137db27",
+    "semantic_hash": "b1e994d277f7017e854521ab2137db27"
+  },
+  "fase3_embeddings_similitud/README.md": {
+    "mtime": 1788790543.9337716,
+    "ast_hash": "5a87d81c2e5abae65e727326e28f547c",
+    "semantic_hash": "5a87d81c2e5abae65e727326e28f547c"
+  },
+  "fase3_rag_local/README.md": {
+    "mtime": 1788790311.8086803,
+    "ast_hash": "f6e63331aa7ff11db1ba7395ce1f1859",
+    "semantic_hash": "f6e63331aa7ff11db1ba7395ce1f1859"
+  },
+  "fase3_rag_local/data/arquitectura.md": {
+    "mtime": 1788790094.9958103,
+    "ast_hash": "fb056bb86f9ed2c2bf477e08c69bd799",
+    "semantic_hash": "fb056bb86f9ed2c2bf477e08c69bd799"
+  },
+  "fase3_rag_local/data/despliegue.md": {
+    "mtime": 1788790101.1973152,
+    "ast_hash": "5d049bc1aa2fcf0436298cd0548c6808",
+    "semantic_hash": "5d049bc1aa2fcf0436298cd0548c6808"
+  },
+  "fase3_rag_local/data/politicas_soporte.md": {
+    "mtime": 1788790114.0418546,
+    "ast_hash": "3d958f52983105f55ac0ad8331a31bda",
+    "semantic_hash": "3d958f52983105f55ac0ad8331a31bda"
+  },
+  "fase3_rag_local/data/troubleshooting.md": {
+    "mtime": 1788790108.2247036,
+    "ast_hash": "afd61612ed0af046089a40394932af59",
+    "semantic_hash": "afd61612ed0af046089a40394932af59"
+  },
+  "fase3_embeddings_similitud/componente_a_evidencia.pdf": {
+    "mtime": 1788790530.4489982,
+    "ast_hash": "04dcf57d861553939a9c379c4322454d",
+    "semantic_hash": "04dcf57d861553939a9c379c4322454d"
   }
 }

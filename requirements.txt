@@ -12,3 +12,10 @@ langchain-google-genai>=4.0
 
 # Tests
 pytest>=8.0
+
+# Fase 3 - Persistencia y vector DBs (RAG)
+chromadb>=1.0
+tiktoken>=0.8
+langchain-text-splitters>=1.0
+scikit-learn>=1.5
+numpy>=2.0

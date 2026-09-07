@@ -21,6 +21,10 @@ env/
 # Evidencia de ejecucion (generada localmente)
 entregable_a_orquestador/evidencia_ejecucion.log
 
+# Fase 3 - base vectorial local (ChromaDB), se regenera con ingest()
+fase3_rag_local/vectorstore/
+chroma_demo/
+
 # Cache de extraccion de graphify (regenerable, no es fuente de verdad)
 graphify-out/cache/
 graphify-out/.graphify_python

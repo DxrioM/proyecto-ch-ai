@@ -2,13 +2,15 @@
 
 Proyecto de 8 fases del curso "AI Engineering". Cada fase se documenta en su
 propio `contexto_faseN.md` y se implementa en su propia carpeta. Este README
-cubre la Fase 1 y la Fase 2; a medida que se aprueben las siguientes fases se
-van agregando sus secciones.
+cubre las Fases 1 a 3; a medida que se aprueben las siguientes fases se van
+agregando sus secciones.
 
 - Fase 1: [contexto_fase1.md](contexto_fase1.md) — interfaz base, conexion y
   abstraccion de LLMs.
 - Fase 2: [contexto_fase2.md](contexto_fase2.md) — encadenamiento logico,
   orquestacion con LangChain.
+- Fase 3: [contexto_fase3.md](contexto_fase3.md) — persistencia de datos y
+  vector DBs (RAG).
 
 ## Estructura
 
@@ -37,11 +39,24 @@ proyecto_ch_ai/
 │   └── main.py                   # prompt | model | StrOutputParser, con ainvoke
 ├── fase2_ejercicio_validacion/          # Fase 2 - Componente B
 │   └── entity_extraction.py      # with_structured_output + with_retry
-└── fase2_pipeline_validado/             # Fase 2 - Componente C (Pre-entrega 2)
-    ├── schemas.py                # TechExtraction (Pydantic)
-    ├── chain.py                  # cadena LCEL + process_text()
-    ├── main.py                   # mini-script de prueba
-    └── README.md                 # detalle del pipeline + ejemplo de salida
+├── fase2_pipeline_validado/             # Fase 2 - Componente C (Pre-entrega 2)
+│   ├── schemas.py                # TechExtraction (Pydantic)
+│   ├── chain.py                  # cadena LCEL + process_text()
+│   ├── main.py                   # mini-script de prueba
+│   └── README.md                 # detalle del pipeline + ejemplo de salida
+├── fase3_embeddings_similitud/          # Fase 3 - Componente A
+│   ├── embeddings_similitud.py   # embeddings reales + similitud coseno (sklearn)
+│   └── componente_a_evidencia.pdf
+├── fase3_ejercicio_chunking/            # Fase 3 - Componente B
+│   └── document_processor.py     # chunking por tokens (tiktoken + RecursiveCharacterTextSplitter)
+├── fase3_ejercicio_chromadb/            # Fase 3 - Componente C
+│   └── vector_memory_manager.py  # ChromaDB CRUD (upsert/query/delete)
+└── fase3_rag_local/                     # Fase 3 - Componente D (Pre-entrega 3)
+    ├── data/                     # dataset de ejemplo (.md)
+    ├── ingest.py                 # ingesta idempotente: chunking + ChromaDB
+    ├── rag_chain.py               # retriever + cadena LCEL grounded (RagResponse)
+    ├── main.py                   # get_rag_response() + pregunta valida + pregunta trampa
+    └── README.md
 ```
 
 ## Requisitos
@@ -214,3 +229,92 @@ python -m pytest tests/ -v
 - **JSON invalido o incompleto del LLM**: `with_structured_output()` valida
   contra el esquema Pydantic; `with_retry()` reintenta ante ese fallo o ante
   errores transitorios de red/rate limit, en vez de romper el programa.
+
+---
+
+# Fase 3 — Persistencia de datos y vector DBs (RAG)
+
+Agrega memoria de largo plazo: convierte texto en embeddings, los persiste
+en ChromaDB local y los usa para recuperar contexto relevante antes de
+generar una respuesta (Retrieval-Augmented Generation). El LLM y la cadena
+LCEL de la Fase 2 se reutilizan tal cual para la etapa de generacion. Ver
+[contexto_fase3.md](contexto_fase3.md) para el detalle completo.
+
+Pila 100% gratuita: embeddings locales (`DefaultEmbeddingFunction` de
+Chroma, Sentence Transformers `all-MiniLM-L6-v2` via ONNX, sin API key) +
+ChromaDB `PersistentClient` (local, en disco) + Groq (`ChatGroq`) para la
+generacion.
+
+## Componente A — Embeddings y Similitud
+
+`fase3_embeddings_similitud/`: 5 oraciones sobre el mismo concepto tecnico
+con vocabulario distinto + 2 oraciones trampa, embeddings reales, matriz de
+Similitud Coseno con `scikit-learn` y diagrama de flujo de busqueda
+semantica. Entregable en PDF (`componente_a_evidencia.pdf`), generado a
+partir de una corrida real. Ver
+[fase3_embeddings_similitud/README.md](fase3_embeddings_similitud/README.md).
+
+```bash
+python fase3_embeddings_similitud/embeddings_similitud.py
+```
+
+## Componente B — Chunking y preprocesamiento
+
+`fase3_ejercicio_chunking/document_processor.py`: `DocumentProcessor` con
+limpieza de texto por regex + `RecursiveCharacterTextSplitter` midiendo
+longitud por **tokens** (`tiktoken`, no caracteres), `chunk_size=500` /
+`chunk_overlap=50`.
+
+```bash
+python fase3_ejercicio_chunking/document_processor.py
+```
+
+## Componente C — Persistencia local con ChromaDB (CRUD)
+
+`fase3_ejercicio_chromadb/vector_memory_manager.py`: `VectorMemoryManager`
+encapsula un `PersistentClient` de ChromaDB (persistencia real en disco) +
+`get_or_create_collection` con `DefaultEmbeddingFunction`. Expone
+`upsert_documents` (nunca `add`, para que una reingesta no falle por IDs
+duplicados), `semantic_search` (con `include=["documents","metadatas","distances"]`)
+y `delete_by_id`, todo con IDs deterministicos y manejo de `ChromaError`.
+
+```bash
+python fase3_ejercicio_chromadb/vector_memory_manager.py
+```
+
+## Componente D — Sistema RAG local (Pre-entrega 3)
+
+El entregable principal de la Fase 3. Ingesta idempotente desde `data/` +
+recuperacion por similitud (`top_k=4`) + generacion grounded con un prompt
+"filtro de veracidad" (el modelo dice que no sabe si la respuesta no esta
+en el contexto, nunca alucina) + salida validada con Pydantic
+(`RagResponse`: `respuesta`, `fuentes`, `encontrado_en_contexto`). Detalle,
+arquitectura y las dos pruebas obligatorias (pregunta valida + pregunta
+trampa, con evidencia real) en
+[fase3_rag_local/README.md](fase3_rag_local/README.md).
+
+```bash
+python -m fase3_rag_local.main
+```
+
+## Variables de entorno (Fase 3)
+
+Reutiliza `GROQ_API_KEY` de las fases anteriores. Los embeddings son
+locales y no necesitan ninguna key.
+
+## Errores comunes evitados (especificos de RAG)
+
+- **Embeddings no coincidentes**: `VectorMemoryManager` asocia la funcion
+  de embedding a la coleccion una unica vez (`get_or_create_collection`);
+  Chroma la reutiliza automaticamente tanto al indexar como al consultar,
+  asi que es imposible que se desincronicen.
+- **"Contexto infinito"**: `top_k` siempre acotado a 4 (entre 3 y 5) en la
+  recuperacion, nunca se le pasan decenas de fragmentos al LLM.
+- **Falta de idempotencia**: `ingest()` guarda un hash por archivo en
+  `vectorstore/manifest.json`; si el archivo no cambio, no se re-fragmenta
+  ni se re-embede. Si cambio y genero menos chunks que antes, borra los IDs
+  viejos que sobran para no dejar contenido huerfano.
+- **Alucinacion fuera de contexto**: el prompt de sistema instruye
+  explicitamente a responder "no lo se" cuando la respuesta no esta en el
+  contexto recuperado; probado con una pregunta trampa real (ver
+  `fase3_rag_local/README.md`).
