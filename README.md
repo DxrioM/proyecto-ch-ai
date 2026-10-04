@@ -2,7 +2,7 @@
 
 Proyecto de 8 fases del curso "AI Engineering". Cada fase se documenta en su
 propio `contexto_faseN.md` y se implementa en su propia carpeta. Este README
-cubre las Fases 1 a 4; a medida que se aprueben las siguientes fases se van
+cubre las Fases 1 a 5; a medida que se aprueben las siguientes fases se van
 agregando sus secciones.
 
 - Fase 1: [contexto_fase1.md](contexto_fase1.md) — interfaz base, conexion y
@@ -13,6 +13,8 @@ agregando sus secciones.
   vector DBs (RAG).
 - Fase 4: [contexto_fase4.md](contexto_fase4.md) — escalabilidad documental,
   RAG avanzado y Pinecone.
+- Fase 5: [contexto_fase5.md](contexto_fase5.md) — razonamiento autonomo,
+  agente ReAct con LangGraph.
 
 ## Estructura
 
@@ -74,6 +76,12 @@ proyecto_ch_ai/
     ├── rag_system.py             # RAGSystem: EnsembleRetriever (Pinecone + BM25)
     ├── evaluate.py                # Precision@5 / Recall@5 sobre el golden set
     └── README.md                 # incluye pasos para replicar el indice
+└── fase5_agente_langgraph/              # Fase 5 - Pre-entrega 5
+    ├── tools.py                  # buscar_pedidos / obtener_detalle_pedido (@tool)
+    ├── graph.py                  # StateGraph: nodo modelo + ToolNode + tools_condition
+    ├── main.py                   # demo de 3 turnos + guarda la traza
+    ├── traces/ejemplo_traza.json # traza ReAct real (evidencia)
+    └── README.md
 ```
 
 ## Requisitos
@@ -448,3 +456,81 @@ python -m pytest tests/ -v
 - **IDs no deterministicos**: a diferencia del enunciado generico del
   Componente B (que usa `uuid4`), la ingesta real del Componente D usa IDs
   deterministicos (`id_generator` inyectable) para poder ser idempotente.
+
+---
+
+# Fase 5 — Razonamiento autonomo: agente ReAct con LangGraph
+
+Pre-entrega 5: un agente que decide por si mismo cuando llamar a una
+herramienta (sin rutas `if`/`else` manuales), encadena mas de una llamada a
+herramientas para llegar a una conclusion, y recuerda interacciones previas
+dentro de una misma sesion gracias a un checkpointer SQLite. Continua el
+dominio ficticio del "Sistema de Pedidos Online" de las Fases 3 y 4, ahora
+consultado por un agente en vez de por RAG. Ver
+[contexto_fase5.md](contexto_fase5.md) para el detalle completo.
+
+## Arquitectura
+
+- **Herramientas** (`tools.py`): `buscar_pedidos(cliente_id)` y
+  `obtener_detalle_pedido(pedido_id)`, decoradas con `@tool`. El LLM elige
+  cual usar unicamente en base al docstring — nunca hay logica manual que
+  decida por el.
+- **Grafo** (`graph.py`): `StateGraph(MessagesState)` con un nodo `agent`
+  (LLM con `bind_tools()`) y un nodo `tools` (`ToolNode`), conectados por
+  una arista condicional (`tools_condition`) que rutea segun si el LLM
+  pidio o no una `tool_call`.
+- **Persistencia**: `AsyncSqliteSaver` (checkpointer SQLite asincrono) —
+  con el mismo `thread_id`, el agente recuerda toda la conversacion previa.
+- **Demo** (`main.py`): 3 turnos sobre el mismo `thread_id`,
+  `recursion_limit=10`, guarda la traza completa en
+  `traces/ejemplo_traza.json`.
+
+## Como correrlo
+
+Requiere `GROQ_API_KEY` en el `.env` (reutilizada de fases anteriores).
+
+```bash
+python -m fase5_agente_langgraph.main
+```
+
+## Evidencia (traza real, no simulada)
+
+Ver el detalle completo en
+[fase5_agente_langgraph/README.md](fase5_agente_langgraph/README.md) y la
+traza cruda en
+[fase5_agente_langgraph/traces/ejemplo_traza.json](fase5_agente_langgraph/traces/ejemplo_traza.json).
+Resumen de los 3 turnos (mismo `thread_id`):
+
+1. *"Cuantos pedidos tuvo el cliente 102 y cual fue el total?"* → el agente
+   llama `buscar_pedidos(102)` → responde "3 pedidos, $14.500".
+2. *"Y cual es el detalle del ultimo pedido?"* → **sin repetir el cliente**,
+   el agente recuerda el contexto, deduce el ultimo `pedido_id` (5003) del
+   turno anterior y llama `obtener_detalle_pedido(5003)` — razonamiento
+   multi-paso real, con memoria entre turnos.
+3. *"Cuantos pedidos tuvo el cliente 999?"* → la herramienta devuelve un
+   error (cliente inexistente); el agente lo explica en vez de alucinar
+   una respuesta — ciclo de retorno ante un error.
+
+## Tests sinteticos (Fase 5)
+
+`tests/test_fase5_agent.py`: las herramientas probadas de forma
+determinista (exito y error, sin LLM), y el ruteo del grafo
+(`tools_condition`) con un LLM falso — confirma que la herramienta real se
+ejecuta cuando el modelo decide llamarla, que el grafo termina sin llamar a
+nada cuando no hace falta, y que la memoria entre turnos con el mismo
+`thread_id` efectivamente acumula el historial.
+
+```bash
+python -m pytest tests/ -v
+```
+
+## Errores comunes evitados (especificos de LangGraph)
+
+- **Descripciones vagas**: los docstrings de `buscar_pedidos` y
+  `obtener_detalle_pedido` explican que hace cada una, cuando usarla, y
+  como se relacionan entre si (una alimenta el `pedido_id` de la otra).
+- **Bucles infinitos**: `recursion_limit=10` en cada invocacion.
+- **Excepciones que rompen el ciclo**: las herramientas devuelven
+  `{"error": ...}` en vez de lanzar, para que el LLM pueda razonar sobre el
+  fallo (mismo criterio de resiliencia que el resto del proyecto desde la
+  Fase 1) en vez de que el programa se caiga.

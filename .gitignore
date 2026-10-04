@@ -28,6 +28,11 @@ chroma_demo/
 # Fase 4 - manifest/cache local de la ingesta a Pinecone, se regenera con ingest()
 fase4_rag_pinecone/vectorstore/
 
+# Fase 5 - checkpoint SQLite local (estado del agente), se regenera corriendo main.py
+# El ejemplo de traza (traces/ejemplo_traza.json) SI se versiona (es el entregable).
+fase5_agente_langgraph/checkpoints.sqlite
+fase5_agente_langgraph/checkpoints.sqlite-*
+
 # Cache de extraccion de graphify (regenerable, no es fuente de verdad)
 graphify-out/cache/
 graphify-out/.graphify_python

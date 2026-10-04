@@ -1,0 +1,77 @@
+[
+  {
+    "tipo": "HumanMessage",
+    "contenido": "Cuantos pedidos tuvo el cliente 102 y cual fue el total?"
+  },
+  {
+    "tipo": "AIMessage",
+    "contenido": "",
+    "tool_calls": [
+      {
+        "herramienta": "buscar_pedidos",
+        "argumentos": {
+          "cliente_id": 102
+        }
+      }
+    ]
+  },
+  {
+    "tipo": "ToolMessage",
+    "contenido": "{\"cliente_id\": 102, \"pedidos\": 3, \"total\": 14500.0, \"pedido_ids\": [5001, 5002, 5003]}",
+    "herramienta": "buscar_pedidos"
+  },
+  {
+    "tipo": "AIMessage",
+    "contenido": "El cliente **102** tiene **3 pedidos** en total, y el monto acumulado de sus compras es **$14 500,00**."
+  },
+  {
+    "tipo": "HumanMessage",
+    "contenido": "Y cual es el detalle del ultimo pedido?"
+  },
+  {
+    "tipo": "AIMessage",
+    "contenido": "",
+    "tool_calls": [
+      {
+        "herramienta": "obtener_detalle_pedido",
+        "argumentos": {
+          "pedido_id": 5003
+        }
+      }
+    ]
+  },
+  {
+    "tipo": "ToolMessage",
+    "contenido": "{\"id\": 5003, \"fecha\": \"2026-09-15\", \"monto\": 4000.0, \"estado\": \"en camino\", \"productos\": [\"Silla ergonomica\"]}",
+    "herramienta": "obtener_detalle_pedido"
+  },
+  {
+    "tipo": "AIMessage",
+    "contenido": "**Detalle del último pedido (ID 5003):**\n\n- **Fecha:** 15 de septiembre de 2026  \n- **Monto:** $4 000,00  \n- **Estado del envío:** En camino  \n- **Productos:**  \n  - Silla ergonómica  \n\nSi necesitas más información o deseas consultar otro pedido, avísame."
+  },
+  {
+    "tipo": "HumanMessage",
+    "contenido": "Cuantos pedidos tuvo el cliente 999?"
+  },
+  {
+    "tipo": "AIMessage",
+    "contenido": "",
+    "tool_calls": [
+      {
+        "herramienta": "buscar_pedidos",
+        "argumentos": {
+          "cliente_id": 999
+        }
+      }
+    ]
+  },
+  {
+    "tipo": "ToolMessage",
+    "contenido": "{\"error\": \"No se encontro ningun cliente con ID 999\"}",
+    "herramienta": "buscar_pedidos"
+  },
+  {
+    "tipo": "AIMessage",
+    "contenido": "No se encontró ningún cliente con el ID **999** en nuestro sistema. Por favor, verifica el número e inténtalo de nuevo."
+  }
+]
