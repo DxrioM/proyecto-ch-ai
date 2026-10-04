@@ -34,3 +34,10 @@ langchain-community>=0.4
 # Fase 5 - Agente de razonamiento ciclico (LangGraph)
 langgraph>=1.0
 langgraph-checkpoint-sqlite>=3.0
+
+# Fase 6 - Orquestador multi-agente (reutiliza langgraph, langchain-groq,
+# chromadb de fases anteriores). Jupyter solo hace falta para re-ejecutar
+# demo_flujo_delegacion.ipynb, no para correr el orquestador en si.
+jupyter>=1.1
+nbconvert>=7.0
+ipykernel>=7.0

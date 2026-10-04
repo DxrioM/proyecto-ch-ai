@@ -1,0 +1,36 @@
+{
+  "pregunta": "Investiga en la base de conocimiento los tiempos de respuesta comprometidos por severidad de soporte, y calculame el promedio en horas.",
+  "mensajes": [
+    {
+      "tipo": "HumanMessage",
+      "autor": null,
+      "contenido": "Investiga en la base de conocimiento los tiempos de respuesta comprometidos por severidad de soporte, y calculame el promedio en horas."
+    },
+    {
+      "tipo": "AIMessage",
+      "autor": "investigador",
+      "contenido": "**Tiempos de respuesta comprometidos (SLA) según severidad de soporte**\n\n- **Severidad 1 (sistema caído):** respuesta en **menos de 30 minutos**.  \n- **Severidad 2 (funcionalidad degradada, ej. lentitud generalizada):** respuesta en **menos de 4 horas hábiles**.  \n- **Severidad 3 (bug menor, sin impacto en la operación):** respuesta en **menos de 2 días hábiles**.  \n\n*Fuente: **politicas_soporte.md**.*\n\nEstos son los valores exactos tal como aparecen en la documentación. El cálculo del promedio en horas deberá ser realizado por el especialista de Análisis."
+    },
+    {
+      "tipo": "AIMessage",
+      "autor": "analista",
+      "contenido": "He convertido los tiempos a una unidad común (horas):\n\n- 30 min ≈ 0.5 h  \n- 4 h ≈ 4 h  \n- 2 días hábiles ≈ 2 × 8 h = 16 h  \n\nCon estos valores, el promedio es:\n\n**Promedio = 6.83 horas** (aproximado a dos decimales)."
+    },
+    {
+      "tipo": "AIMessage",
+      "autor": "supervisor",
+      "contenido": "Los tiempos de respuesta comprometidos son: Severidad 1: 30 min (0.5 h), Severidad 2: 4 h, Severidad 3: 2 días hábiles (16 h). El promedio de estos tiempos, convertido a horas, es **6.83 horas** (aproximado a dos decimales)."
+    }
+  ],
+  "contribuciones": [
+    {
+      "agente": "investigador",
+      "resumen": "**Tiempos de respuesta comprometidos (SLA) según severidad de soporte**\n\n- **Severidad 1 (sistema caído):** respuesta en **menos de 30 minutos**.  \n- **Severidad 2 (funcionalidad degradada, ej. lentitud generalizada):** respuesta en **menos de 4 horas hábiles**.  \n- **Severidad 3 (bug menor, sin impacto en la operación):** respuesta en **menos de 2 días hábiles**.  \n\n*Fuente: **politicas_soporte.md**.*\n\nEstos son los valores exactos tal como aparecen en la documentación. El cálculo del promedio en horas deberá ser realizado por el especialista de Análisis."
+    },
+    {
+      "agente": "analista",
+      "resumen": "He convertido los tiempos a una unidad común (horas):\n\n- 30 min ≈ 0.5 h  \n- 4 h ≈ 4 h  \n- 2 días hábiles ≈ 2 × 8 h = 16 h  \n\nCon estos valores, el promedio es:\n\n**Promedio = 6.83 horas** (aproximado a dos decimales)."
+    }
+  ],
+  "task_completed": true
+}

@@ -15,6 +15,8 @@ agregando sus secciones.
   RAG avanzado y Pinecone.
 - Fase 5: [contexto_fase5.md](contexto_fase5.md) — razonamiento autonomo,
   agente ReAct con LangGraph.
+- Fase 6: [contexto_fase6.md](contexto_fase6.md) — sistemas multi-agente,
+  colaboracion y especializacion.
 
 ## Estructura
 
@@ -67,21 +69,31 @@ proyecto_ch_ai/
 │   └── ingestion_pipeline.py     # IngestionPipeline: batching + metadatos + filtro por categoria
 ├── fase4_metricas_recuperacion_hibrida/ # Fase 4 - Componente C (repaso conceptual)
 │   └── README.md                 # Precision/Recall, BM25+embeddings, RRF, cross-encoders
-└── fase4_rag_pinecone/                  # Fase 4 - Componente D (Pre-entrega 4)
-    ├── data/                     # reutiliza el corpus de fase3_rag_local/data
-    ├── golden_set.json           # 5 preguntas con documento fuente esperado
-    ├── embeddings.py             # adaptador LangChain sobre el embedding local de la Fase 3
-    ├── pinecone_retriever.py     # BaseRetriever propio sobre el SDK nativo de Pinecone
-    ├── ingest.py                 # chunking + embeddings + upsert idempotente a Pinecone
-    ├── rag_system.py             # RAGSystem: EnsembleRetriever (Pinecone + BM25)
-    ├── evaluate.py                # Precision@5 / Recall@5 sobre el golden set
-    └── README.md                 # incluye pasos para replicar el indice
-└── fase5_agente_langgraph/              # Fase 5 - Pre-entrega 5
-    ├── tools.py                  # buscar_pedidos / obtener_detalle_pedido (@tool)
-    ├── graph.py                  # StateGraph: nodo modelo + ToolNode + tools_condition
-    ├── main.py                   # demo de 3 turnos + guarda la traza
-    ├── traces/ejemplo_traza.json # traza ReAct real (evidencia)
-    └── README.md
+├── fase4_rag_pinecone/                  # Fase 4 - Componente D (Pre-entrega 4)
+│   ├── data/                     # reutiliza el corpus de fase3_rag_local/data
+│   ├── golden_set.json           # 5 preguntas con documento fuente esperado
+│   ├── embeddings.py             # adaptador LangChain sobre el embedding local de la Fase 3
+│   ├── pinecone_retriever.py     # BaseRetriever propio sobre el SDK nativo de Pinecone
+│   ├── ingest.py                 # chunking + embeddings + upsert idempotente a Pinecone
+│   ├── rag_system.py             # RAGSystem: EnsembleRetriever (Pinecone + BM25)
+│   ├── evaluate.py                # Precision@5 / Recall@5 sobre el golden set
+│   └── README.md                 # incluye pasos para replicar el indice
+├── fase5_agente_langgraph/              # Fase 5 - Pre-entrega 5
+│   ├── tools.py                  # buscar_pedidos / obtener_detalle_pedido (@tool)
+│   ├── graph.py                  # StateGraph: nodo modelo + ToolNode + tools_condition
+│   ├── main.py                   # demo de 3 turnos + guarda la traza
+│   ├── traces/ejemplo_traza.json # traza ReAct real (evidencia)
+│   └── README.md
+└── fase6_orquestador_multiagente/       # Fase 6 - Pre-entrega 6
+    ├── state.py                  # OrchestratorState: next_agent + contribuciones
+    ├── agents/
+    │   ├── research_agent.py     # busca en la Vector DB de la Fase 3
+    │   └── analyst_agent.py      # calcula estadisticas sobre datos investigados
+    ├── graph.py                  # Supervisor (structured output) + aristas condicionales
+    ├── main.py                   # demo del flujo de delegacion + guarda la traza
+    ├── demo_flujo_delegacion.ipynb  # notebook ejecutado, paso a paso
+    ├── traces/ejemplo_flujo_delegacion.json
+    └── README.md                 # incluye diagrama Mermaid del grafo
 ```
 
 ## Requisitos
@@ -534,3 +546,94 @@ python -m pytest tests/ -v
   `{"error": ...}` en vez de lanzar, para que el LLM pueda razonar sobre el
   fallo (mismo criterio de resiliencia que el resto del proyecto desde la
   Fase 1) en vez de que el programa se caiga.
+
+---
+
+# Fase 6 — Sistemas multi-agente: colaboracion y especializacion
+
+Pre-entrega 6: un **Orquestador Multi-Agente de Analisis e Investigacion**
+con topologia jerarquica. Un nodo Supervisor rutea dinamicamente entre dos
+especialistas (Investigador y Analista) hasta decidir que la tarea esta
+completa y sintetizar la respuesta final. Continua el dominio del "Sistema
+de Pedidos Online": el Investigador consulta la Vector DB de la Fase 3, el
+Analista procesa numericamente lo que trae el Investigador. Ver
+[contexto_fase6.md](contexto_fase6.md) para el detalle completo.
+
+## Arquitectura
+
+- **Estado compartido** (`state.py`): `OrchestratorState` (hereda de
+  `MessagesState`) con `next_agent` (a donde rutea la proxima arista
+  condicional) y `contribuciones` (lista acumulativa de que aporto cada
+  especialista — asi no se pierde el rastro de quien dijo que).
+- **Especialistas** (`agents/`): `research_agent.py` (busca en la Vector DB
+  de la Fase 3 — la consigna permite esta alternativa a Tavily) y
+  `analyst_agent.py` (calcula estadisticas sobre datos ya investigados).
+  Ambos armados con `create_react_agent` (su propio mini-ciclo ReAct).
+- **Supervisor** (`graph.py`): decide el proximo paso con salida
+  estructurada (`Literal["investigador", "analista", "FINISH"]`), mapeada
+  a una arista condicional. Al decidir `FINISH`, tambien redacta la
+  sintesis final.
+
+## Topologia y manejo de conflictos
+
+Jerarquica con Supervisor central (no un pipeline fijo ni agentes que se
+llaman entre si): mantiene a los especialistas desacoplados, y centraliza
+en el Supervisor la decision de reintentar, derivar al otro especialista, o
+cerrar — nunca el usuario ve un resultado a medio terminar. Detalle
+completo (y el diagrama Mermaid del grafo) en
+[fase6_orquestador_multiagente/README.md](fase6_orquestador_multiagente/README.md).
+
+## Como correrlo
+
+```bash
+python -m fase6_orquestador_multiagente.main
+# o, paso a paso en un notebook:
+jupyter nbconvert --to notebook --execute fase6_orquestador_multiagente/demo_flujo_delegacion.ipynb
+```
+
+## Evidencia: flujo de delegacion real
+
+Pregunta: *"Investiga en la base de conocimiento los tiempos de respuesta
+comprometidos por severidad de soporte, y calculame el promedio en horas."*
+
+Supervisor → **investigador** (falta informacion factual) → encuentra el
+SLA en `politicas_soporte.md` → Supervisor → **analista** (hay que
+convertir unidades y calcular) → promedio = **6.83 horas** → Supervisor →
+**FINISH** con la sintesis final. Traza completa en
+[`fase6_orquestador_multiagente/traces/ejemplo_flujo_delegacion.json`](fase6_orquestador_multiagente/traces/ejemplo_flujo_delegacion.json)
+y, paso a paso, en
+[`demo_flujo_delegacion.ipynb`](fase6_orquestador_multiagente/demo_flujo_delegacion.ipynb).
+
+## Tests sinteticos (Fase 6)
+
+`tests/test_fase6_orchestrator.py`: herramientas deterministas, y el flujo
+de delegacion completo con un Supervisor falso (decisiones prefijadas) y
+especialistas falsos — confirma el ruteo investigador→analista→FINISH, que
+los especialistas no se llaman cuando no hace falta, y que el criterio de
+suficiencia estricto corta el ciclo aunque el Supervisor nunca decida
+terminar por si solo.
+
+```bash
+python -m pytest tests/ -v
+```
+
+## Errores comunes evitados (especificos de orquestacion multi-agente)
+
+- **El "Supervisor Infinito"**: `recursion_limit` externo + un criterio de
+  suficiencia estricto (`MAX_CONTRIBUCIONES`) dentro del propio nodo
+  Supervisor.
+- **Contaminacion de contexto**: los especialistas no reciben todo el
+  historial del sistema, solo la instruccion puntual que necesitan.
+- **Resumenes truncados que mienten**: una version inicial truncaba las
+  contribuciones a 300 caracteres, cortando tablas a mitad de fila — el
+  Supervisor interpretaba que faltaba informacion y volvia a pedirsela al
+  Investigador 3-4 veces de mas. Encontrado corriendo la demo real, no en
+  teoria.
+- **El Supervisor haciendo el calculo el mismo (y mal)**: en una corrida
+  real, el Supervisor uso numeros que el Investigador habia agregado "de
+  mas" en su resumen para escribir el promedio directamente, sin pasar por
+  el Analista — y la conversion de unidades que hizo estaba mal (48h en
+  vez de 16h). Fix: prompts mas estrictos en ambos nodos (el Investigador
+  no debe convertir unidades: el Supervisor no debe calcular nada el
+  mismo). Ver el detalle completo en
+  [fase6_orquestador_multiagente/README.md](fase6_orquestador_multiagente/README.md#errores-comunes-evitados).

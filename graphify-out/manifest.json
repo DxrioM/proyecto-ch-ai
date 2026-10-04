@@ -45,9 +45,9 @@
     "semantic_hash": "fab6d80ba8b6ae26b95a59065a032149"
   },
   "README.md": {
-    "mtime": 1791131854.041794,
-    "ast_hash": "0dc813054dc6f2d1bc1a8e13128e4a0c",
-    "semantic_hash": "0dc813054dc6f2d1bc1a8e13128e4a0c"
+    "mtime": 1791134836.5872672,
+    "ast_hash": "ff4bd0cf4dc17fb7770d33fbb57a827f",
+    "semantic_hash": "ff4bd0cf4dc17fb7770d33fbb57a827f"
   },
   "contexto_fase1.md": {
     "mtime": 1786320228.9377115,
@@ -55,9 +55,9 @@
     "semantic_hash": "c3ea4a9c2586957df8ba80287728facb"
   },
   "requirements.txt": {
-    "mtime": 1791131794.0651598,
-    "ast_hash": "5c5e2b278ce9dac1da36bd6335466946",
-    "semantic_hash": "5c5e2b278ce9dac1da36bd6335466946"
+    "mtime": 1791134779.9160645,
+    "ast_hash": "8266a1923a8b61ae544f25ef00def5b6",
+    "semantic_hash": "8266a1923a8b61ae544f25ef00def5b6"
   },
   "entregable_a_orquestador/entregable_a_evidencia.pdf": {
     "mtime": 1786381397.2776666,
@@ -328,5 +328,55 @@
     "mtime": 1791131816.4936745,
     "ast_hash": "87b25367f2280b36572c76be2ac56fef",
     "semantic_hash": "87b25367f2280b36572c76be2ac56fef"
+  },
+  "fase6_orquestador_multiagente/__init__.py": {
+    "mtime": 1791133857.041159,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "fase6_orquestador_multiagente/agents/__init__.py": {
+    "mtime": 1791133860.921548,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "fase6_orquestador_multiagente/agents/analyst_agent.py": {
+    "mtime": 1791133915.9718902,
+    "ast_hash": "1f89df089e582ddbf3e0a60716a549d6",
+    "semantic_hash": "1f89df089e582ddbf3e0a60716a549d6"
+  },
+  "fase6_orquestador_multiagente/agents/research_agent.py": {
+    "mtime": 1791134541.6049137,
+    "ast_hash": "5131748b2a714048c692579eb26c6277",
+    "semantic_hash": "5131748b2a714048c692579eb26c6277"
+  },
+  "fase6_orquestador_multiagente/graph.py": {
+    "mtime": 1791134554.5865953,
+    "ast_hash": "9c136b8954501ff4e687d0e1b2c9daf6",
+    "semantic_hash": "9c136b8954501ff4e687d0e1b2c9daf6"
+  },
+  "fase6_orquestador_multiagente/main.py": {
+    "mtime": 1791133968.0056987,
+    "ast_hash": "9b7afc72ff41ba95ddb9cc745b4bb090",
+    "semantic_hash": "9b7afc72ff41ba95ddb9cc745b4bb090"
+  },
+  "fase6_orquestador_multiagente/state.py": {
+    "mtime": 1791133869.188205,
+    "ast_hash": "3b35e80fbbf93b0f5e9e7bb0e0af5d50",
+    "semantic_hash": "3b35e80fbbf93b0f5e9e7bb0e0af5d50"
+  },
+  "fase6_orquestador_multiagente/traces/ejemplo_flujo_delegacion.json": {
+    "mtime": 1791134625.5361083,
+    "ast_hash": "f6eb6aec13074b7fc3d1c2825c963a1e",
+    "semantic_hash": "f6eb6aec13074b7fc3d1c2825c963a1e"
+  },
+  "tests/test_fase6_orchestrator.py": {
+    "mtime": 1791134170.6575682,
+    "ast_hash": "57468fad36099cf55efbd5f572d161c1",
+    "semantic_hash": "57468fad36099cf55efbd5f572d161c1"
+  },
+  "fase6_orquestador_multiagente/README.md": {
+    "mtime": 1791134771.009346,
+    "ast_hash": "d07e7d22b8918e96e0e008905ac8ca75",
+    "semantic_hash": "d07e7d22b8918e96e0e008905ac8ca75"
   }
 }
