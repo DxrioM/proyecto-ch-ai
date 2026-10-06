@@ -109,6 +109,11 @@ de informacion, que no necesita supervision.
 
 ## Como levantar el entorno
 
+Requisitos: Python 3.12 o superior (probado con 3.14.4). En Windows, clonar
+el repo en una ruta corta: con rutas largas (por ejemplo dentro de
+`AppData\Local\Temp`), los archivos de `langsmith` superan el limite de 260
+caracteres de Windows y la importacion falla con `ModuleNotFoundError`.
+
 1. Completar en el `.env` de la raiz del proyecto: `GROQ_API_KEY`
    (heredada), `REDIS_URL` (Upstash u otro Redis, formato
    `redis://...`/`rediss://...`), `LANGSMITH_API_KEY`.
@@ -177,6 +182,13 @@ interactiva: latencia p95, costo por ejecucion (o conteo de tokens si
 LangSmith no tiene precios configurados para el modelo), y el detalle de
 las 5 ejecuciones de la prueba de carga. Se genera/actualiza despues de
 correr `load_test.py` + `export_metrics.py`.
+
+## Capturas del dashboard de trazas
+
+La carpeta [screenshots/](screenshots/) guarda la evidencia visual de
+observabilidad: capturas de LangSmith con las trazas de la prueba de carga
+(lista de ejecuciones y detalle de una traza con la pausa de HITL). El
+`dashboard.html` complementa esas capturas; no las reemplaza.
 
 ## Tests sintéticos
 
