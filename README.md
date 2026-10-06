@@ -2,7 +2,7 @@
 
 Proyecto de 8 fases del curso "AI Engineering". Cada fase se documenta en su
 propio `contexto_faseN.md` y se implementa en su propia carpeta. Este README
-cubre las Fases 1 a 5; a medida que se aprueben las siguientes fases se van
+cubre las Fases 1 a 7; a medida que se aprueben las siguientes fases se van
 agregando sus secciones.
 
 - Fase 1: [contexto_fase1.md](contexto_fase1.md) — interfaz base, conexion y
@@ -17,6 +17,8 @@ agregando sus secciones.
   agente ReAct con LangGraph.
 - Fase 6: [contexto_fase6.md](contexto_fase6.md) — sistemas multi-agente,
   colaboracion y especializacion.
+- Fase 7: [contexto_fase7.md](contexto_fase7.md) — produccion y robustez,
+  observabilidad, costos y despliegue.
 
 ## Estructura
 
@@ -84,16 +86,29 @@ proyecto_ch_ai/
 │   ├── main.py                   # demo de 3 turnos + guarda la traza
 │   ├── traces/ejemplo_traza.json # traza ReAct real (evidencia)
 │   └── README.md
-└── fase6_orquestador_multiagente/       # Fase 6 - Pre-entrega 6
-    ├── state.py                  # OrchestratorState: next_agent + contribuciones
-    ├── agents/
-    │   ├── research_agent.py     # busca en la Vector DB de la Fase 3
-    │   └── analyst_agent.py      # calcula estadisticas sobre datos investigados
-    ├── graph.py                  # Supervisor (structured output) + aristas condicionales
-    ├── main.py                   # demo del flujo de delegacion + guarda la traza
-    ├── demo_flujo_delegacion.ipynb  # notebook ejecutado, paso a paso
-    ├── traces/ejemplo_flujo_delegacion.json
-    └── README.md                 # incluye diagrama Mermaid del grafo
+├── fase6_orquestador_multiagente/       # Fase 6 - Pre-entrega 6
+│   ├── state.py                  # OrchestratorState: next_agent + contribuciones
+│   ├── agents/
+│   │   ├── research_agent.py     # busca en la Vector DB de la Fase 3
+│   │   └── analyst_agent.py      # calcula estadisticas sobre datos investigados
+│   ├── graph.py                  # Supervisor (structured output) + aristas condicionales
+│   ├── main.py                   # demo del flujo de delegacion + guarda la traza
+│   ├── demo_flujo_delegacion.ipynb  # notebook ejecutado, paso a paso
+│   ├── traces/ejemplo_flujo_delegacion.json
+│   └── README.md                 # incluye diagrama Mermaid del grafo
+└── fase7_api_produccion/                # Fase 7 - Pre-entrega 7
+    ├── app/
+    │   ├── main.py                # FastAPI: POST /tasks, GET /tasks/{id}, POST /tasks/{id}/approve
+    │   ├── graph.py               # orquestador de la Fase 6 + AsyncRedisSaver + gate HITL
+    │   ├── worker.py              # corre/reanuda el grafo en background, actualiza Redis
+    │   ├── job_store.py           # estado de jobs persistido en Redis (JSON + TTL)
+    │   ├── hitl.py                # que se considera una accion "critica"
+    │   └── observability.py       # activa tracing de LangSmith
+    ├── load_test.py               # 5 peticiones concurrentes + latencia p95
+    ├── export_metrics.py          # trae costo/latencia reales de LangSmith
+    ├── dashboard.html             # visualizacion dinamica (en vez de screenshots)
+    ├── Dockerfile / docker-compose.yml  # opcional, no validado sin Docker en este entorno
+    └── README.md
 ```
 
 ## Requisitos
@@ -637,3 +652,72 @@ python -m pytest tests/ -v
   no debe convertir unidades: el Supervisor no debe calcular nada el
   mismo). Ver el detalle completo en
   [fase6_orquestador_multiagente/README.md](fase6_orquestador_multiagente/README.md#errores-comunes-evitados).
+
+---
+
+# Fase 7 — Producción y robustez: observabilidad, costos y despliegue
+
+Pre-entrega 7: expone el orquestador multi-agente de la Fase 6 como una API
+REST asíncrona (FastAPI), con persistencia de estado en Redis, un gate de
+aprobación humana (Human-in-the-loop) antes de la acción que el sistema
+considera crítica, y observabilidad activa con LangSmith. Ver
+[contexto_fase7.md](contexto_fase7.md) para el detalle completo.
+
+> **Estado**: validada end-to-end con Redis (Upstash) y LangSmith reales.
+> Prueba de carga de 5 peticiones concurrentes: 5/5 `DONE`, latencia p95
+> 221.2 s, costo total US$ 0.0077 según LangSmith. Detalle y limitaciones
+> (cuota gratuita de Groq) en
+> [fase7_api_produccion/README.md](fase7_api_produccion/README.md).
+
+## Decisiones de adaptación al entorno
+
+- **Redis en la nube (Upstash)** en vez de local: sin Docker ni WSL con
+  distro instalada en este entorno de desarrollo.
+- **LangSmith** para observabilidad (la consigna ofrece LangSmith o Arize
+  Phoenix como equivalentes).
+- **Dashboard HTML dinámico en vez de screenshots**: este entorno no tiene
+  navegador ni herramienta de captura de pantalla. `export_metrics.py`
+  trae datos reales de la API de LangSmith (latencia, tokens, costo) y
+  `dashboard.html` los visualiza de forma interactiva, en vez de una
+  captura estática — mismo espíritu de evidencia verificable que pide la
+  consigna, en un formato distinto.
+
+## Arquitectura
+
+`POST /tasks` encola la pregunta y devuelve un `job_id` de inmediato (202,
+nunca bloquea) · `GET /tasks/{id}` lee el estado desde Redis (`PENDING` →
+`RUNNING` → `DONE`/`FAILED`, o `AWAITING_APPROVAL` si la tarea requiere un
+cálculo) · `POST /tasks/{id}/approve` aprueba o rechaza la acción crítica
+pendiente. Detalle completo (qué se considera "crítico", por qué, y cómo
+funciona el gate HITL con `interrupt()`) en
+[fase7_api_produccion/README.md](fase7_api_produccion/README.md).
+
+## Como correrlo
+
+```bash
+uvicorn fase7_api_produccion.app.main:app --reload
+python fase7_api_produccion/load_test.py       # 5 peticiones concurrentes
+python fase7_api_produccion/export_metrics.py  # costo + latencia p95 reales de LangSmith
+```
+
+## Tests sintéticos (Fase 7)
+
+`tests/test_fase7_api.py`: `JobStore` con un cliente Redis falso, el
+payload de aprobación, y el flujo completo del worker (`ejecutar_job` /
+`reanudar_job`) con `MemorySaver` (misma semántica de `interrupt()`/resume
+que `AsyncRedisSaver`, verificado manualmente) — cubre el camino sin HITL,
+la pausa en `AWAITING_APPROVAL`, la aprobación, el rechazo, y que una
+excepción del agente deja el job en `FAILED` sin crashear al cliente en un
+loop de polling infinito.
+
+```bash
+python -m pytest tests/ -v
+```
+
+## Errores comunes evitados
+
+- **Bloquear el Event Loop**: Redis, el checkpointer y el LLM se llaman
+  siempre con sus variantes async nativas.
+- **Background tasks que fallan en silencio**: el worker atrapa cualquier
+  excepción y actualiza Redis a `FAILED` — nunca deja al cliente esperando
+  indefinidamente un estado que nunca va a llegar.

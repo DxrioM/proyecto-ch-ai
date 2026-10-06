@@ -10,7 +10,7 @@ ignore el contenido real de la conversacion.
 
 import logging
 import os
-from typing import Any, List, Literal, Optional
+from typing import Any, Callable, List, Literal, Optional
 
 from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
@@ -68,7 +68,7 @@ def _build_supervisor_model():
     groq_api_key = os.environ.get("GROQ_API_KEY")
     if not groq_api_key:
         raise ValueError("Falta GROQ_API_KEY en .env")
-    model = ChatGroq(model="openai/gpt-oss-120b", temperature=0, api_key=groq_api_key)
+    model = ChatGroq(model="openai/gpt-oss-120b", temperature=0, api_key=groq_api_key, max_retries=8)
     return model.with_structured_output(SupervisorDecision)
 
 
@@ -77,7 +77,7 @@ def _build_specialist_model():
     groq_api_key = os.environ.get("GROQ_API_KEY")
     if not groq_api_key:
         raise ValueError("Falta GROQ_API_KEY en .env")
-    return ChatGroq(model="openai/gpt-oss-120b", temperature=0, api_key=groq_api_key)
+    return ChatGroq(model="openai/gpt-oss-120b", temperature=0, api_key=groq_api_key, max_retries=8)
 
 
 def _formatear_contribuciones(contribuciones: List[Contribucion]) -> str:
@@ -107,6 +107,7 @@ def build_graph(
     analyst_model: Optional[Any] = None,
     research_agent: Optional[Any] = None,
     analyst_agent: Optional[Any] = None,
+    hitl_gate: Optional[Callable[[OrchestratorState], None]] = None,
 ) -> StateGraph:
     """Arma el grafo (sin compilar).
 
@@ -115,7 +116,14 @@ def build_graph(
     por create_react_agent de verdad); research_agent/analyst_agent
     reemplaza el especialista entero (un objeto con .ainvoke(...) propio),
     para testear el ruteo del Supervisor sin ejecutar ningun ciclo ReAct
-    real."""
+    real.
+
+    hitl_gate es un punto de extension para la Fase 7 (API de produccion):
+    si se pasa, se llama al principio del nodo 'analista', antes de hacer
+    cualquier trabajo real - la Fase 7 lo usa para pausar el grafo
+    (langgraph.types.interrupt) y esperar aprobacion humana. La Fase 6 no
+    necesita saber nada de interrupt()/HITL; default None preserva el
+    comportamiento exacto de la Fase 6."""
     supervisor_structured_model = supervisor_model or _build_supervisor_model()
     research_agent = research_agent or build_research_agent(research_model or _build_specialist_model())
     analyst_agent = analyst_agent or build_analyst_agent(analyst_model or _build_specialist_model())
@@ -162,6 +170,12 @@ def build_graph(
         }
 
     async def analista_node(state: OrchestratorState) -> dict:
+        if hitl_gate is not None:
+            # Pausa el grafo (si hitl_gate llama a interrupt()) antes de
+            # hacer cualquier trabajo real. Si el grafo se reanuda despues
+            # de una pausa, esta llamada es un no-op (interrupt() no
+            # vuelve a pausar en el replay).
+            hitl_gate(state)
         instruccion = _ultima_instruccion(state["messages"])
         # El analista SI necesita ver lo que encontro el investigador (no
         # solo la pregunta original), asi que se lo agregamos a su

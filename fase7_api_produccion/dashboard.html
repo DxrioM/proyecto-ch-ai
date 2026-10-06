@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fase 7 - Observabilidad de la API multi-agente</title>
+<style>
+  :root {
+    --bg: #f7f7f9; --card: #ffffff; --texto: #1d1d22; --suave: #6b6b78;
+    --linea: #e3e3ea; --acento: #4f46e5; --ok: #15803d; --error: #b91c1c;
+    --warn: #b45309; --barra: #818cf8; --barra2: #c7d2fe;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101014; --card: #1a1a21; --texto: #ececf2; --suave: #9a9aa8;
+      --linea: #2a2a34; --acento: #818cf8; --ok: #4ade80; --error: #f87171;
+      --warn: #fbbf24; --barra: #6366f1; --barra2: #3730a3;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101014; --card: #1a1a21; --texto: #ececf2; --suave: #9a9aa8;
+    --linea: #2a2a34; --acento: #818cf8; --ok: #4ade80; --error: #f87171;
+    --warn: #fbbf24; --barra: #6366f1; --barra2: #3730a3;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--texto);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 16px; margin: 0 0 12px; }
+  .sub { color: var(--suave); font-size: 13px; margin-bottom: 20px; }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-bottom: 20px; }
+  .card { background: var(--card); border: 1px solid var(--linea); border-radius: 12px; padding: 16px; }
+  .kpi .valor { font-size: 24px; font-weight: 650; }
+  .kpi .etiqueta { color: var(--suave); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .kpi .nota { color: var(--suave); font-size: 12px; margin-top: 4px; }
+  .seccion { margin-bottom: 20px; }
+  .controles { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center; }
+  select, input { background: var(--card); color: var(--texto); border: 1px solid var(--linea);
+                  border-radius: 8px; padding: 6px 10px; font: inherit; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+  th { color: var(--suave); font-weight: 600; cursor: pointer; user-select: none; white-space: nowrap; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .DONE { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+  .FAILED { background: color-mix(in srgb, var(--error) 18%, transparent); color: var(--error); }
+  .REJECTED, .AWAITING_APPROVAL { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .barras { display: flex; flex-direction: column; gap: 8px; }
+  .fila { display: grid; grid-template-columns: 170px 1fr 90px; gap: 10px; align-items: center; font-size: 12px; }
+  .fila .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--suave); }
+  .pista { background: var(--linea); border-radius: 6px; height: 14px; overflow: hidden; display: flex; }
+  .seg { height: 100%; }
+  .seg.p { background: var(--barra); } .seg.c { background: var(--barra2); }
+  .leyenda { font-size: 12px; color: var(--suave); display: flex; gap: 14px; margin-top: 10px; }
+  .leyenda span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  .leyenda .l1::before { background: var(--barra); } .leyenda .l2::before { background: var(--barra2); }
+  details { background: var(--card); border: 1px solid var(--linea); border-radius: 12px; padding: 12px 16px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; }
+  p.nota { color: var(--suave); font-size: 13px; }
+  code { font-size: 12px; background: var(--linea); padding: 1px 5px; border-radius: 4px; }
+  @media (max-width: 640px) { .fila { grid-template-columns: 110px 1fr 70px; } th, td { font-size: 12px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Observabilidad de la API multi-agente</h1>
+  <div class="sub" id="meta"></div>
+
+  <div class="grid" id="kpis"></div>
+
+  <div class="seccion card">
+    <h2>Latencia por ejecucion</h2>
+    <div class="barras" id="barras-latencia"></div>
+    <p class="nota" id="nota-latencia"></p>
+  </div>
+
+  <div class="seccion card">
+    <h2>Tokens por ejecucion (entrada vs salida)</h2>
+    <div class="barras" id="barras-tokens"></div>
+    <div class="leyenda"><span class="l1">Tokens de entrada</span><span class="l2">Tokens de salida</span></div>
+  </div>
+
+  <div class="seccion card">
+    <h2>Peticiones de la prueba de carga</h2>
+    <div class="controles">
+      <select id="filtro-status"><option value="">Todos los estados</option></select>
+      <input id="busqueda" placeholder="Buscar en la pregunta...">
+    </div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr>
+          <th data-k="pregunta">Pregunta</th><th data-k="status">Estado</th>
+          <th data-k="latencia_segundos">Latencia (s)</th><th>Job</th>
+        </tr></thead>
+        <tbody id="tabla-carga"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="seccion card">
+    <h2>Trazas en LangSmith</h2>
+    <p class="nota">Una traza por tramo de ejecucion. Un job que requiere aprobacion humana genera dos: el tramo hasta la pausa (<code>ejecutar_job</code>) y el tramo de reanudacion (<code>LangGraph</code>).</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr>
+          <th>Traza</th><th class="num">Latencia (s)</th><th class="num">Tokens entrada</th>
+          <th class="num">Tokens salida</th><th class="num">Costo (USD)</th>
+        </tr></thead>
+        <tbody id="tabla-trazas"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <details>
+    <summary>Como leer estos numeros</summary>
+    <p class="nota" id="texto-metodologia"></p>
+  </details>
+</main>
+
+<script id="datos" type="application/json">{"generado_en": "2026-10-06T22:17:16.028987+00:00", "proyecto_langsmith": "proyecto-ch-ai-fase7", "cantidad_ejecuciones_encontradas": 6, "latencia_p95_segundos_langsmith": 219.231, "costo_total_usd": 0.007708, "costo_promedio_por_ejecucion_usd": 0.001285, "nota_costo": null, "ejecuciones": [{"run_id": "01a11348-1e71-7a03-b845-76a514f9d878", "nombre": "LangGraph", "latencia_segundos": 27.390474, "total_tokens": 3782, "prompt_tokens": 2948, "completion_tokens": 834, "total_cost_usd": 0.0009426}, {"run_id": "01a11347-2596-7c31-9ebc-31eeab38efb4", "nombre": "ejecutar_job", "latencia_segundos": 30.295384, "total_tokens": 3237, "prompt_tokens": 2807, "completion_tokens": 430, "total_cost_usd": 0.00067905}, {"run_id": "01a11347-2595-7cb3-a9ec-47770cde3c7b", "nombre": "ejecutar_job", "latencia_segundos": 8.282521, "total_tokens": 4275, "prompt_tokens": 3387, "completion_tokens": 888, "total_cost_usd": 0.00100245}, {"run_id": "01a11347-2594-7b03-9da0-b6b16529ec54", "nombre": "ejecutar_job", "latencia_segundos": 7.312835, "total_tokens": 3413, "prompt_tokens": 2882, "completion_tokens": 531, "total_cost_usd": 0.0007317}, {"run_id": "01a11347-2593-7ae0-aa41-5d10799b58d8", "nombre": "ejecutar_job", "latencia_segundos": 64.031071, "total_tokens": 4117, "prompt_tokens": 3247, "completion_tokens": 870, "total_cost_usd": 0.00097065}, {"run_id": "01a11347-2581-7a62-9fd2-84f183834949", "nombre": "ejecutar_job", "latencia_segundos": 219.231311, "total_tokens": 20655, "prompt_tokens": 19429, "completion_tokens": 1226, "total_cost_usd": 0.00338115}], "prueba_de_carga_local": {"cantidad_peticiones": 5, "duracion_total_segundos": 221.213, "latencia_p95_segundos": 221.213, "latencia_promedio_segundos": 84.207, "latencia_minima_segundos": 9.118, "latencia_maxima_segundos": 221.213, "resultados": [{"pregunta": "Cuantos pedidos tuvo el cliente 102 y cual fue el total?", "job_id": "df1677c0-bcd8-476a-8098-682ae6c4a282", "status": "DONE", "latencia_segundos": 221.213}, {"pregunta": "Que base de datos usa el sistema de pedidos para persistencia?", "job_id": "a5dbbc1b-80ae-42dc-8f7e-7f7b83bda033", "status": "DONE", "latencia_segundos": 32.062}, {"pregunta": "Investiga los tiempos de respuesta comprometidos por severidad de soporte y calculame el promedio en horas.", "job_id": "5c6405fa-f41d-43d4-ac02-63c33cc64bcb", "status": "DONE", "latencia_segundos": 92.962}, {"pregunta": "Que pasa si el health check de Kubernetes falla despues de un despliegue?", "job_id": "ec78fb51-4c97-4c2a-9506-adf0b1ec0983", "status": "DONE", "latencia_segundos": 9.118}, {"pregunta": "Por que puede aparecer stock insuficiente en pedidos que si tienen stock?", "job_id": "6bc9e486-9967-45b9-8fae-7f0a78c06303", "status": "DONE", "latencia_segundos": 65.682}]}}</script>
+<script>
+(function () {
+  const d = JSON.parse(document.getElementById("datos").textContent);
+  const carga = d.prueba_de_carga_local || { resultados: [] };
+  const trazas = d.ejecuciones || [];
+  const fmt = (n, dec = 2) => (n === null || n === undefined) ? "-" : Number(n).toLocaleString("es-AR", { maximumFractionDigits: dec, minimumFractionDigits: dec });
+  const fmtUsd = (n) => (n === null || n === undefined) ? "sin dato" : "US$ " + Number(n).toLocaleString("en-US", { maximumFractionDigits: 6, minimumFractionDigits: 4 });
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  document.getElementById("meta").textContent =
+    "Proyecto " + (d.proyecto_langsmith || "-") + " · generado " + new Date(d.generado_en).toLocaleString("es-AR");
+
+  const totalTokens = trazas.reduce((a, t) => a + (t.total_tokens || 0), 0);
+  const kpis = [
+    { etiqueta: "Peticiones concurrentes", valor: carga.cantidad_peticiones ?? "-", nota: "Lanzadas en paralelo" },
+    { etiqueta: "Latencia p95", valor: fmt(carga.latencia_p95_segundos) + " s", nota: "Del lote de peticiones" },
+    { etiqueta: "Latencia promedio", valor: fmt(carga.latencia_promedio_segundos) + " s", nota: "Del lote de peticiones" },
+    { etiqueta: "Costo total", valor: fmtUsd(d.costo_total_usd), nota: "Segun LangSmith, todas las trazas" },
+    { etiqueta: "Costo por ejecucion", valor: fmtUsd(d.costo_promedio_por_ejecucion_usd), nota: "Promedio por traza" },
+    { etiqueta: "Tokens totales", valor: totalTokens.toLocaleString("es-AR"), nota: trazas.length + " trazas" },
+  ];
+  document.getElementById("kpis").innerHTML = kpis.map(k =>
+    `<div class="card kpi"><div class="etiqueta">${esc(k.etiqueta)}</div><div class="valor">${esc(k.valor)}</div><div class="nota">${esc(k.nota)}</div></div>`
+  ).join("");
+
+  // Barras de latencia por peticion de la prueba de carga
+  const maxLat = Math.max(1, ...carga.resultados.map(r => r.latencia_segundos || 0));
+  document.getElementById("barras-latencia").innerHTML = carga.resultados.map(r => {
+    const pct = ((r.latencia_segundos || 0) / maxLat * 100).toFixed(1);
+    return `<div class="fila"><div class="lbl" title="${esc(r.pregunta)}">${esc(r.pregunta)}</div>
+      <div class="pista"><div class="seg" style="width:${pct}%;background:var(--barra)"></div></div>
+      <div class="num" style="text-align:right">${fmt(r.latencia_segundos)} s</div></div>`;
+  }).join("");
+  document.getElementById("nota-latencia").textContent =
+    "Las barras muestran el tiempo total de cada peticion, desde que se encola hasta que termina (incluye la espera en cola y el backoff por rate limit).";
+
+  // Barras apiladas de tokens (entrada / salida) por traza de LangSmith
+  const maxTok = Math.max(1, ...trazas.map(t => t.total_tokens || 0));
+  document.getElementById("barras-tokens").innerHTML = trazas.map(t => {
+    const p = ((t.prompt_tokens || 0) / maxTok * 100).toFixed(1);
+    const c = ((t.completion_tokens || 0) / maxTok * 100).toFixed(1);
+    return `<div class="fila"><div class="lbl">${esc(t.nombre)} · ${esc((t.run_id || "").slice(0, 8))}</div>
+      <div class="pista"><div class="seg p" style="width:${p}%"></div><div class="seg c" style="width:${c}%"></div></div>
+      <div class="num" style="text-align:right">${(t.total_tokens || 0).toLocaleString("es-AR")}</div></div>`;
+  }).join("");
+
+  // Tabla de peticiones con filtro y orden
+  const selEstado = document.getElementById("filtro-status");
+  const estados = [...new Set(carga.resultados.map(r => r.status))];
+  selEstado.insertAdjacentHTML("beforeend", estados.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join(""));
+  let orden = { k: "latencia_segundos", asc: false };
+
+  function pintarCarga() {
+    const q = document.getElementById("busqueda").value.trim().toLowerCase();
+    const st = selEstado.value;
+    let filas = carga.resultados.filter(r =>
+      (!st || r.status === st) && (!q || r.pregunta.toLowerCase().includes(q)));
+    filas.sort((a, b) => {
+      const va = a[orden.k], vb = b[orden.k];
+      const r = va > vb ? 1 : va < vb ? -1 : 0;
+      return orden.asc ? r : -r;
+    });
+    document.getElementById("tabla-carga").innerHTML = filas.map(r => `
+      <tr><td>${esc(r.pregunta)}</td>
+          <td><span class="pill ${esc(r.status)}">${esc(r.status)}</span></td>
+          <td class="num">${fmt(r.latencia_segundos, 2)}</td>
+          <td><code>${esc((r.job_id || "").slice(0, 8))}</code></td></tr>`).join("")
+      || `<tr><td colspan="4" class="nota">Sin resultados con ese filtro.</td></tr>`;
+  }
+  selEstado.addEventListener("change", pintarCarga);
+  document.getElementById("busqueda").addEventListener("input", pintarCarga);
+  document.querySelectorAll("th[data-k]").forEach(th => th.addEventListener("click", () => {
+    const k = th.dataset.k;
+    orden = { k, asc: orden.k === k ? !orden.asc : true };
+    pintarCarga();
+  }));
+  pintarCarga();
+
+  // Tabla de trazas de LangSmith
+  document.getElementById("tabla-trazas").innerHTML = trazas.map(t => `
+    <tr><td>${esc(t.nombre)} <code>${esc((t.run_id || "").slice(0, 8))}</code></td>
+        <td class="num">${fmt(t.latencia_segundos)}</td>
+        <td class="num">${(t.prompt_tokens ?? 0).toLocaleString("es-AR")}</td>
+        <td class="num">${(t.completion_tokens ?? 0).toLocaleString("es-AR")}</td>
+        <td class="num">${t.total_cost_usd === null || t.total_cost_usd === undefined ? "-" : fmtUsd(t.total_cost_usd)}</td></tr>`).join("");
+
+  document.getElementById("texto-metodologia").textContent =
+    "Costo: lo calcula LangSmith a partir de los tokens de entrada y salida de cada traza. " +
+    "Latencia p95: el valor de 95 de cada 100 peticiones que tardaron menos. Con 5 peticiones, el p95 es practicamente la peticion mas lenta, " +
+    "por eso conviene leerlo junto con el promedio. " +
+    "Los tiempos altos vienen sobre todo de la cuota gratuita del proveedor del LLM (limite de tokens por minuto): " +
+    "las peticiones esperan en cola (limite de concurrencia del worker) y reintentan con backoff cuando la cuota se agota.";
+})();
+</script>
+</body>
+</html>
