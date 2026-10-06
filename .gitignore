@@ -40,3 +40,6 @@ fase5_agente_langgraph/checkpoints.sqlite-*
 graphify-out/cache/
 graphify-out/.graphify_python
 graphify-out/.graphify_root
+
+# Caches regenerables del Sistema Final (chunks y manifest de la ingesta)
+sistema_final/rag/vectorstore/

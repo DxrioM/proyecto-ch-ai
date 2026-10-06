@@ -1,0 +1,40 @@
+{
+  "cantidad_peticiones": 5,
+  "duracion_total_segundos": 199.61,
+  "latencia_p95_segundos": 199.61,
+  "latencia_promedio_segundos": 72.334,
+  "latencia_minima_segundos": 9.199,
+  "latencia_maxima_segundos": 199.61,
+  "resultados": [
+    {
+      "pregunta": "Cuantos pedidos tuvo el cliente 102 y cual fue el total?",
+      "job_id": "c2f552e4-68e5-42f8-b99f-e4447aaa07c1",
+      "status": "DONE",
+      "latencia_segundos": 199.61
+    },
+    {
+      "pregunta": "Que base de datos usa el sistema de pedidos para persistencia?",
+      "job_id": "e61e615a-c4b8-43d4-9f53-78ca4b0a8c4b",
+      "status": "DONE",
+      "latencia_segundos": 9.199
+    },
+    {
+      "pregunta": "Investiga los tiempos de respuesta comprometidos por severidad de soporte y calculame el promedio en horas.",
+      "job_id": "2d9bd351-f692-4fd4-983c-98bb6ca79ff7",
+      "status": "DONE",
+      "latencia_segundos": 104.635
+    },
+    {
+      "pregunta": "Que pasa si el health check de Kubernetes falla despues de un despliegue?",
+      "job_id": "6056bf6c-59d4-4abc-ad77-26e2605deaef",
+      "status": "DONE",
+      "latencia_segundos": 10.289
+    },
+    {
+      "pregunta": "Por que puede aparecer stock insuficiente en pedidos que si tienen stock?",
+      "job_id": "ec3deded-9bdb-4e3d-805f-74877155448c",
+      "status": "DONE",
+      "latencia_segundos": 37.935
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "generado_en": "2026-10-06T23:05:32.433457+00:00",
+  "proyecto_langsmith": "proyecto-ch-ai-final",
+  "cantidad_ejecuciones_encontradas": 6,
+  "latencia_p95_segundos_langsmith": 198.337,
+  "costo_total_usd": 0.007515,
+  "costo_promedio_por_ejecucion_usd": 0.001253,
+  "nota_costo": null,
+  "ejecuciones": [
+    {
+      "run_id": "01a11374-e7f2-7013-99df-1e1bec7577da",
+      "nombre": "LangGraph",
+      "latencia_segundos": 25.569753,
+      "total_tokens": 3497,
+      "prompt_tokens": 2656,
+      "completion_tokens": 841,
+      "total_cost_usd": 0.000903
+    },
+    {
+      "run_id": "01a11373-b928-7a72-9c10-7565774692a5",
+      "nombre": "ejecutar_job",
+      "latencia_segundos": 8.009311,
+      "total_tokens": 3328,
+      "prompt_tokens": 2946,
+      "completion_tokens": 382,
+      "total_cost_usd": 0.0006711
+    },
+    {
+      "run_id": "01a11373-b919-7aa3-a0bd-77b56f46f0e1",
+      "nombre": "ejecutar_job",
+      "latencia_segundos": 36.124201,
+      "total_tokens": 4038,
+      "prompt_tokens": 3322,
+      "completion_tokens": 716,
+      "total_cost_usd": 0.0009279
+    },
+    {
+      "run_id": "01a11373-b90a-72a3-ba45-d6f5b6f96e1c",
+      "nombre": "ejecutar_job",
+      "latencia_segundos": 76.448946,
+      "total_tokens": 4267,
+      "prompt_tokens": 3318,
+      "completion_tokens": 949,
+      "total_cost_usd": 0.0010479
+    },
+    {
+      "run_id": "01a11373-b8f9-7720-9a19-07fb603e1919",
+      "nombre": "ejecutar_job",
+      "latencia_segundos": 9.119096,
+      "total_tokens": 3627,
+      "prompt_tokens": 3071,
+      "completion_tokens": 556,
+      "total_cost_usd": 0.00079425
+    },
+    {
+      "run_id": "01a11373-b8bf-7742-ab69-5a50c55bba72",
+      "nombre": "ejecutar_job",
+      "latencia_segundos": 198.336941,
+      "total_tokens": 17710,
+      "prompt_tokens": 16225,
+      "completion_tokens": 1485,
+      "total_cost_usd": 0.00317115
+    }
+  ],
+  "prueba_de_carga_local": {
+    "cantidad_peticiones": 5,
+    "duracion_total_segundos": 199.61,
+    "latencia_p95_segundos": 199.61,
+    "latencia_promedio_segundos": 72.334,
+    "latencia_minima_segundos": 9.199,
+    "latencia_maxima_segundos": 199.61,
+    "resultados": [
+      {
+        "pregunta": "Cuantos pedidos tuvo el cliente 102 y cual fue el total?",
+        "job_id": "c2f552e4-68e5-42f8-b99f-e4447aaa07c1",
+        "status": "DONE",
+        "latencia_segundos": 199.61
+      },
+      {
+        "pregunta": "Que base de datos usa el sistema de pedidos para persistencia?",
+        "job_id": "e61e615a-c4b8-43d4-9f53-78ca4b0a8c4b",
+        "status": "DONE",
+        "latencia_segundos": 9.199
+      },
+      {
+        "pregunta": "Investiga los tiempos de respuesta comprometidos por severidad de soporte y calculame el promedio en horas.",
+        "job_id": "2d9bd351-f692-4fd4-983c-98bb6ca79ff7",
+        "status": "DONE",
+        "latencia_segundos": 104.635
+      },
+      {
+        "pregunta": "Que pasa si el health check de Kubernetes falla despues de un despliegue?",
+        "job_id": "6056bf6c-59d4-4abc-ad77-26e2605deaef",
+        "status": "DONE",
+        "latencia_segundos": 10.289
+      },
+      {
+        "pregunta": "Por que puede aparecer stock insuficiente en pedidos que si tienen stock?",
+        "job_id": "ec3deded-9bdb-4e3d-805f-74877155448c",
+        "status": "DONE",
+        "latencia_segundos": 37.935
+      }
+    ]
+  }
+}
