@@ -72,6 +72,7 @@ sistema_final/
 ├── data/                # corpus del Sistema de Pedidos Online (Markdown)
 ├── scripts/             # prueba de carga y exportacion de metricas de LangSmith
 ├── metrics/             # resultados reales de la prueba de carga y de LangSmith
+├── screenshots/         # capturas de las trazas en LangSmith
 └── tests/test_sistema_final.py
 ```
 
@@ -132,12 +133,14 @@ Cada job genera una traza `ejecutar_job` en LangSmith con el árbol completo
 job que pasa por la aprobación humana genera dos trazas: el tramo hasta la
 pausa y el tramo de reanudación (`LangGraph`), con el mismo `job_id`.
 
-Las trazas de esta corrida están en el proyecto de LangSmith
-`proyecto-ch-ai-final` (configurable con `LANGSMITH_PROJECT`). Las capturas de
-observabilidad de la Fase 7 están en
-[fase7_api_produccion/screenshots/](../fase7_api_produccion/screenshots/):
-lista de trazas, traza con la pausa HITL y tramo de reanudación. Las capturas
-del sistema final todavía no están tomadas.
+Las trazas están en el proyecto de LangSmith `proyecto-ch-ai-final`
+(configurable con `LANGSMITH_PROJECT`). Capturas en [screenshots/](screenshots/):
+
+- `01_lista_trazas.png`: trazas con latencia, tokens y costo. La fila de 10.74 s
+  es una tarea de validación de `run.sh`; el resto es la prueba de carga.
+- `02_traza_hitl.png`: el job con la pregunta de cálculo, hasta la pausa HITL.
+- `03_reanudacion_hitl.png`: el tramo de reanudación, con `resume: true` y el
+  analista ejecutando `calcular_estadisticas`.
 
 ## Pruebas
 
